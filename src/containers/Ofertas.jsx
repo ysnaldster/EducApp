@@ -18,8 +18,6 @@ function Ofertas() {
     
   return (
     <OfetasContainer className="container-fluid h-100">
-      <div>
-        <div>
           <div>
             {resultados ? (
               <TextPrincipal>Selecciona un tema:</TextPrincipal>
@@ -29,8 +27,6 @@ function Ofertas() {
             <BtnBuscarMas />
             <ListaResultados />
           </div>
-        </div>
-      </div>
     </OfetasContainer>
   );
 }

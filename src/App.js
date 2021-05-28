@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import Ofertas from "./containers/Ofertas";
 import "./styles/main.css"
+import Routes from "./routers/Routes";
 
-{/** Estilo del contenedor principal */}
+{/** Estilo del contenedor principal */ }
 const Main = styled.div`
   min-height: 100vh;
 `
@@ -11,10 +11,14 @@ function App() {
   return (
     <>
       <div className="App" style={{ height: "100vh" }}>
-        <header className="App-header"></header>
-        <Ofertas />
+        {/* <header className="App-header">
+          <Home />
+          <h1>EducApp</h1>
+        </header>
+         */}
+        <Routes/>
       </div>
     </>
-  );
+  )
 }
 export default App;
