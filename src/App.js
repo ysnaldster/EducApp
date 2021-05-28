@@ -1,12 +1,20 @@
-import Home from './components/Home.jsx'
+import Home from './containers/Home.jsx'
+import Header from './components/Header.jsx'
+import { store } from './store/Store';
+import { Provider } from 'react-redux';
+import { ChakraProvider } from "@chakra-ui/react"
+
+
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <Home/>
-        <h1>EducApp</h1>
-      </header>
-    </div>
+    <Provider store={store}>
+      <ChakraProvider>
+        <header className="App-header">
+          <Header/>
+          <Home />
+        </header>
+      </ChakraProvider>
+    </Provider>
   );
 }
 export default App;
