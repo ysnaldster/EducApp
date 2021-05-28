@@ -4,7 +4,7 @@ import BtnBuscarMas from "../components/BtnBuscarTemas";
 import ListaResultados from "../components/ListaResultados";
 
 const OfetasContainer = styled.div`
-  background-color: #f8f5f1;
+  
 `;
 const TextPrincipal = styled.h3`
   color: #f7a440;

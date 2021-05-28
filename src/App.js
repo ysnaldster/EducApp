@@ -5,6 +5,7 @@ import Routes from "./routers/Routes";
 {/** Estilo del contenedor principal */ }
 const Main = styled.div`
   min-height: 100vh;
+  background-color: #f8f5f1;
 `
 
 function App() {

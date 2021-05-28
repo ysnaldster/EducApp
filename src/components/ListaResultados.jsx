@@ -3,7 +3,6 @@ import styled from "styled-components";
 
 const ResultadosContainer = styled.div`
   font-size: 1.2rem;
-  text-align: center;
   width: 100vw;
 `;
 const Resultado = styled.p`
@@ -16,6 +15,11 @@ const Resultado = styled.p`
   line-height: 1.5rem;
   width: 45%;
   text-align: left;
+  @media(max-width:350px){
+    width: 100%;
+    box-sizing: border-box;
+    display:inline-block;
+  }
 `;
 const Tit = styled.strong`
   font-weight: bolder;
@@ -23,21 +27,21 @@ const Tit = styled.strong`
 `;
 
 export default function ListaResultados() {
-  const mapTemp = [0, 1, 2, 3];
+  const mapTemp = [1,2,3];
 
   return (
     <>
       <ResultadosContainer className="container-fluid mt-1">
         {mapTemp.map((x) => (
           <Resultado>
-            <Tit>Angular:</Tit>
+            <Tit>Angular: </Tit>
             <strong>Convierte cualquier template en HTML en una WebAPP</strong>
             <br />
-            <Tit>Profesor:</Tit>Fernando Herrera
+            <Tit>Profesor: </Tit>Fernando Herrera
             <br />
-            <Tit>Precio:</Tit>Gratis
-            <Tit>Tipo:</Tit>Vitual
-            <Tit>Lugar:</Tit>Udemy
+            <Tit>Tipo: </Tit>Vitual
+            <br />
+            <Tit>Lugar: </Tit>Udemy
           </Resultado>
         ))}
       </ResultadosContainer>
