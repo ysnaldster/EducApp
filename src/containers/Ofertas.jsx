@@ -6,7 +6,7 @@ import ListaResultados from "../components/ListaResultados";
 const OfetasContainer = styled.div`
   background-color: #f8f5f1;
 `;
-const TextPrincipal = styled.h1`
+const TextPrincipal = styled.h3`
   color: #f7a440;
 `;
 const Tema = styled.h1`
@@ -15,18 +15,21 @@ const Tema = styled.h1`
 
 function Ofertas() {
   const [resultados, setresultados] = useState(false);
-    
+
   return (
     <OfetasContainer className="container-fluid h-100">
-          <div>
-            {resultados ? (
-              <TextPrincipal>Selecciona un tema:</TextPrincipal>
-            ) : (
-              <TextPrincipal>Tema seleccionado:</TextPrincipal>
-            )}
-            <BtnBuscarMas />
-            <ListaResultados />
-          </div>
+        <div style={{display:"inline-block"}}>
+        {/* Muestra un botón de acuerdo a si ya se buscaron temas o no */}
+        {resultados ? (
+          <TextPrincipal>Selecciona un tema:</TextPrincipal>
+        ) : (
+          <TextPrincipal>Tema seleccionado:</TextPrincipal>
+        )}
+        <BtnBuscarMas />
+        </div>
+        <div>
+          <ListaResultados />
+        </div>
     </OfetasContainer>
   );
 }

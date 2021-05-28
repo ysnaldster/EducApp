@@ -8,6 +8,7 @@ const SearchMore = styled.div`
   border-radius: 1.5rem;
   line-height: 2rem;
   color: white;
+  float:right;
   &:hover {
     color: black;
   }
