@@ -11,6 +11,8 @@ import { useDispatch } from 'react-redux';
 import { login } from '../actions/auth.js';
 import styled from 'styled-components';
 
+
+
 const StyleModal = styled(Modal)`
     height: 100vh;
     display: flex !important;
@@ -25,10 +27,10 @@ const StyleButtonContainer = styled(Col)`
 
 const StyledButtonInicio = styled(Button)`
     background: #F98F12;
-    width: 230px;
+    width: 230px !important;
     border: none;
     color: white;
-    box-shadow: 0px 4px 8px rgb(89 73 30 / 16%);
+    box-shadow: 0px 4px 8px rgb(89 73 30 / 16%) !important;
     font-weight: bold;
     font-size: 15px;
 `
@@ -47,8 +49,8 @@ const StyledStack = styled(Stack)`
 `
 const StyledButtonGoogle = styled(Button)`
     margin: 0px !important;
-    background: #FAF8F7;
-    color: black;
+    background: #FAF8F7 !important;
+    color: black !important;
     padding: 0px !important;
 `
 const StyledIconContainerClosed = styled(Row)`
@@ -56,6 +58,16 @@ const StyledIconContainerClosed = styled(Row)`
     justify-content: flex-end;
     margin: 5px;
 `
+
+const StyledLetterModal = styled.div`
+    font-family: 'DM Sans', sans-serif !important;
+`
+
+const StyledButtonIngresar = styled(Button)`
+    background: #F98F12 !important;
+    color: white !important;
+`
+
 function FormModal() {
 
     const [verSeccion, setSeccion] = useState(true)
@@ -76,13 +88,14 @@ function FormModal() {
         dispatch(login('986', 'Alexander'))
         console.log('Se han enviados los datos');
     }
+
     return (
-        <>
+        <StyledLetterModal>
             {
                 verSeccion ? <div className='acaPrueba'>
-                    <Button variant="primary" onClick={handleShow}>
+                    <StyledButtonIngresar variant="primary" onClick={handleShow}>
                         Login
-                    </Button>
+                    </StyledButtonIngresar>
                     <StyleModal show={show} onHide={handleClose} >
                         <form onSubmit={handleSubmit}>
                             <StyledIconContainerClosed>
@@ -199,7 +212,7 @@ function FormModal() {
                     </StyleModal>
                 </div>
             }
-        </>
+        </StyledLetterModal>
     );
 }
 
