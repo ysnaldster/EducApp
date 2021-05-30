@@ -5,11 +5,12 @@ import { Row, Col, Container } from 'react-bootstrap'
 import { FaUserCircle, FaLock } from 'react-icons/fa';
 import { MdEmail } from 'react-icons/md'
 import { useForm } from '../hooks/useForm.jsx';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { login } from '../actions/auth.js';
 import styled from 'styled-components';
-
-
+import validator from 'validator'
+import { setError, removeError } from '../actions/uiError'
+import {startRegisterWithEmailPasswordName} from '../actions/auth'
 // Estilos
 
 const StyleButtonContainer = styled(Col)`
@@ -37,16 +38,41 @@ const StyledFormsContainers = styled.div`
 const Registro = () => {
     // Dispatch 
     const dispatch = useDispatch();
+    const {msjError} = useSelector(state => state.error);
+
     const [formValues, handleInputChange] = useForm({
-        user: '',
-        password: ''
+        name: '',
+        password: '',
+        email: ''
     })
-    const { user, password } = formValues;
+    const { name, password, email } = formValues;
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        dispatch(login('986', 'Alexander'))
-        console.log('Se han enviados los datos');
+        if(formValid()){
+            dispatch(startRegisterWithEmailPasswordName(email, password, name))
+        }
+    }
+
+    const formValid = () => {
+        if(name.trim().length === 0){
+            dispatch(setError('nombre requerido'))
+            console.log("nombre requerido");
+            console.log('Todos los campos son requeridos');
+            return false
+        }else if(!validator.isEmail(email)){
+            dispatch(setError('email requerido'))
+            console.log('Email requerido');
+            return false 
+        }else if (password.trim().length === 0){
+            dispatch(setError('requiero contraseña'))
+            console.log('requiero contraseña');
+            return false 
+        }
+
+        dispatch(removeError())
+        return true
+
     }
     return (
         <div>
@@ -55,6 +81,13 @@ const Registro = () => {
             </Link>
             <StyledFormsContainers>
                 <form onSubmit={handleSubmit}>
+                    {
+                        msjError && 
+                        (
+                            <div>{msjError}</div>
+                        )
+                    }
+
                     <img src='https://i.ibb.co/26ZyFJV/logot.png' width='300px' height='300px' style={{ margin: '10px' }} />
                     <Stack spacing={4}>
                         <InputGroup>
@@ -62,7 +95,7 @@ const Registro = () => {
                                 pointerEvents="none"
                                 children={<FaUserCircle color="gray.300" />}
                             />
-                            <Input type="text" placeholder="Nombre de Usuario" name="user" value={user} onChange={handleInputChange} />
+                            <Input type="text" placeholder="Nombre de Usuario" name="name" value={name} onChange={handleInputChange} />
                         </InputGroup>
                         <InputGroup>
                             <InputLeftElement
@@ -76,7 +109,7 @@ const Registro = () => {
                                 pointerEvents="none"
                                 children={<MdEmail color="gray.300" />}
                             />
-                            <Input type="email" placeholder="Correo Electrónico" name="password" value={password} onChange={handleInputChange} />
+                            <Input type="email" placeholder="Correo Electrónico" name="email" value={email} onChange={handleInputChange} />
                         </InputGroup>
                     </Stack>
                     <Row>

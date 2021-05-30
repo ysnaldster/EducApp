@@ -6,8 +6,8 @@ import { FaUserCircle, FaLock } from 'react-icons/fa';
 import { AiOutlineArrowLeft } from 'react-icons/ai'
 import { FcGoogle } from 'react-icons/fc';
 import { useForm } from '../hooks/useForm.jsx';
-import { useDispatch } from 'react-redux';
-import { login } from '../actions/auth.js';
+import { useDispatch, useSelector } from 'react-redux';
+import { login, startLoginEmailPassword, startGoogleLogin } from '../actions/auth.js';
 import styled from 'styled-components';
 
 // Estilos
@@ -47,16 +47,23 @@ const Login = () => {
     // Dispatch 
     const dispatch = useDispatch();
     const [formValues, handleInputChange] = useForm({
-        user: '',
+        email: '',
         password: ''
     })
-    const { user, password } = formValues;
+    const { email, password } = formValues;
+
+    const loading = useSelector(state => state.ui)
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        dispatch(login('986', 'Alexander'))
+        dispatch(startLoginEmailPassword(email,password))
         console.log('Se han enviados los datos');
     }
+
+    const handleGoogleLogin = () => {
+        dispatch(startGoogleLogin())
+    }
+
     return (
         <div style={{ height: '100vh' }}>
             <Link to='/home'>
@@ -73,7 +80,7 @@ const Login = () => {
                                         pointerEvents="none"
                                         children={<FaUserCircle color="gray.300" />}
                                     />
-                                    <Input type="text" placeholder="Nombre de Usuario" name="user" value={user} onChange={handleInputChange} />
+                                    <Input type="text" placeholder="Ingrese Correo" name="email" value={email} onChange={handleInputChange} />
                                 </InputGroup>
                             </Col>
                         </Row>
@@ -87,14 +94,17 @@ const Login = () => {
                     </Stack>
                     <Row>
                         <StyleButtonContainer xs={12}>
-                            <StyledButtonInicio variant="primary" type='submit'>
+                            <StyledButtonInicio variant="primary" type='submit'
+                                disabled = {loading}>
                                 Entrar
                                     </StyledButtonInicio>
                         </StyleButtonContainer>
                     </Row>
                     <Row>
                         <StyleButtonContainer xs={12}>
-                            <StyledButtonGoogle variant="primary" type='submit'>
+                            <StyledButtonGoogle variant="primary" type='submit' 
+                                onClick = {handleGoogleLogin}
+                            >
                                 <div style={{ padding: '10px' }}>
                                     <FcGoogle />
                                 </div>
@@ -113,106 +123,6 @@ const Login = () => {
                     </Row>
                 </form>
             </StyledFormsContainers>
-
-            {/* {
-                verSeccion ? <StyledFormsContainers>
-                    <form onSubmit={handleSubmit}>
-                        <img src='https://i.ibb.co/26ZyFJV/logot.png' width='300px' height='300px' style={{ margin: '10px' }} />
-                        <Stack spacing={4}>
-                            <Row>
-                                <Col xs={12}>
-                                    <InputGroup>
-                                        <InputLeftElement
-                                            pointerEvents="none"
-                                            children={<FaUserCircle color="gray.300" />}
-                                        />
-                                        <Input type="text" placeholder="Nombre de Usuario" name="user" value={user} onChange={handleInputChange} />
-                                    </InputGroup>
-                                </Col>
-                            </Row>
-                            <InputGroup>
-                                <InputLeftElement
-                                    pointerEvents="none"
-                                    children={<FaLock color="gray.300" />}
-                                />
-                                <Input type="password" placeholder="Contraseña" name="password" value={password} onChange={handleInputChange} />
-                            </InputGroup>
-                        </Stack>
-                        <Row>
-                            <StyleButtonContainer xs={12}>
-                                <StyledButtonInicio variant="primary" type='submit'>
-                                    Entrar
-                                    </StyledButtonInicio>
-                            </StyleButtonContainer>
-                        </Row>
-                        <Row>
-                            <StyleButtonContainer xs={12}>
-                                <StyledButtonGoogle variant="primary" type='submit'>
-                                    <div style={{ padding: '10px' }}>
-                                        <FcGoogle />
-                                    </div>
-                                    Continuar con Google
-                                    </StyledButtonGoogle>
-                            </StyleButtonContainer>
-                        </Row>
-                        <Row>
-                            <Col xs={12} style={{ marginTop: '40px' }}>
-                                <Button variant='secondary' onClick={() => {
-                                    console.log("probando");
-                                    setSeccion(!verSeccion);
-                                }}>
-                                    Crear una Nueva Cuenta
-                                </Button>
-                            </Col>
-                        </Row>
-                    </form>
-                </StyledFormsContainers> : 
-                <StyledFormsContainers>
-                    <form onSubmit={handleSubmit}>
-                        <img src='https://i.ibb.co/26ZyFJV/logot.png' width='300px' height='300px' style={{ margin: '10px' }} />
-                        <Stack spacing={4}>
-                            <InputGroup>
-                                <InputLeftElement
-                                    pointerEvents="none"
-                                    children={<FaUserCircle color="gray.300" />}
-                                />
-                                <Input type="text" placeholder="Nombre de Usuario" name="user" value={user} onChange={handleInputChange} />
-                            </InputGroup>
-                            <InputGroup>
-                                <InputLeftElement
-                                    pointerEvents="none"
-                                    children={<FaLock color="gray.300" />}
-                                />
-                                <Input type="password" placeholder="Contraseña" name="password" value={password} onChange={handleInputChange} />
-                            </InputGroup>
-                            <InputGroup>
-                                <InputLeftElement
-                                    pointerEvents="none"
-                                    children={<MdEmail color="gray.300" />}
-                                />
-                                <Input type="email" placeholder="Correo Electrónico" name="password" value={password} onChange={handleInputChange} />
-                            </InputGroup>
-                        </Stack>
-                        <Row>
-                            <StyleButtonContainer xs={12}>
-                                <StyledButtonInicio variant="primary" type='submit'>
-                                    Registrarme
-                                    </StyledButtonInicio>
-                            </StyleButtonContainer>
-                        </Row>
-                        <Row>
-                            <Col xs={12} style={{marginTop: '40px'}}>
-                                <Button variant='secondary' onClick={() => {
-                                    console.log("probando");
-                                    setSeccion(!verSeccion);
-                                }}>
-                                    Ya tengo una Cuenta
-                                </Button>
-                            </Col>
-                        </Row>
-                    </form>
-                </StyledFormsContainers>
-            } */}
         </div>
     )
 }

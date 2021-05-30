@@ -1,6 +1,5 @@
 import React from 'react'
 import { Navbar, Container, Nav, Modal, Row, Col } from 'react-bootstrap'
-import FormModal from './FormModal.jsx'
 import { Button, Drawer, DrawerOverlay, DrawerContent, DrawerCloseButton, DrawerHeader, DrawerBody, Input, DrawerFooter, RadioGroup, Stack, Radio, useDisclosure } from '@chakra-ui/react'
 import styled from 'styled-components'
 import {Link} from 'react-router-dom'
@@ -64,7 +63,7 @@ const Header = () => {
                     <Col xs={4}>
                         <StyledImgLogo src='https://i.ibb.co/26ZyFJV/logot.png' />
                     </Col>
-                    <StyledNavContainer xs={6}>
+                    <StyledNavContainer xs={8}>
                         <Navbar>
                             <Container fluid>
                                 <Navbar.Collapse className="justify-content-end">
