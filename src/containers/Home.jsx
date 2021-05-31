@@ -20,7 +20,7 @@ const StyledMainDescription = styled.p`
 const Home = () => {
     return (
         <div>
-            <Header />
+            {/* <Header /> */}
             <StyleMainTitleWelcome>Bienvenidos a EducApp</StyleMainTitleWelcome>
             <StyledMainDescription>Descubre distintos portales educativos en donde puedes formarte para el futuro</StyledMainDescription>
             <Container>
