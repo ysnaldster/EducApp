@@ -10,7 +10,7 @@ export default function Routes() {
     return (
         <div>
             <Router>
-                    <Route exact path="/home" component={Home}/>                    
+                    <Home/>                    
                 <Switch>
                     <Route exact path = "/login" component = {Login}/>
                     <Route exact path = "/registro" component = {Registro}/>
