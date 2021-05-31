@@ -1,4 +1,5 @@
 {
+  "homepage": "https://educ-app.github.io/EducApp/",
   "name": "vacio-5",
   "version": "0.1.0",
   "private": true,
@@ -13,6 +14,7 @@
     "bootstrap": "^5.0.1",
     "firebase": "^8.6.3",
     "framer-motion": "^4.1.17",
+    "gh-pages": "^3.2.0",
     "react": "^17.0.2",
     "react-bootstrap": "^1.6.0",
     "react-dom": "^17.0.2",
@@ -31,7 +33,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "yarn run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
