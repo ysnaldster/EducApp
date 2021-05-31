@@ -25,7 +25,7 @@ function PlacementExample() {
     const [placement, setPlacement] = React.useState("left")
 
     return (
-        <>
+        <div id="desplegable">
             <RadioGroup defaultValue={placement} onChange={setPlacement}>
             </RadioGroup>
             <StyledButtonExplorar  onClick={onOpen}>
@@ -39,19 +39,19 @@ function PlacementExample() {
                         Open
                 </Button>
                     <DrawerBody>
-                        <Link to = '/login'>
+                        <Link to = '/login' onClick={onClose}>
                             Ingresar
                         </Link> <br/>
-                        <Link to = '/registro'>
+                        <Link to = '/registro' onClick={onClose}>
                             Registro
                         </Link>
+                        {/* <p>Some contents...</p>
                         <p>Some contents...</p>
-                        <p>Some contents...</p>
-                        <p>Some contents...</p>
+                        <p>Some contents...</p> */}
                     </DrawerBody>
                 </DrawerContent>
             </Drawer>
-        </>
+        </div>
     )
 }
 
