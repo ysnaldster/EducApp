@@ -44,17 +44,24 @@ function PlacementExample() {
       <Drawer placement={placement} onClose={onClose} isOpen={isOpen}>
         <DrawerOverlay />
         <DrawerContent>
-          <DrawerHeader borderBottomWidth="1px">Basic Drawer</DrawerHeader>
-          <Button colorScheme="blue" onClick={onClose}>
-            Open
-          </Button>
+          <DrawerHeader borderBottomWidth="1px">
+              EducApp
+            <Button /*colorScheme="blue"*/ onClick={onClose} style={{float:"right"}}>
+              X
+            </Button>
+          </DrawerHeader>
           <DrawerBody>
-            <Link to="/login" onClick={onClose}>
+            <Link to="/login" onClick={onClose} className="nav-link fs-6 border-1 mt-1">
               Ingresar
-            </Link>{" "}
-            <br />
-            <Link to="/registro" onClick={onClose}>
+            </Link>
+            <Link to="/registro" onClick={onClose} className="nav-link fs-6 border-1 mt-1">
               Registro
+            </Link>
+            <Link to="/ofertas" onClick={onClose} className="nav-link fs-6 border-1 mt-1">
+              Ofertas
+            </Link>
+            <Link to="/novedades" onClick={onClose} className="nav-link fs-6 border-1 mt-1">
+              Novedades
             </Link>
             {/* <p>Some contents...</p>
                         <p>Some contents...</p>
@@ -88,7 +95,6 @@ const Header = () => {
         </Row>
       </Container>
     </React.Fragment>
-    
   );
 };
 
