@@ -71,8 +71,8 @@ const Login = () => {
             </Link>
             <StyledFormsContainers>
                 <form onSubmit={handleSubmit}>
-                    <img src='https://i.ibb.co/26ZyFJV/logot.png' width='300px' height='300px' style={{ margin: '10px' }} />
-                    <Stack spacing={4}>
+                    <img src='https://i.ibb.co/26ZyFJV/logot.png' width='200px' style={{ margin: '10px' }} />
+                    <Stack spacing={3}>
                         <Row>
                             <Col xs={12}>
                                 <InputGroup>
@@ -113,7 +113,7 @@ const Login = () => {
                         </StyleButtonContainer>
                     </Row>
                     <Row>
-                        <Col xs={12} style={{ marginTop: '40px' }}>
+                        <Col xs={12} style={{ marginTop: '10px' }}>
                             <Link to = '/registro' >
                                 <Button variant='secondary'>
                                     Crear una Nueva Cuenta

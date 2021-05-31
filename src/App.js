@@ -7,12 +7,10 @@ import styled from 'styled-components'
 
 
 const StyledContainerMain = styled.main`
-  height: 100vh; 
+  min-height: 100vh; 
   font-family: 'DM Sans', sans-serif;
   background-color: #E5E5E5;
 `
-
-
 
 function App() {
   return (
