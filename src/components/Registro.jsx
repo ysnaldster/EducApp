@@ -42,10 +42,10 @@ const Registro = () => {
 
     const [formValues, handleInputChange] = useForm({
         name: '',
-        password: '',
-        email: ''
+        email: '',
+        password: ''
     })
-    const { name, password, email } = formValues;
+    const { name, email, password } = formValues;
 
     const handleSubmit = (e) => {
         e.preventDefault();

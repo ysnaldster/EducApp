@@ -2,7 +2,7 @@ export const types = {
      login: 'Login',
      logout: 'Logout',
      uiSetError: 'set Error,',
-     uiRemoveError: 'remove Error',
+     uiRemoveError: 'Remove Error',
      uiStarLoading: 'start loading',
      uiFinishLoading: 'finish loading'
 }

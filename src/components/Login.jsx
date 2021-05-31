@@ -14,7 +14,8 @@ import styled from 'styled-components';
 
 const StyleButtonContainer = styled(Col)`
     text-align: center;
-    margin-top: 30px;
+    margin-top: 20px;
+    width:300px;
 `
 
 const StyledButtonInicio = styled(Button)`
@@ -40,7 +41,8 @@ const StyledFormsContainers = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 40px;
+    //margin-top: 40px;
+    
 `
 
 const Login = () => {
@@ -52,6 +54,7 @@ const Login = () => {
     })
     const { email, password } = formValues;
 
+        // Aca hay que cambiar ui por error 
     const loading = useSelector(state => state.ui)
 
     const handleSubmit = (e) => {
@@ -65,14 +68,16 @@ const Login = () => {
     }
 
     return (
-        <div style={{ height: '100vh' }}>
+        <div /*style={{ height: '100vh' }}*/>
             <Link to='/home'>
                 <AiOutlineArrowLeft />
             </Link>
             <StyledFormsContainers>
                 <form onSubmit={handleSubmit}>
-                    <img src='https://i.ibb.co/26ZyFJV/logot.png' width='300px' height='300px' style={{ margin: '10px' }} />
-                    <Stack spacing={4}>
+                    <div width="100%" style={{width:"100%"},{textAlign:"center"}}>
+                    <img src='https://i.ibb.co/26ZyFJV/logot.png' width='200px' style={{ margin: '10px' }} className="align-middle" />
+                    </div>
+                    <Stack spacing={3}>
                         <Row>
                             <Col xs={12}>
                                 <InputGroup>
@@ -113,7 +118,7 @@ const Login = () => {
                         </StyleButtonContainer>
                     </Row>
                     <Row>
-                        <Col xs={12} style={{ marginTop: '40px' }}>
+                        <Col xs={12} style={{ marginTop: '10px' }}>
                             <Link to = '/registro' >
                                 <Button variant='secondary'>
                                     Crear una Nueva Cuenta
