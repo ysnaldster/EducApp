@@ -47,7 +47,6 @@ export const startRegisterWithEmailPasswordName = (email, password, name) => {
     }
 }
 
-
 export const login = (uid, displayName) => {
     return{
         type: types.login,
@@ -57,6 +56,16 @@ export const login = (uid, displayName) => {
         }
     }
 }
+export const starLogout = () => {
+    return async (dispatch) => {
+        await firebase.auth().signOut();
+        dispatch(logout());
+    }
+}
+
+export const logout = () => ({
+    type: types.logout
+})
 
 // export const registro = (uid, displayName, email) => {
 //     return{

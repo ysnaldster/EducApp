@@ -27,6 +27,11 @@ export const registro = (state = inicialState, action) => {
                 ...state,
                 loading: false
             }
+        case types.logout:
+            return {
+                ...state,
+                loading: false
+            }
         default:
             return state;
     }

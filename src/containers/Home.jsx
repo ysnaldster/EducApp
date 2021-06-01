@@ -5,6 +5,7 @@ import { Button, Stack, } from "@chakra-ui/react"
 import {Container, Row, Col } from 'react-bootstrap'
 import { FaUserCircle, FaLock } from 'react-icons/fa';
 
+
 // Estilos 
 const StyleMainTitleWelcome = styled.h1`
     font-weight: 600;
@@ -20,7 +21,7 @@ const StyledMainDescription = styled.p`
 const Home = () => {
     return (
         <div>
-            {/* <Header /> */}
+            <Header />
             <StyleMainTitleWelcome>Bienvenidos a EducApp</StyleMainTitleWelcome>
             <StyledMainDescription>Descubre distintos portales educativos en donde puedes formarte para el futuro</StyledMainDescription>
             <Container>

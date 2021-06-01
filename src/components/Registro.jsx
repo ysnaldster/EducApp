@@ -76,9 +76,9 @@ const Registro = () => {
     }
     return (
         <div>
-            <Link to = '/home'>
+            {/* <Link to = '/home'>
                 Volver
-            </Link>
+            </Link> */}
             <StyledFormsContainers>
                 <form onSubmit={handleSubmit}>
                     {
@@ -121,7 +121,7 @@ const Registro = () => {
                     </Row>
                     <Row>
                         <Col xs={12} style={{ marginTop: '40px' }}>
-                            <Link to = '/login'>
+                            <Link to = '/auth/login'>
                                 <Button variant='secondary' >
                                     Ya tengo una Cuenta
                                 </Button>

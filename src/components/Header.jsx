@@ -17,6 +17,8 @@ import {
 } from "@chakra-ui/react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import {useDispatch} from 'react-redux'
+import {starLogout, logout} from '../actions/auth'
 
 // Style Components
 const StyledNavContainer = styled(Col)`
@@ -74,6 +76,13 @@ function PlacementExample() {
 }
 
 const Header = () => {
+
+  const dispatch = useDispatch()
+  const handleLogout = () => {
+    console.log('F.');
+    dispatch(starLogout())
+  }
+
   return (
     <React.Fragment>
       <Container fluid style={{ background: "#393E46" }}>
@@ -88,6 +97,10 @@ const Header = () => {
                   <Nav.Link /*href="#pricing"*/>
                     <PlacementExample />
                   </Nav.Link>
+                </Navbar.Collapse>
+                <Navbar.Collapse className="justify-content-end">
+                    <span>Salir</span>
+                    <Button onClick = {handleLogout}>Logout</Button>
                 </Navbar.Collapse>
               </Container>
             </Navbar>

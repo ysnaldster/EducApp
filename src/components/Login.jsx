@@ -69,9 +69,9 @@ const Login = () => {
 
     return (
         <div /*style={{ height: '100vh' }}*/>
-            <Link to='/home'>
+            {/* <Link to='/home'>
                 <AiOutlineArrowLeft />
-            </Link>
+            </Link> */}
             <StyledFormsContainers>
                 <form onSubmit={handleSubmit}>
                     <div width="100%" style={{width:"100%"},{textAlign:"center"}}>
@@ -119,7 +119,7 @@ const Login = () => {
                     </Row>
                     <Row>
                         <Col xs={12} style={{ marginTop: '10px' }}>
-                            <Link to = '/registro' >
+                            <Link to = '/auth/registro' >
                                 <Button variant='secondary'>
                                     Crear una Nueva Cuenta
                                 </Button>
