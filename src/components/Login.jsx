@@ -54,12 +54,12 @@ const Login = () => {
     })
     const { email, password } = formValues;
 
-        // Aca hay que cambiar ui por error 
+    // Aca hay que cambiar ui por error 
     const loading = useSelector(state => state.ui)
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        dispatch(startLoginEmailPassword(email,password))
+        dispatch(startLoginEmailPassword(email, password))
         console.log('Se han enviados los datos');
     }
 
@@ -68,15 +68,12 @@ const Login = () => {
     }
 
     return (
-        <div /*style={{ height: '100vh' }}*/>
-            {/* <Link to='/home'>
-                <AiOutlineArrowLeft />
-            </Link> */}
+        <div>
             <StyledFormsContainers>
+                <div >
+                    <img src='https://i.ibb.co/26ZyFJV/logot.png'  width = '300px' height = '300px'/>
+                </div>
                 <form onSubmit={handleSubmit}>
-                    <div width="100%" style={{width:"100%"},{textAlign:"center"}}>
-                    <img src='https://i.ibb.co/26ZyFJV/logot.png' width='200px' style={{ margin: '10px' }} className="align-middle" />
-                    </div>
                     <Stack spacing={3}>
                         <Row>
                             <Col xs={12}>
@@ -100,15 +97,15 @@ const Login = () => {
                     <Row>
                         <StyleButtonContainer xs={12}>
                             <StyledButtonInicio variant="primary" type='submit'
-                                disabled = {loading}>
+                                disabled={loading}>
                                 Entrar
                                     </StyledButtonInicio>
                         </StyleButtonContainer>
                     </Row>
                     <Row>
                         <StyleButtonContainer xs={12}>
-                            <StyledButtonGoogle variant="primary" type='submit' 
-                                onClick = {handleGoogleLogin}
+                            <StyledButtonGoogle variant="primary" type='submit'
+                                onClick={handleGoogleLogin}
                             >
                                 <div style={{ padding: '10px' }}>
                                     <FcGoogle />
@@ -119,7 +116,7 @@ const Login = () => {
                     </Row>
                     <Row>
                         <Col xs={12} style={{ marginTop: '10px' }}>
-                            <Link to = '/auth/registro' >
+                            <Link to='/auth/registro' >
                                 <Button variant='secondary'>
                                     Crear una Nueva Cuenta
                                 </Button>

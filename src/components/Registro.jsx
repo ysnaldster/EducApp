@@ -76,9 +76,6 @@ const Registro = () => {
     }
     return (
         <div>
-            {/* <Link to = '/home'>
-                Volver
-            </Link> */}
             <StyledFormsContainers>
                 <form onSubmit={handleSubmit}>
                     {
