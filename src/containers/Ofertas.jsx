@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import BtnBuscarMas from "../components/BtnBuscarTemas";
 import ListaResultados from "../components/ListaResultados";
+import PersistentDrawerRight from '../components/Header2.jsx'
 
 const OfetasContainer = styled.div`
   width: 100%;
@@ -20,6 +21,7 @@ function Ofertas() {
 
   return (
     <OfetasContainer className="container-fluid h-100">
+      <PersistentDrawerRight/>
         <div>
         {/* Muestra un botón de acuerdo a si ya se buscaron temas o no */}
         {resultados ? (

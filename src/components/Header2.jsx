@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect, useState } from "react";
+import firebase from 'firebase'
 import clsx from 'clsx';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
@@ -25,10 +26,12 @@ import { ImHome } from 'react-icons/im'
 import { FaUser } from 'react-icons/fa'
 import { IoPeopleCircleOutline } from 'react-icons/io5'
 import {VscReferences} from 'react-icons/vsc'
-import {useDispatch} from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux'
 import {starLogout, logout} from '../actions/auth'
 import {Button} from 'react-bootstrap'
 import {BiArrowBack} from 'react-icons/bi'
+import {CgProfile} from 'react-icons/cg'
+
 
 // Estilos Adicionales 
 const StyledTextNav = styled(ListItemText)`
@@ -132,6 +135,26 @@ export default function PersistentDrawerRight() {
       dispatch(starLogout())
     }
 
+    
+  const [checking, setChecking] = useState(true)
+  const [isLoogedIn, setsIsLoogedIn] = useState(false)
+
+  useEffect(() => {
+    firebase.auth().onAuthStateChanged(async (user) => {
+      if (user?.uid) {
+        // dispatch(login(user.uid, user.displayName))
+        setsIsLoogedIn(true)
+      } else {
+        setsIsLoogedIn(false)
+      }
+
+      setChecking(false)
+    })
+
+  }, [dispatch, setChecking])
+
+
+    const {auth} = useSelector(state => state.auth)
     return (
         <div className={classes.root} >
             <CssBaseline />
@@ -173,7 +196,7 @@ export default function PersistentDrawerRight() {
                 <Divider />
                 <List >
                     <div style={{ padding: '8px 16px' }}>
-                        <Link to='/ofertas' style={{ display: 'flex' }}>
+                        <Link to='/' style={{ display: 'flex' }}>
                             < StyledIconNav style={{ marginRight: '30px' }}>
                                 <ImHome style={{ color: '#7a8184' }} />
                             </ StyledIconNav>
@@ -182,26 +205,43 @@ export default function PersistentDrawerRight() {
                             </StyledTextNav>
                         </Link>
                     </div>
-                    <div style={{ padding: '8px 16px' }}>
-                        <Link to='/ofertas' style={{ display: 'flex' }}>
+                    {
+                        !isLoogedIn ?   <div style={{ padding: '8px 16px' }}>
+                        <Link to='/auth/login' style={{ display: 'flex' }}>
                             < StyledIconNav style={{ marginRight: '30px' }}>
                                 <FaUser style={{ color: '#7a8184' }} />
                             </ StyledIconNav>
                             <StyledTextNav >
-                                Ingresar
+                               Iniciar Sesión
                             </StyledTextNav>
                         </Link>
-                    </div>
-                    <div style={{ padding: '8px 16px' }}>
-                        <Link to='/ofertas' style={{ display: 'flex' }}>
+                    </div>: <p></p>
+                    }
+                    {
+                         isLoogedIn ? <div style={{ padding: '8px 16px' }}>
+                         <Link to='/ofertas' style={{ display: 'flex' }}>
+                             < StyledIconNav style={{ marginRight: '30px' }}>
+                                 <AiFillShopping style={{ color: '#7a8184' }} />
+                             </ StyledIconNav>
+                             <StyledTextNav >
+                                 Ofetas
+                             </StyledTextNav>
+                         </Link>
+                     </div> : <p></p>
+                    }
+                     {
+                        isLoogedIn ?   <div style={{ padding: '8px 16px' }}>
+                        <Link to='/perfil' style={{ display: 'flex' }}>
                             < StyledIconNav style={{ marginRight: '30px' }}>
-                                <AiFillShopping style={{ color: '#7a8184' }} />
+                                <CgProfile style={{ color: '#7a8184' }} />
                             </ StyledIconNav>
                             <StyledTextNav >
-                                Ofetas
+                              Perfil
                             </StyledTextNav>
                         </Link>
-                    </div>
+                    </div>: <p></p>
+                    }
+                    
                     <div style={{ padding: '8px 16px' }}>
                         <Link to='/ofertas' style={{ display: 'flex' }}>
                             < StyledIconNav style={{ marginRight: '30px' }}>
@@ -235,17 +275,42 @@ export default function PersistentDrawerRight() {
                             </StyledTextNav>
                         </Link>
                     </div>
+                    {/* {
+                        (!isLoogedIn) ? 
+                    <div style={{ padding: '8px 16px' }}>
+                        <Link to='/auth/login' style={{ display: 'flex' }}>
+                            < StyledIconNav style={{ marginRight: '30px' }}>
+                                <FaUser style={{ color: '#7a8184' }} />
+                            </ StyledIconNav>
+                            <StyledTextNav >
+                               Iniciar Sesión
+                            </StyledTextNav>
+                        </Link>
+                    </div> :
                     <div style={{ padding: '8px 16px' }} onClick = {handleLogout}>
-                        <Link to='/ofertas' style={{ display: 'flex' }}>
+                        <div style={{ display: 'flex' }}>
                             < StyledIconNav style={{ marginRight: '30px' }}>
                                 <BiArrowBack style={{ color: '#7a8184' }} />
                             </ StyledIconNav>
                             <StyledTextNav >
                                 Salir
-                                {/* <Button onClick = {handleLogout}>Logout</Button> */}
+                                <Button onClick = {handleLogout}>Logout</Button>
                             </StyledTextNav>
-                        </Link>
+                        </div>
                     </div>
+                    } */}
+                    {
+                        isLoogedIn ?   <div style={{ padding: '8px 16px' }} onClick = {handleLogout}>
+                        <div style={{ display: 'flex' }}>
+                            < StyledIconNav style={{ marginRight: '30px' }}>
+                                <BiArrowBack style={{ color: '#7a8184' }} />
+                            </ StyledIconNav>
+                            <StyledTextNav >
+                                Salir
+                            </StyledTextNav>
+                        </div>
+                    </div> : <p></p>
+                    }
                 </List>
             </Drawer>
         </div>

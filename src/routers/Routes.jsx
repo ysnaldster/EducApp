@@ -11,11 +11,12 @@ import Ofertas from "../containers/Ofertas";
 import Login from "../components/Login.jsx";
 import Registro from "../components/Registro.jsx";
 
-import {login} from '../actions/auth'
+import { login } from '../actions/auth'
 import { useDispatch } from 'react-redux'
-import {PrivateRoute} from './PrivateRoute'
-import {PublicRoute} from './PublicRoute'
+import { PrivateRoute } from './PrivateRoute'
+import { PublicRoute } from './PublicRoute'
 import AuthRouter from './AuthRouter'
+import Perfil from '../components/Perfil.jsx'
 
 
 export default function Routes() {
@@ -31,40 +32,42 @@ export default function Routes() {
       if (user?.uid) {
         dispatch(login(user.uid, user.displayName))
         setsIsLoogedIn(true)
-      }else{
-        setsIsLoogedIn(false)   
-      } 
+      } else {
+        setsIsLoogedIn(false)
+      }
 
       setChecking(false)
     })
 
   }, [dispatch, setChecking])
-  if(checking){
-    return(
+  if (checking) {
+    return (
 
       <h1>Cargando....</h1>
     )
   }
 
 
-// Note: La privada permite consumir toda la información sin la autenticación. 
+  // Note: La privada permite consumir toda la información sin la autenticación. 
 
 
-return (
-  <div>
-    <Router>
-      {/* <Header /> */}
-      <Switch>
-        <PublicRoute  path="/auth" component={AuthRouter} isAuthenticated = {isLoogedIn}/>
-        <PrivateRoute  exact path="/" component={Home}  isAuthenticated = {isLoogedIn}/>
-        {/* <Route  exact path = '/login' component = {Login}/>
+  return (
+    <div>
+      <Router>
+        {/* <Header /> */}
+        <Switch>
+          <Route exact path='/' component={Home} />
+          <PublicRoute path="/auth" component={AuthRouter} isAuthenticated={isLoogedIn} />
+          <PrivateRoute exact path="/perfil" component={Perfil} isAuthenticated={isLoogedIn} />
+          {/* <Route  exact path = '/login' component = {Login}/>
         <Route exact path = '/home' component = {Home}/> */}
-        {/* <Route exact path="/registro" component={Registro} /> */}
-        {/* <Route  path="/ofertas" component={Ofertas} /> */}
-        {/* <Redirect to="/auth/login" /> */}
-        <Redirect to="/auth/login" />
-      </Switch>
-    </Router>
-  </div>
-);
+          {/* <Route exact path="/registro" component={Registro} /> */}
+          <Route  path="/ofertas" component={Ofertas} />
+          {/* <Redirect to="/auth/login" /> */}
+          {/* <Redirect to="/auth/login" /> */}
+          <Redirect to='/' />
+        </Switch>
+      </Router>
+    </div>
+  );
 }

@@ -7,7 +7,7 @@ import { FaUserCircle, FaLock } from 'react-icons/fa';
 import PersistentDrawerRight from '../components/Header2.jsx'
 import { AiOutlineCopyrightCircle } from 'react-icons/ai'
 import { MdBuild , MdCall } from "react-icons/md"
-
+import Perfil from '../components/Perfil.jsx'
 
 // Estilos 
 const StyleMainTitleWelcome = styled.h1`
