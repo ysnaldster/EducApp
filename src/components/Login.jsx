@@ -3,12 +3,12 @@ import { Link } from 'react-router-dom'
 import { Stack, InputGroup, InputLeftElement, Input, Button } from '@chakra-ui/react';
 import { Row, Col, Container } from 'react-bootstrap'
 import { FaUserCircle, FaLock } from 'react-icons/fa';
-import { AiOutlineArrowLeft } from 'react-icons/ai'
 import { FcGoogle } from 'react-icons/fc';
 import { useForm } from '../hooks/useForm.jsx';
 import { useDispatch, useSelector } from 'react-redux';
 import { login, startLoginEmailPassword, startGoogleLogin } from '../actions/auth.js';
 import styled from 'styled-components';
+
 
 // Estilos
 
@@ -41,8 +41,8 @@ const StyledFormsContainers = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    //margin-top: 40px;
-    
+    flex-direction: column; 
+    height: 100vh; 
 `
 
 const Login = () => {
@@ -60,7 +60,6 @@ const Login = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         dispatch(startLoginEmailPassword(email, password))
-        console.log('Se han enviados los datos');
     }
 
     const handleGoogleLogin = () => {
@@ -82,7 +81,7 @@ const Login = () => {
                                         pointerEvents="none"
                                         children={<FaUserCircle color="gray.300" />}
                                     />
-                                    <Input type="text" placeholder="Ingrese Correo" name="email" value={email} onChange={handleInputChange} />
+                                    <Input type="text" placeholder="Ingrese Correo" name="email" value={email} onChange={handleInputChange} style = {{ background: '#FAF8F7'}}/>
                                 </InputGroup>
                             </Col>
                         </Row>
@@ -91,7 +90,7 @@ const Login = () => {
                                 pointerEvents="none"
                                 children={<FaLock color="gray.300" />}
                             />
-                            <Input type="password" placeholder="Contraseña" name="password" value={password} onChange={handleInputChange} />
+                            <Input type="password" placeholder="Contraseña" name="password" value={password} onChange={handleInputChange}  style = {{ background: '#FAF8F7'}}/>
                         </InputGroup>
                     </Stack>
                     <Row>
@@ -115,7 +114,7 @@ const Login = () => {
                         </StyleButtonContainer>
                     </Row>
                     <Row>
-                        <Col xs={12} style={{ marginTop: '10px' }}>
+                        <Col xs={12} style={{ marginTop: '30px',}}>
                             <Link to='/auth/registro' >
                                 <Button variant='secondary'>
                                     Crear una Nueva Cuenta

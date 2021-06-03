@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Stack, InputGroup, InputLeftElement, Input, Button } from '@chakra-ui/react';
-import { Row, Col, Container } from 'react-bootstrap'
+import { Stack, InputGroup, InputLeftElement, Input } from '@chakra-ui/react';
+import { Row, Col, Container, Alert } from 'react-bootstrap'
 import { FaUserCircle, FaLock } from 'react-icons/fa';
 import { MdEmail } from 'react-icons/md'
 import { useForm } from '../hooks/useForm.jsx';
@@ -10,7 +10,12 @@ import { login } from '../actions/auth.js';
 import styled from 'styled-components';
 import validator from 'validator'
 import { setError, removeError } from '../actions/uiError'
-import {startRegisterWithEmailPasswordName} from '../actions/auth'
+import { startRegisterWithEmailPasswordName } from '../actions/auth'
+import { useToast, Wrap, WrapItem, Button } from "@chakra-ui/react"
+import Swal from 'sweetalert2'
+
+
+
 // Estilos
 
 const StyleButtonContainer = styled(Col)`
@@ -32,13 +37,20 @@ const StyledFormsContainers = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 40px;
+    flex-direction: column;
+    height: 100vh;
 `
 
+
+
 const Registro = () => {
+
+    // Funcion alertas
+
+
     // Dispatch 
     const dispatch = useDispatch();
-    const {msjError} = useSelector(state => state.error);
+    const { msjError } = useSelector(state => state.error);
 
     const [formValues, handleInputChange] = useForm({
         name: '',
@@ -49,64 +61,76 @@ const Registro = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if(formValid()){
+        if (formValid()) {
             dispatch(startRegisterWithEmailPasswordName(email, password, name))
         }
     }
 
     const formValid = () => {
-        if(name.trim().length === 0){
-            dispatch(setError('nombre requerido'))
-            console.log("nombre requerido");
-            console.log('Todos los campos son requeridos');
+
+        if (name.trim().length === 0) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'Rellena todos los campos',
+            })
+            dispatch(setError(''))
             return false
-        }else if(!validator.isEmail(email)){
-            dispatch(setError('email requerido'))
-            console.log('Email requerido');
-            return false 
-        }else if (password.trim().length === 0){
-            dispatch(setError('requiero contraseña'))
-            console.log('requiero contraseña');
-            return false 
+        } else if (!validator.isEmail(email)) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'Se requiere un email',
+            })
+            dispatch(setError(''))
+            return false
+        } else if (password.trim().length === 0) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'Ingresa una contraseña',
+            })
+            dispatch(setError(''))
+            return false
         }
 
         dispatch(removeError())
         return true
-
     }
     return (
         <div>
             <StyledFormsContainers>
-                <form onSubmit={handleSubmit}>
+                <div>
+                    <img src='https://i.ibb.co/26ZyFJV/logot.png' width='300px' height='300px' />
+                </div>
+                <form onSubmit={handleSubmit} style={{ width: '276px' }}>
                     {
-                        msjError && 
+                        msjError &&
                         (
                             <div>{msjError}</div>
                         )
                     }
-
-                    <img src='https://i.ibb.co/26ZyFJV/logot.png' width='300px' height='300px' style={{ margin: '10px' }} />
                     <Stack spacing={4}>
                         <InputGroup>
                             <InputLeftElement
                                 pointerEvents="none"
                                 children={<FaUserCircle color="gray.300" />}
                             />
-                            <Input type="text" placeholder="Nombre de Usuario" name="name" value={name} onChange={handleInputChange} />
+                            <Input type="text" placeholder="Nombre de Usuario" name="name" value={name} onChange={handleInputChange} style={{ background: '#FAF8F7' }} />
                         </InputGroup>
                         <InputGroup>
                             <InputLeftElement
                                 pointerEvents="none"
                                 children={<FaLock color="gray.300" />}
                             />
-                            <Input type="password" placeholder="Contraseña" name="password" value={password} onChange={handleInputChange} />
+                            <Input type="password" placeholder="Contraseña" name="password" value={password} onChange={handleInputChange} style={{ background: '#FAF8F7' }} />
                         </InputGroup>
                         <InputGroup>
                             <InputLeftElement
                                 pointerEvents="none"
                                 children={<MdEmail color="gray.300" />}
                             />
-                            <Input type="email" placeholder="Correo Electrónico" name="email" value={email} onChange={handleInputChange} />
+                            <Input type="email" placeholder="Correo Electrónico" name="email" value={email} onChange={handleInputChange} style={{ background: '#FAF8F7' }} />
                         </InputGroup>
                     </Stack>
                     <Row>
@@ -117,8 +141,8 @@ const Registro = () => {
                         </StyleButtonContainer>
                     </Row>
                     <Row>
-                        <Col xs={12} style={{ marginTop: '40px' }}>
-                            <Link to = '/auth/login'>
+                        <Col xs={12} style={{ marginTop: '30px' }}>
+                            <Link to='/auth/login'>
                                 <Button variant='secondary' >
                                     Ya tengo una Cuenta
                                 </Button>
