@@ -60,7 +60,7 @@ return (
         {/* <Route  exact path = '/login' component = {Login}/>
         <Route exact path = '/home' component = {Home}/> */}
         {/* <Route exact path="/registro" component={Registro} /> */}
-        {/* <Route exact path="/ofertas" component={Ofertas} /> */}
+        {/* <Route  path="/ofertas" component={Ofertas} /> */}
         {/* <Redirect to="/auth/login" /> */}
         <Redirect to="/auth/login" />
       </Switch>
