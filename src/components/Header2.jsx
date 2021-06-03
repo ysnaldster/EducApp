@@ -173,21 +173,21 @@ export default function PersistentDrawerRight() {
                 <Divider />
                 <List >
                     <div style={{ padding: '8px 16px' }}>
-                        <Link to='/ofertas' style={{ display: 'flex' }}>
+                        <Link to='/home' style={{ display: 'flex' }}>
                             < StyledIconNav style={{ marginRight: '30px' }}>
                                 <ImHome style={{ color: '#7a8184' }} />
                             </ StyledIconNav>
-                            <StyledTextNav >
+                            <StyledTextNav onClick={handleDrawerClose}>
                                 Inicio
                             </StyledTextNav>
                         </Link>
                     </div>
                     <div style={{ padding: '8px 16px' }}>
-                        <Link to='/ofertas' style={{ display: 'flex' }}>
+                        <Link to='/auth/login' style={{ display: 'flex' }}>
                             < StyledIconNav style={{ marginRight: '30px' }}>
                                 <FaUser style={{ color: '#7a8184' }} />
                             </ StyledIconNav>
-                            <StyledTextNav >
+                            <StyledTextNav onClick={handleDrawerClose}>
                                 Ingresar
                             </StyledTextNav>
                         </Link>
@@ -197,17 +197,17 @@ export default function PersistentDrawerRight() {
                             < StyledIconNav style={{ marginRight: '30px' }}>
                                 <AiFillShopping style={{ color: '#7a8184' }} />
                             </ StyledIconNav>
-                            <StyledTextNav >
-                                Ofetas
+                            <StyledTextNav onClick={handleDrawerClose}>
+                                Ofertas
                             </StyledTextNav>
                         </Link>
                     </div>
                     <div style={{ padding: '8px 16px' }}>
-                        <Link to='/ofertas' style={{ display: 'flex' }}>
+                        <Link to='/novedades' style={{ display: 'flex' }}>
                             < StyledIconNav style={{ marginRight: '30px' }}>
                                 <TiDocumentText style={{ color: '#7a8184' }} />
                             </ StyledIconNav>
-                            <StyledTextNav >
+                            <StyledTextNav onClick={handleDrawerClose}>
                                 Novedades
                             </StyledTextNav>
                         </Link>
@@ -216,31 +216,31 @@ export default function PersistentDrawerRight() {
                 <Divider />
                 <List >
                     <div style={{ padding: '8px 16px' }}>
-                        <Link to='/ofertas' style={{ display: 'flex' }}>
+                        <Link to='/nosotros' style={{ display: 'flex' }}>
                             < StyledIconNav style={{ marginRight: '30px' }}>
                                 <IoPeopleCircleOutline style={{ color: '#7a8184' }} />
                             </ StyledIconNav>
-                            <StyledTextNav >
+                            <StyledTextNav onClick={handleDrawerClose}>
                                 Nosotros
                             </StyledTextNav>
                         </Link>
                     </div>
                     <div style={{ padding: '8px 16px' }}>
-                        <Link to='/ofertas' style={{ display: 'flex' }}>
+                        <Link to='/referencias' style={{ display: 'flex' }}>
                             < StyledIconNav style={{ marginRight: '30px' }}>
                                 <VscReferences style={{ color: '#7a8184' }} />
                             </ StyledIconNav>
-                            <StyledTextNav >
+                            <StyledTextNav onClick={handleDrawerClose}>
                                 Referencias
                             </StyledTextNav>
                         </Link>
                     </div>
                     <div style={{ padding: '8px 16px' }} onClick = {handleLogout}>
-                        <Link to='/ofertas' style={{ display: 'flex' }}>
+                        <Link to='/home' style={{ display: 'flex' }}>
                             < StyledIconNav style={{ marginRight: '30px' }}>
                                 <BiArrowBack style={{ color: '#7a8184' }} />
                             </ StyledIconNav>
-                            <StyledTextNav >
+                            <StyledTextNav onClick={handleDrawerClose}>
                                 Salir
                                 {/* <Button onClick = {handleLogout}>Logout</Button> */}
                             </StyledTextNav>
