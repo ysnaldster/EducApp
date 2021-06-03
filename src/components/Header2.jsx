@@ -133,18 +133,18 @@ export default function PersistentDrawerRight() {
     }
 
     return (
-        <div className={classes.root} >
+        <div className={classes.root}>
             <CssBaseline />
             <AppBar
                 position="fixed"
                 className={clsx(classes.appBar, {
-                    [classes.appBarShift]: open,
+                    [classes.appBarShift]: open
                 })}
                 style={{ background: '#393E46' }}
             >
                 <Toolbar>
                     <Typography variant="h6" noWrap className={classes.title}>
-                        <StyledImgLogo src="https://i.ibb.co/26ZyFJV/logot.png" />
+                        <StyledImgLogo src="https://i.ibb.co/9NZbMcm/logo-educapp-recortado.png" style={{margin:"5px 0 5px 0px"}}/>
                     </Typography>
                     <IconButton
                         color="inherit"
