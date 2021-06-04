@@ -156,18 +156,18 @@ export default function PersistentDrawerRight() {
 
     const {auth} = useSelector(state => state.auth)
     return (
-        <div className={classes.root} >
+        <div className={classes.root}>
             <CssBaseline />
             <AppBar
                 position="fixed"
                 className={clsx(classes.appBar, {
-                    [classes.appBarShift]: open,
+                    [classes.appBarShift]: open
                 })}
                 style={{ background: '#393E46' }}
             >
                 <Toolbar>
                     <Typography variant="h6" noWrap className={classes.title}>
-                        <StyledImgLogo src="https://i.ibb.co/26ZyFJV/logot.png" />
+                        <StyledImgLogo src="https://i.ibb.co/9NZbMcm/logo-educapp-recortado.png" style={{margin:"5px 0 5px 0px"}}/>
                     </Typography>
                     <IconButton
                         color="inherit"
@@ -200,7 +200,7 @@ export default function PersistentDrawerRight() {
                             < StyledIconNav style={{ marginRight: '30px' }}>
                                 <ImHome style={{ color: '#7a8184' }} />
                             </ StyledIconNav>
-                            <StyledTextNav >
+                            <StyledTextNav onClick={handleDrawerClose}>
                                 Inicio
                             </StyledTextNav>
                         </Link>
@@ -243,11 +243,11 @@ export default function PersistentDrawerRight() {
                     }
                     
                     <div style={{ padding: '8px 16px' }}>
-                        <Link to='/ofertas' style={{ display: 'flex' }}>
+                        <Link to='/novedades' style={{ display: 'flex' }}>
                             < StyledIconNav style={{ marginRight: '30px' }}>
                                 <TiDocumentText style={{ color: '#7a8184' }} />
                             </ StyledIconNav>
-                            <StyledTextNav >
+                            <StyledTextNav onClick={handleDrawerClose}>
                                 Novedades
                             </StyledTextNav>
                         </Link>
@@ -256,21 +256,21 @@ export default function PersistentDrawerRight() {
                 <Divider />
                 <List >
                     <div style={{ padding: '8px 16px' }}>
-                        <Link to='/ofertas' style={{ display: 'flex' }}>
+                        <Link to='/nosotros' style={{ display: 'flex' }}>
                             < StyledIconNav style={{ marginRight: '30px' }}>
                                 <IoPeopleCircleOutline style={{ color: '#7a8184' }} />
                             </ StyledIconNav>
-                            <StyledTextNav >
+                            <StyledTextNav onClick={handleDrawerClose}>
                                 Nosotros
                             </StyledTextNav>
                         </Link>
                     </div>
                     <div style={{ padding: '8px 16px' }}>
-                        <Link to='/ofertas' style={{ display: 'flex' }}>
+                        <Link to='/referencias' style={{ display: 'flex' }}>
                             < StyledIconNav style={{ marginRight: '30px' }}>
                                 <VscReferences style={{ color: '#7a8184' }} />
                             </ StyledIconNav>
-                            <StyledTextNav >
+                            <StyledTextNav onClick={handleDrawerClose}>
                                 Referencias
                             </StyledTextNav>
                         </Link>
@@ -292,7 +292,7 @@ export default function PersistentDrawerRight() {
                             < StyledIconNav style={{ marginRight: '30px' }}>
                                 <BiArrowBack style={{ color: '#7a8184' }} />
                             </ StyledIconNav>
-                            <StyledTextNav >
+                            <StyledTextNav onClick={handleDrawerClose}>
                                 Salir
                                 <Button onClick = {handleLogout}>Logout</Button>
                             </StyledTextNav>

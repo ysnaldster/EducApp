@@ -9,6 +9,8 @@ import {
 import Home from "../containers/Home.jsx";
 import Ofertas from "../containers/Ofertas";
 import Login from "../components/Login.jsx";
+import PersistentDrawerRight from "../components/Header2";
+import Header from "../components/Header";
 import Registro from "../components/Registro.jsx";
 
 import { login } from '../actions/auth'
