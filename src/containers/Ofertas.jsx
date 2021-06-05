@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import BtnBuscarMas from "../components/ofertas/BtnBuscarTemas";
 import ListaResultados from "../components/ofertas/ListaResultados";
+import PersistentDrawerRight from "../components/Header2";
+import Footer from "../components/Footer";
 
 const OfertasContainer = styled.div`
   overflow: visible;
@@ -9,36 +11,35 @@ const OfertasContainer = styled.div`
   width: 100%;
   box-sizing: border-box;
   padding-bottom: 10px;
+  text-align: center;
 `;
-const TextPrincipal = styled.h3`
-  color: #f7a440;
-`;
-const Tema = styled.h1`
-  color: #f7a440;
+const Seccion = styled.h1`
+  width: 73%;
+  display: inline-block;
+
+  @media (max-width: 600px) {
+    width: 100%;
+  }
 `;
 
 function Ofertas() {
+
   const [resultados, setresultados] = useState(false);
 
   return (
-    <OfertasContainer
-      className="container-fluid h-100"
-      style={{ overflow: "iauto" }}
-    >
-      <div>
-        {/* Muestra un botón de acuerdo a si ya se buscaron temas o no */}
-        {resultados ? (
-          <TextPrincipal>Selecciona un tema:</TextPrincipal>
-        ) : (
-          <TextPrincipal>Tema seleccionado:</TextPrincipal>
-        )}
-        <BtnBuscarMas />
-      </div>
-
-      <div>
-        <ListaResultados />
-      </div>
-    </OfertasContainer>
+    <>
+      <PersistentDrawerRight />
+      <OfertasContainer className="container-fluid h-100">
+        <Seccion>
+          <BtnBuscarMas />
+        </Seccion>
+        <Seccion>
+          <ListaResultados />
+        </Seccion>
+        {/* Footer */}
+      </OfertasContainer>
+       <Footer/>
+    </>
   );
 }
 

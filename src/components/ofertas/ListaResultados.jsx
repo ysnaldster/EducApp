@@ -9,6 +9,7 @@ const ResultadosContainer = styled.div`
   display: inline-block;
   font-size: 1rem;
   text-align: center;
+  width: 100%;
 `;
 
 const Resultado = styled.p`
@@ -38,10 +39,9 @@ export default function ListaResultados() {
     <>
       <ResultadosContainer className="container-fluid mt-1">
         {mapTemp.map((x) => (
-          <Center>
             <Card
               variant="outlined"
-              style={{ marginTop: "5px", textAlign: "left", padding: "25px",borderRadius:"8px" }}
+              style={{ marginTop: "5px",textAlign: "left", padding: "25px",borderRadius:"8px" }}
             >
               <Resultado>
                 <Foto src="https://i.ibb.co/9NZbMcm/logo-educapp-recortado.png" />
@@ -56,7 +56,6 @@ export default function ListaResultados() {
                 <Tit>Lugar: </Tit>Udemy
               </Resultado>
             </Card>
-          </Center>
         ))}
         {/* {mapTemp.map((x) => (
           <Resultado>

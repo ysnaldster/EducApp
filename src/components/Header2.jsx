@@ -117,6 +117,7 @@ const StyledImgLogo = styled.img`
 `;
 
 export default function PersistentDrawerRight() {
+
     const classes = useStyles();
     const theme = useTheme();
     const [open, setOpen] = React.useState(false);
