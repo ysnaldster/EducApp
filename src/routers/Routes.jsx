@@ -19,6 +19,7 @@ import { PrivateRoute } from './PrivateRoute'
 import { PublicRoute } from './PublicRoute'
 import AuthRouter from './AuthRouter'
 import Perfil from '../components/Perfil.jsx'
+import PublicarContenido from "../containers/PublicarContenido.jsx";
 
 
 export default function Routes() {
@@ -65,6 +66,7 @@ export default function Routes() {
         <Route exact path = '/home' component = {Home}/> */}
           {/* <Route exact path="/registro" component={Registro} /> */}
           <Route  path="/ofertas" component={Ofertas} />
+          <Route  path="/publicar" component={PublicarContenido} />
           {/* <Redirect to="/auth/login" /> */}
           {/* <Redirect to="/auth/login" /> */}
           <Redirect to='/' />

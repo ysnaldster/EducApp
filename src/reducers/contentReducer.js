@@ -1,15 +1,27 @@
+import { types } from "../types/types";
+
 const initialState = {
-    titulo:"",
-    tipo:"",
-    profesor:"",
-    precio:""
+    content:[],
+    active:null
 }
 
+export const contentReducer = (state = {}, action) => {
+  switch (action.type) {
+    case types.getContent:
+      return state;
 
-export const contentReducer = (state,action) =>{
+    case types.uploadContent:
+      return {
+        titulo: action.payload.titulo,
+        tipo: action.payload.tipo,
+        profesor: action.payload.profesor,
+        precio: action.payload.precio,
+      };
 
-    switch (action.type){
-        
-    }
+    case types.deleteContent:
+      return state;
 
-}
+    default:
+      return state;
+  }
+};

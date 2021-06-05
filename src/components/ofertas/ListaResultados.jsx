@@ -2,6 +2,7 @@ import { Center } from "@chakra-ui/layout";
 import { Card } from "@material-ui/core";
 import React from "react";
 import styled from "styled-components";
+import { useSelector } from "react-redux";
 
 const ResultadosContainer = styled.div`
   padding-top: 30px;
@@ -34,43 +35,35 @@ const Tit_1 = styled.p`
 `;
 
 export default function ListaResultados() {
+
+
+  const {titulo,tipo,profesor,precio} = useSelector(state => state.content)
+
+
   const mapTemp = [1, 2, 3, 2, 3, 2, 3];
   return (
     <>
       <ResultadosContainer className="container-fluid mt-1">
-        {mapTemp.map((x) => (
+        {mapTemp.map((xf) => (
             <Card
               variant="outlined"
-              style={{ marginTop: "5px",textAlign: "left", padding: "25px",borderRadius:"8px" }}
+              style={{ marginTop: "5px",textAlign: "left", padding: "25px",borderRadius:"8px",background:"#afafaf" }}
             >
               <Resultado>
-                <Foto src="https://i.ibb.co/9NZbMcm/logo-educapp-recortado.png" />
+               <Foto src="https://i.ibb.co/9NZbMcm/logo-educapp-recortado.png" />
                 <Tit_1>
-                  Angular: Convierte cualquier template en HTML en una WebAPP
+                  {titulo}
                 </Tit_1>
                 <br />
-                <Tit>Profesor: </Tit>Fernando Herrera
+                <Tit>Profesor: </Tit>{profesor}
                 <br />
-                <Tit>Tipo: </Tit>Vitual
+                <Tit>Tipo: </Tit>{tipo}
                 <br />
-                <Tit>Lugar: </Tit>Udemy
+                <Tit>Precio: </Tit>{precio}
+
               </Resultado>
             </Card>
         ))}
-        {/* {mapTemp.map((x) => (
-          <Resultado>
-            <Foto src="https://i.ibb.co/9NZbMcm/logo-educapp-recortado.png" />
-            <Tit_1>
-              Angular: Convierte cualquier template en HTML en una WebAPP
-            </Tit_1>
-            <br />
-            <Tit>Profesor: </Tit>Fernando Herrera
-            <br />
-            <Tit>Tipo: </Tit>Vitual
-            <br />
-            <Tit>Lugar: </Tit>Udemy
-          </Resultado>
-        ))} */}
       </ResultadosContainer>
     </>
   );

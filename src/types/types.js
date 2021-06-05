@@ -10,6 +10,6 @@ export const types = {
      uiFinishLoading: 'UI finish loading',
 
      getContenido: "[CONTENT] Ver contenido",
-     uploadContenido: "[CONTENT] Subir contenido",
-     deleteContenido: "[CONTENT] Borrrar contenido"
+     uploadContent: "[CONTENT] Subir contenido",
+     deleteContent: "[CONTENT] Borrrar contenido"
 }

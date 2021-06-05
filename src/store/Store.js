@@ -2,10 +2,12 @@ import {createStore, combineReducers, applyMiddleware, compose} from 'redux'
 import { authReducer } from '../reducers/authReducer'
 import {registro} from '../reducers/uiReducer'
 import thunk from 'redux-thunk'
+import { contentReducer } from '../reducers/contentReducer'
 
 const reducers = combineReducers({
     auth: authReducer,
-    error: registro
+    error: registro,
+    content: contentReducer
     // ui: registro
 })
 
