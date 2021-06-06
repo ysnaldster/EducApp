@@ -31,7 +31,7 @@ const Tit_1 = styled.p`
   text-align: center; */
   font-weight: bolder;
   font-size: 1.5rem;
-  color: rgb(249, 143, 18);
+  color: rgb(255, 255, 255);
   width: 100%;
   display: inli;
 `;
@@ -50,11 +50,12 @@ export default function ListaResultados() {
             key={item.uid}
             variant="outlined"
             style={{
-              marginTop: "5px",
+              marginTop: "10px",
               textAlign: "left",
               padding: "25px",
               borderRadius: "8px",
               background: "#afafaf",
+              cursor:"pointer",
             }}
           >
             <Resultado>
