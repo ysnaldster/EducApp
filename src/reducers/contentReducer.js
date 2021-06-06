@@ -1,14 +1,12 @@
 import { types } from "../types/types";
 
-const initialState = {
-    content:[],
-    active:null
-}
-
 export const contentReducer = (state = {}, action) => {
   switch (action.type) {
     case types.getContent:
-      return state;
+      return {
+        ...state,
+        content: [...action.payload]
+      }
 
     case types.uploadContent:
       return {

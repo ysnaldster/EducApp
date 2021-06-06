@@ -31,7 +31,7 @@ import { starLogout, logout } from "../actions/auth";
 import { Button } from "react-bootstrap";
 import { BiArrowBack } from "react-icons/bi";
 import { CgProfile } from "react-icons/cg";
-
+import AddBoxIcon from '@material-ui/icons/AddBox';
 // Estilos Adicionales
 const StyledTextNav = styled(ListItemText)`
   font-size: 1rem;
@@ -230,6 +230,16 @@ export default function PersistentDrawerRight() {
           ) : (
             <p></p>
           )}
+          {isLoogedIn ? (
+            <div style={{ padding: "8px 16px" }}>
+              <Link to="/publicar" style={{ display: "flex" }}>
+                <StyledIconNav style={{ marginRight: "30px" }}>
+                  <AddBoxIcon style={{ color: "#7a8184" }} />
+                </StyledIconNav>
+                <StyledTextNav>Publicar</StyledTextNav>
+              </Link>
+            </div>
+          ) :null}
           {isLoogedIn ? (
             <div style={{ padding: "8px 16px" }}>
               <Link to="/perfil" style={{ display: "flex" }}>

@@ -9,7 +9,7 @@ export const types = {
      uiStartLoading: 'UI start loading',
      uiFinishLoading: 'UI finish loading',
 
-     getContenido: "[CONTENT] Ver contenido",
+     getContent: "[CONTENT] Ver contenido",
      uploadContent: "[CONTENT] Subir contenido",
      deleteContent: "[CONTENT] Borrrar contenido"
 }

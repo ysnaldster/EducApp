@@ -4,7 +4,6 @@ import BtnBuscarMas from "../components/ofertas/BtnBuscarTemas";
 import ListaResultados from "../components/ofertas/ListaResultados";
 import PersistentDrawerRight from "../components/Header2";
 import Footer from "../components/Footer";
-import NoResults from "../components/ofertas/NoResults"
 import { useSelector } from "react-redux";
 
 const OfertasContainer = styled.div`
@@ -25,8 +24,7 @@ const Seccion = styled.h1`
 `;
 
 function Ofertas() {
-
-  const {active} = useSelector(state => state.content)
+  const { active } = useSelector((state) => state.content);
 
   return (
     <>
@@ -36,15 +34,10 @@ function Ofertas() {
           <BtnBuscarMas />
         </Seccion>
         <Seccion>
-{
-  active
-  ?<ListaResultados />
-  :  <NoResults />
-
-}
+          <ListaResultados />
         </Seccion>
       </OfertasContainer>
-        {/* Footer */}
+      {/* Footer */}
       <Footer />
     </>
   );

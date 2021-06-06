@@ -42,6 +42,7 @@ export default function PublicarContenido() {
     e.preventDefault();
     //dispatch(publicarContent(titulo, tipo, profesor, precio));
     dispatch(startPublicarContent(titulo, tipo, profesor, precio));
+    reset()
   };
 
   return (

@@ -1,6 +1,5 @@
-import { Center } from "@chakra-ui/layout";
-import { Card } from "@material-ui/core";
 import React from "react";
+import { Card } from "@material-ui/core";
 import styled from "styled-components";
 import { useSelector } from "react-redux";
 
@@ -28,42 +27,63 @@ const Tit = styled.span`
 `;
 
 const Tit_1 = styled.p`
+  /* width: 100%;
+  text-align: center; */
   font-weight: bolder;
+  font-size: 1.5rem;
   color: rgb(249, 143, 18);
   width: 100%;
   display: inli;
 `;
 
 export default function ListaResultados() {
+  const { titulo, tipo, profesor, precio } = useSelector(
+    (state) => state.content
+  );
 
-
-  const {titulo,tipo,profesor,precio} = useSelector(state => state.content)
-
-
-  const mapTemp = [1, 2, 3, 2, 3, 2, 3];
+  const { content } = useSelector((state) => state.content);
   return (
     <>
       <ResultadosContainer className="container-fluid mt-1">
-        {mapTemp.map((xf) => (
-            <Card
-              variant="outlined"
-              style={{ marginTop: "5px",textAlign: "left", padding: "25px",borderRadius:"8px",background:"#afafaf" }}
-            >
-              <Resultado>
-               <Foto src="https://i.ibb.co/9NZbMcm/logo-educapp-recortado.png" />
-                <Tit_1>
-                  {titulo}
-                </Tit_1>
-                <br />
-                <Tit>Profesor: </Tit>{profesor}
-                <br />
-                <Tit>Tipo: </Tit>{tipo}
-                <br />
-                <Tit>Precio: </Tit>{precio}
-
-              </Resultado>
-            </Card>
+        {content?.map(item => (
+          <Card
+            key={item.uid}
+            variant="outlined"
+            style={{
+              marginTop: "5px",
+              textAlign: "left",
+              padding: "25px",
+              borderRadius: "8px",
+              background: "#afafaf",
+            }}
+          >
+            <Resultado>
+              <Foto src="https://i.ibb.co/9NZbMcm/logo-educapp-recortado.png" />
+              <Tit_1>{item.titulo}</Tit_1>
+              <br />
+              <Tit>Profesor: </Tit>
+              {item.profesor}
+              <br />
+              <Tit>Tipo: </Tit>
+              {item.tipo}
+              <br />
+              <Tit>Precio: </Tit>
+              {item.precio}
+            </Resultado>
+          </Card>
         ))}
+        <Card
+          variant="outlined"
+          style={{
+            marginTop: "5px",
+            textAlign: "left",
+            padding: "25px",
+            borderRadius: "8px",
+            background: "#afafaf",
+          }}
+        >
+          <>No se encontraron resultados que coincidan con la búsqueda...</>
+        </Card>
       </ResultadosContainer>
     </>
   );

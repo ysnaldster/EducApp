@@ -20,6 +20,8 @@ import { PublicRoute } from './PublicRoute'
 import AuthRouter from './AuthRouter'
 import Perfil from '../components/Perfil.jsx'
 import PublicarContenido from "../containers/PublicarContenido.jsx";
+import { loadContent } from "../helpers/loadContent";
+import { setContent, startGetContent } from "../actions/content.jsx";
 
 
 export default function Routes() {
@@ -35,6 +37,9 @@ export default function Routes() {
       if (user?.uid) {
         dispatch(login(user.uid, user.displayName))
         setsIsLoogedIn(true)
+
+        dispatch(startGetContent())
+
       } else {
         setsIsLoogedIn(false)
       }
