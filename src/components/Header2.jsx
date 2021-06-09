@@ -243,12 +243,22 @@ export default function PersistentDrawerRight() {
                     }
                     
                     <div style={{ padding: '8px 16px' }}>
-                        <Link to='/ofertas' style={{ display: 'flex' }}>
+                        <Link to='/novedades' style={{ display: 'flex' }}>
                             < StyledIconNav style={{ marginRight: '30px' }}>
                                 <TiDocumentText style={{ color: '#7a8184' }} />
                             </ StyledIconNav>
                             <StyledTextNav >
                                 Novedades
+                            </StyledTextNav>
+                        </Link>
+                    </div>
+                    <div style={{ padding: '8px 16px' }}>
+                        <Link to='/favoritos' style={{ display: 'flex' }}>
+                            < StyledIconNav style={{ marginRight: '30px' }}>
+                                <TiDocumentText style={{ color: '#7a8184' }} />
+                            </ StyledIconNav>
+                            <StyledTextNav >
+                                Favoritos
                             </StyledTextNav>
                         </Link>
                     </div>

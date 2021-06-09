@@ -1,11 +1,13 @@
 import {createStore, combineReducers, applyMiddleware, compose} from 'redux'
 import { authReducer } from '../reducers/authReducer'
 import {registro} from '../reducers/uiReducer'
+import {cargaNovedades} from '../reducers/cargaNovedades'
 import thunk from 'redux-thunk'
 
 const reducers = combineReducers({
     auth: authReducer,
-    error: registro
+    error: registro,
+    noticiasNovedades: cargaNovedades
     // ui: registro
 })
 

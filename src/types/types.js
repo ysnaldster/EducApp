@@ -9,4 +9,6 @@ export const types = {
      uiStartLoading: 'UI start loading',
      uiFinishLoading: 'UI finish loading',
 
+     uiNovedadesLoad: 'UI novedades load'
+
 }
