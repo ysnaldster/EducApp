@@ -6,9 +6,9 @@ import { FaUserCircle, FaLock } from 'react-icons/fa';
 import { FcGoogle } from 'react-icons/fc';
 import { useForm } from '../hooks/useForm.jsx';
 import { useDispatch, useSelector } from 'react-redux';
-import { login, startLoginEmailPassword, startGoogleLogin } from '../actions/auth.js';
+import { login, startLoginEmailPassword, startGoogleLogin, startFacebookLogin } from '../actions/auth.js';
 import styled from 'styled-components';
-
+import {FaFacebook} from 'react-icons/fa'
 
 // Estilos
 
@@ -65,6 +65,9 @@ const Login = () => {
     const handleGoogleLogin = () => {
         dispatch(startGoogleLogin())
     }
+    const handleFacebook = () => {
+        dispatch(startFacebookLogin())
+    }
 
     return (
         <div>
@@ -110,6 +113,18 @@ const Login = () => {
                                     <FcGoogle />
                                 </div>
                                     Continuar con Google
+                                    </StyledButtonGoogle>
+                        </StyleButtonContainer>
+                    </Row>
+                    <Row>
+                        <StyleButtonContainer xs={12}>
+                            <StyledButtonGoogle variant="primary" type='submit'
+                                onClick={handleFacebook}
+                            >
+                                <div style={{ padding: '10px' }}>
+                                    <FaFacebook />
+                                </div>
+                                    Continuar con Facebook
                                     </StyledButtonGoogle>
                         </StyleButtonContainer>
                     </Row>

@@ -8,9 +8,44 @@ import {
     ModalBody,
     ModalCloseButton,
     Button
-  } from "@chakra-ui/react"
+} from "@chakra-ui/react"
+import styled from 'styled-components'
 
+// Estilos 
+const StyledImg = styled.img`
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+`
 
+const StyledCardTitle = styled.p`
+    font-size: 18px;
+    margin: 10px;
+    font-weight: bold;
+`
+const StyledContentCard = styled.p`
+    margin: 0 10px;
+    font-size: 13px;
+`
+
+const StyledCardButtonContainer = styled.div`
+    display: flex;
+    justify-content: flex-end;
+    margin: 10px 20px;
+`
+
+const StyledCardContainerMain = styled.div`
+    border-radius: 10px;
+    border: none;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
+`
+const StyledButtonMoreRead = styled.button`
+    background: #F98F12;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    color: white;
+    font-weight: bold;
+`
 // Modal
 // function VerticallyCenter() {
 //     const { isOpen, onOpen, onClose } = useDisclosure()
@@ -58,12 +93,30 @@ const MostrarNovedad = ({ novedad }) => {
             {
                 novedad.map(n => {
                     return (
-                        <div key={n.id}>
-                            <h1>{n.titulo}</h1>
-                        </div>)
+                        <div className="row" key={n.id} style = {{padding: '10px 0px'}}>
+                            <div className="col s12 m6">
+                                <StyledCardContainerMain class="card" style={{ borderRadius: '10px' }}>
+                                    <div class="card-image">
+                                        <StyledImg src={n.imagen} />
+                                        <div>
+                                            <StyledCardTitle>{n.titulo}</StyledCardTitle>
+                                        </div>
+                                        <div >
+                                            <StyledContentCard>{n.contenido.substring(0, 100)}</StyledContentCard>
+                                        </div>
+                                        <StyledCardButtonContainer class="card-action">
+                                            <a href="#">
+                                                <StyledButtonMoreRead>Leer mas...</StyledButtonMoreRead>
+                                            </a>
+                                        </StyledCardButtonContainer>
+                                    </div>
+                                </StyledCardContainerMain>
+                            </div>
+                        </div>
+                    )              
                 })
             }
-        </div>
+        </div >
     )
 }
 

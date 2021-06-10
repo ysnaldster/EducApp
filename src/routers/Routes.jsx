@@ -31,7 +31,7 @@ export default function Routes() {
     firebase.auth().onAuthStateChanged(async (user) => {
       console.log(user);
       if (user?.uid) {
-        dispatch(login(user.uid, user.displayName))
+        dispatch(login(user.uid, user.displayName, user.email, user.photoURL))
         setsIsLoogedIn(true)
       } else {
         setsIsLoogedIn(false)

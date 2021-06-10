@@ -1,16 +1,17 @@
 import {types} from '../types/types'
-import {googleAuthProvider, firebase} from '../firebase/firebase-config'
+import {googleAuthProvider, firebase, facebookAuthProvider} from '../firebase/firebase-config'
 import {starLoading, finishLoading} from './uiError'
 
 export const startLoginEmailPassword = (email, password) => {
     return (dispatch) => { 
         return firebase.auth().signInWithEmailAndPassword(email,password)
         .then(({user})=> {
-            dispatch(starLoading)
-            dispatch(login(user.uid, user.displayName))
+            dispatch(login(user.uid, user.displayName, user.email, user.photoURL))
+            dispatch(finishLoading())
+            dispatch(starLoading())
         })
         .catch (e => {
-            dispatch(finishLoading)
+            dispatch(finishLoading())
             console.log(e);
         })
     }
@@ -22,7 +23,7 @@ export const startGoogleLogin = () => {
         firebase.auth().signInWithPopup(googleAuthProvider)
         .then(({user}) => {
             dispatch(
-                login(user.uid, user.displayName)
+                login(user.uid, user.displayName, user.email, user.photoURL)
             )
             console.log(user);
         })
@@ -36,7 +37,7 @@ export const startRegisterWithEmailPasswordName = (email, password, name) => {
 
             await user.updateProfile({displayName: name})
             dispatch(
-                login(user.uid, user.displayName)
+                login(user.uid, user.displayName, user.email, user.photoURL)
             )
             console.log(user);
         })
@@ -47,12 +48,14 @@ export const startRegisterWithEmailPasswordName = (email, password, name) => {
     }
 }
 
-export const login = (uid, displayName) => {
+export const login = (uid, displayName, email, image) => {
     return{
         type: types.login,
         payload: {
             uid,
-            displayName
+            displayName,
+            email,
+            image
         }
     }
 }
@@ -66,6 +69,24 @@ export const starLogout = () => {
 export const logout = () => ({
     type: types.logout
 })
+
+export const startFacebookLogin = () => {
+    return (dispatch) => {
+        firebase.auth().signInWithPopup(facebookAuthProvider)
+            .then( async ({ user }) => {
+                dispatch(
+                    login(user.uid, user.displayName, user.email, user.photoURL, user.phoneNumber)
+                )
+            })
+            .catch(e => {
+                console.log(e);
+            }
+            )
+    }
+}
+
+
+
 
 // export const registro = (uid, displayName, email) => {
 //     return{

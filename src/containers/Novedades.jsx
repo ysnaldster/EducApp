@@ -4,8 +4,24 @@ import { Link } from 'react-router-dom'
 import { novedadesLoad } from '../actions/novedadesAction'
 import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react"
 import MostrarNovedad from './MostrarNovedad'
+import styled from 'styled-components'
+import PersistentDrawerRight from '../components/Header2.jsx'
 
+// Estilos
+const StyledMainTitle = styled.p`
+    font-size: 20px;
+    text-align: center;
+    font-weight: bold;
+    padding-top: 120px;
+    padding-bottom: 20px;
+`
 
+const StyledTabsContainer = styled(Tabs)`
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    flex-direction: column !important;
+`
 
 const Novedades = () => {
     
@@ -20,8 +36,9 @@ const Novedades = () => {
 
     return (
         <div>
-            <p>Aca la seccion de novedades</p>
-            <Tabs>
+            <PersistentDrawerRight/>
+            <StyledMainTitle>¿Qué esta pasando en el mundo?</StyledMainTitle>
+            <StyledTabsContainer>
                 <TabList>
                     <Tab onClick={() => traerCategoria('TI')}>TI</Tab>
                     <Tab onClick={() => traerCategoria('educacion')}>Educación</Tab>
@@ -38,7 +55,7 @@ const Novedades = () => {
                     <MostrarNovedad novedad = {novedades}/>
                     </TabPanel>
                 </TabPanels>
-            </Tabs>
+            </StyledTabsContainer>
         </div>
     )
 }
