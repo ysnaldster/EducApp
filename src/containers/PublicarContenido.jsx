@@ -3,18 +3,19 @@ import PersistentDrawerRight from "../components/Header2";
 import { Card } from "@material-ui/core";
 import styled from "styled-components";
 import { Center } from "@chakra-ui/layout";
-import Footer from "../components/Footer";
 import { useDispatch } from "react-redux";
-import { startPublicarContent,publicarContent } from "../actions/content";
+import { startPublicarContent, publicarContent } from "../actions/content";
 import { useForm } from "../hooks/useForm";
+import { Redirect } from "react-router";
+import { useHistory } from "react-router-dom";
 
 const Container = styled.div`
   width: 100%;
-  height: 93vh;
   text-align: center;
   display: flex;
   align-items: center;
   justify-content: center;
+  margin: 100px 0px;
 `;
 
 const Input = styled.input`
@@ -27,22 +28,50 @@ const Input = styled.input`
 `;
 
 export default function PublicarContenido() {
+  let history = useHistory();
   const dispatch = useDispatch();
 
+  //Validar las entradas del formulario
   const [formValues, handleInputChange, reset] = useForm({
     titulo: "",
+    link: "",
     tipo: "",
-    profesor: "",
+    capacitador: "",
+    miniatura: "",
+    modalidad: "",
     precio: "",
+    detalles: "",
+    infoExtra: "",
   });
 
-  const { titulo, tipo, profesor, precio } = formValues;
+  const {
+    titulo,
+    link,
+    tipo,
+    capacitador,
+    miniatura,
+    modalidad,
+    precio,
+    detalles,
+    infoExtra,
+  } = formValues;
 
   const handlePublicarContenido = (e) => {
     e.preventDefault();
-    //dispatch(publicarContent(titulo, tipo, profesor, precio));
-    dispatch(startPublicarContent(titulo, tipo, profesor, precio));
-    reset()
+    dispatch(
+      startPublicarContent(
+        titulo,
+        link,
+        tipo,
+        capacitador,
+        miniatura,
+        modalidad,
+        precio,
+        detalles,
+        infoExtra
+      )
+    );
+    history.push("/publicado");
   };
 
   return (
@@ -53,10 +82,10 @@ export default function PublicarContenido() {
           variant="outlined"
           style={{
             display: "inline-block",
-            padding: "10px 35px 35px 35px",
+            padding: "10px 30px",
             borderRadius: "8px",
             background: "#afafaf",
-            width: "30%",
+            width: "35%",
             minWidth: "330px",
           }}
         >
@@ -76,34 +105,115 @@ export default function PublicarContenido() {
             >
               Publicar nuevo contenido
             </p>
+            {/* Título */}
             <Input
               type="text"
               name="titulo"
               value={titulo}
-              placeholder="Titulo de la publicación"
+              placeholder="Titulo del recurso"
               onChange={handleInputChange}
             />
+            {/* Link hacia el recurso */}
+            <Input
+              type="text"
+              name="link"
+              value={link}
+              placeholder="Link del recurso"
+              onChange={handleInputChange}
+            />
+            {/* Tipo de recurso */}
             <Input
               type="text"
               name="tipo"
               value={tipo}
-              placeholder="Tipo de publicación"
+              placeholder="Tipo de recurso"
               onChange={handleInputChange}
             />
+            {/* Capacitador: (Profesor o institución), no es obligatorio */}
             <Input
               type="text"
-              name="profesor"
-              value={profesor}
-              placeholder="Nombre del profesor"
+              name="capacitador"
+              value={capacitador}
+              placeholder="Capacitador"
               onChange={handleInputChange}
             />
+            <div
+              style={{
+                width: "100%",
+                minHeight: "100px",
+                display: "flex",
+                justifyContent: "space-between",
+              }}
+            >
+              {/* Miniatura: Foto referente al recurso */}
+              <Input
+                type="text"
+                name="miniatura"
+                value={miniatura}
+                onChange={handleInputChange}
+                style={{
+                  width: "130px",
+                  height: "100px",
+                  boxSizing: "border-box",
+                  display: "inline",
+                  textAlign: "center",
+                  color: "black",
+                }}
+              />
+              <div
+                style={{
+                  boxSizing: "border-box",
+                  width: "50%",
+                }}
+              >
+                {/* Modalidad del recurso (virtual, presencial o semipresencial) */}
+                <Input
+                  type="text"
+                  name="modalidad"
+                  value={modalidad}
+                  placeholder="Modalidad"
+                  onChange={handleInputChange}
+                  style={{
+                    boxSizing: "border-box",
+                    display: "inline",
+                    width: "100%",
+                  }}
+                />
+                {/* Costo del recurso*/}
+                <Input
+                  type="text"
+                  name="precio"
+                  value={precio}
+                  placeholder="Precio"
+                  onChange={handleInputChange}
+                  style={{
+                    boxSizing: "border-box",
+                    display: "inline",
+                    width: "100%",
+                  }}
+                />
+              </div>
+            </div>
+            {/* Detalles del recurso */}
             <Input
-              type="text"
-              name="precio"
-              value={precio}
-              placeholder="Precio"
+              type="textarea"
+              name="detalles"
+              value={detalles}
+              placeholder="Detalles"
+              onChange={handleInputChange}
+              style={{
+                height: "100px",
+              }}
+            />
+            {/* Un botón que activa la opción de agregar un nuevo campo solo si es necesario */}
+            <Input
+              type="button"
+              name="añadirMasCampos"
+              value="Añadir nuevo campo..."
+              placeholder="Añadir nuevo campo..."
               onChange={handleInputChange}
             />
+            {/* Botón de submit */}
             <Input
               type="submit"
               value="Publicar"
@@ -112,7 +222,7 @@ export default function PublicarContenido() {
           </form>
         </Card>
       </Container>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }

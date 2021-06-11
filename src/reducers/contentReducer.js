@@ -11,9 +11,14 @@ export const contentReducer = (state = {}, action) => {
     case types.uploadContent:
       return {
         titulo: action.payload.titulo,
+        link: action.payload.link,
         tipo: action.payload.tipo,
-        profesor: action.payload.profesor,
+        capacitador: action.payload.capacitador,
+        miniatura: action.payload.miniatura,
+        modalidad: action.payload.modalidad,
         precio: action.payload.precio,
+        detalles: action.payload.detalles,
+        infoExtra: action.payload.infoExtra
       };
 
     case types.deleteContent:

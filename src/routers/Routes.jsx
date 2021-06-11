@@ -10,7 +10,7 @@ import Home from "../containers/Home.jsx";
 import Ofertas from "../containers/Ofertas";
 import Login from "../components/Login.jsx";
 import PersistentDrawerRight from "../components/Header2";
-import Header from "../components/Header";
+import Header2 from "../components/Header2";
 import Registro from "../components/Registro.jsx";
 
 import { login } from '../actions/auth'
@@ -22,6 +22,7 @@ import Perfil from '../components/Perfil.jsx'
 import PublicarContenido from "../containers/PublicarContenido.jsx";
 import { loadContent } from "../helpers/loadContent";
 import { setContent, startGetContent } from "../actions/content.jsx";
+import PublicadoScreen from "../components/PublicadoScreen.jsx";
 
 
 export default function Routes() {
@@ -62,7 +63,7 @@ export default function Routes() {
   return (
     <div>
       <Router>
-        {/* <Header /> */}
+        <Header2/>
         <Switch>
           <Route exact path='/' component={Home} />
           <PublicRoute path="/auth" component={AuthRouter} isAuthenticated={isLoogedIn} />
@@ -72,6 +73,7 @@ export default function Routes() {
           {/* <Route exact path="/registro" component={Registro} /> */}
           <Route  path="/ofertas" component={Ofertas} />
           <Route  path="/publicar" component={PublicarContenido} />
+          <Route  path="/publicado" component={PublicadoScreen} />
           {/* <Redirect to="/auth/login" /> */}
           {/* <Redirect to="/auth/login" /> */}
           <Redirect to='/' />

@@ -311,7 +311,7 @@ export default function PersistentDrawerRight() {
                     </div>
                     } */}
           {isLoogedIn ? (
-            <div style={{ padding: "8px 16px" }} onClick={handleLogout}>
+            <div style={{ padding: "8px 16px",cursor:"pointer"}} onClick={handleLogout}>
               <div style={{ display: "flex" }}>
                 <StyledIconNav style={{ marginRight: "30px" }}>
                   <BiArrowBack style={{ color: "#7a8184" }} />

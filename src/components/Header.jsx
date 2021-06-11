@@ -85,7 +85,7 @@ const Header = () => {
 
   return (
     <React.Fragment>
-      <Container fluid style={{ background: "#393E46" }}>
+      <Container fluid style={{ background: "#393E46"}}>
         <Row>
           <Col xs={8}>
             <StyledImgLogo src="https://i.ibb.co/26ZyFJV/logot.png" />

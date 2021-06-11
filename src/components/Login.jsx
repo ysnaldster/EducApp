@@ -18,8 +18,6 @@ import {
   startGoogleLogin,
 } from "../actions/auth.js";
 import styled from "styled-components";
-import Footer from "./Footer.jsx";
-import PersistentDrawerRight from "./Header2.jsx";
 
 // Estilos
 
@@ -79,7 +77,6 @@ const Login = () => {
 
   return (
     <div>
-        <PersistentDrawerRight/>
       <StyledFormsContainers>
         <div>
           <img
@@ -157,8 +154,6 @@ const Login = () => {
           </Row>
         </form>
       </StyledFormsContainers>
-
-      <Footer />
     </div>
   );
 };

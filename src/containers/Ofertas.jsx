@@ -3,7 +3,6 @@ import styled from "styled-components";
 import BtnBuscarMas from "../components/ofertas/BtnBuscarTemas";
 import ListaResultados from "../components/ofertas/ListaResultados";
 import PersistentDrawerRight from "../components/Header2";
-import Footer from "../components/Footer";
 import { useSelector } from "react-redux";
 
 const OfertasContainer = styled.div`
@@ -37,8 +36,6 @@ function Ofertas() {
           <ListaResultados />
         </Seccion>
       </OfertasContainer>
-      {/* Footer */}
-      <Footer />
     </>
   );
 }
