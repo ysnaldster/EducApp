@@ -22,9 +22,7 @@ const Seccion = styled.h1`
   }
 `;
 
-function Ofertas() {
-  const { active } = useSelector((state) => state.content);
-
+function Ofertas() {  
   return (
     <>
       <PersistentDrawerRight />

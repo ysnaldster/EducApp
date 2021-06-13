@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Card } from "@material-ui/core";
 import styled from "styled-components";
-import { useSelector } from "react-redux";
-import { to } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { deleteContent, startGetContent } from "../../actions/content";
 
 const ResultadosContainer = styled.div`
   padding-top: 30px;
@@ -28,54 +28,70 @@ const Tit = styled.span`
 `;
 
 const Tit_1 = styled.p`
-  /* width: 100%;
-  text-align: center; */
   font-weight: bolder;
   font-size: 1.5rem;
-  color: rgb(255, 255, 255);
+  color: rgb(249, 143, 18);
   width: 100%;
-  display: inli;
+  display: inline;
 `;
 
 export default function ListaResultados() {
-  const { titulo, tipo, profesor, precio } = useSelector(
-    (state) => state.content
-  );
+  // const { titulo, tipo, profesor, precio,id } = useSelector(
+  //   (state) => state.content
+  // );
+  const dispatch = useDispatch();
 
   const { content } = useSelector((state) => state.content);
+
+  useEffect(() => {
+    //Trae el contenido del state
+    dispatch(startGetContent())
+  },[content]);
+
+
+
+  const handleDeleteCard = (item) => {
+    dispatch(deleteContent(item.id));
+  };
+
+  const handleUpdateCard = () => {
+    alert("Accion de editar card");
+  };
+
+  const typeOfUser = "admin";
+
+
   return (
     <>
-
-    {/* Muestra unas tarjetas mostrando las ofertas que hay si es que hay, de lo contrario muestra un aviso de que no se encontró */}
+      {/* Muestra unas tarjetas mostrando las ofertas que hay si es que hay, de lo contrario muestra un aviso de que no se encontró */}
       <ResultadosContainer className="container-fluid mt-1">
-
-        {content?.length >= 1?(
-          content?.map((item) => (
+        {content?.length >= 1 ? (
+          content?.map((item, i) => (
             <Card
-              key={item.uid}
+              key={item.id}
               variant="outlined"
               style={{
                 marginTop: "10px",
                 textAlign: "left",
                 padding: "25px",
                 borderRadius: "8px",
-                background: "#afafaf",
+                background: "#ffffff",
+                boxShadow: "0px 0px 1px 0px #3A2D31",
                 cursor: "pointer",
-                // to="/"
               }}
             >
               <Resultado>
                 <Foto src="https://i.ibb.co/9NZbMcm/logo-educapp-recortado.png" />
                 <Tit_1>{item.titulo}</Tit_1>
                 <br />
-                <Tit>: </Tit>
-                {item.profesor}
+                <Tit>Tipo: </Tit>{item.capacitador}
                 <br />
                 <Tit>Tipo: </Tit>
                 {item.tipo}
                 <br />
                 <Tit>Precio: </Tit>
                 {item.precio}
+                <br />
                 <Tit>Prestador: </Tit>
                 {item.profesor}
                 <br />
@@ -84,7 +100,31 @@ export default function ListaResultados() {
                 <br />
                 <Tit>Precio: </Tit>
                 {item.precio}
-                <button className="btn btn-danger">Borrar</button>
+
+                {/* Opciones para administrador */}
+
+                {typeOfUser === "admin" ? (
+                  <>
+                    <hr />
+                    <p style={{ textAlign: "right" }}>
+                      <a
+                        className="link link-danger"
+                        onClick={() => handleDeleteCard(item)}
+                      >
+                        {" "}
+                        Borrar{" "}
+                      </a>{" "}
+                      |
+                      <a
+                        className="link link-success"
+                        onClick={handleUpdateCard}
+                      >
+                        {" "}
+                        Editar{" "}
+                      </a>
+                    </p>
+                  </>
+                ) : null}
               </Resultado>
             </Card>
           ))

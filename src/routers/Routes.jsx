@@ -23,6 +23,7 @@ import PublicarContenido from "../containers/PublicarContenido.jsx";
 import { loadContent } from "../helpers/loadContent";
 import { setContent, startGetContent } from "../actions/content.jsx";
 import PublicadoScreen from "../components/PublicadoScreen.jsx";
+import DetallesScreen from "../components/DetallesScreen.jsx";
 
 
 export default function Routes() {
@@ -74,6 +75,7 @@ export default function Routes() {
           <Route  path="/ofertas" component={Ofertas} />
           <Route  path="/publicar" component={PublicarContenido} />
           <Route  path="/publicado" component={PublicadoScreen} />
+          <Route  path="/detalles/:articulo" component={DetallesScreen} />
           {/* <Redirect to="/auth/login" /> */}
           {/* <Redirect to="/auth/login" /> */}
           <Redirect to='/' />

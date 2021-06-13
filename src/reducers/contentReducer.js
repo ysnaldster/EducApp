@@ -22,7 +22,7 @@ export const contentReducer = (state = {}, action) => {
       };
 
     case types.deleteContent:
-      return state;
+      return {}
 
     default:
       return state;

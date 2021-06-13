@@ -16,21 +16,19 @@ export const startPublicarContent = (
 ) => {
   return async (dispatch) => {
     const newContent = {
-      titulo: titulo,
-      link: link,
-      tipo: tipo,
-      capacitador: capacitador,
-      miniatura: miniatura,
-      modalidad: modalidad,
-      precio: precio,
-      detalles: detalles,
-      infoExtra: infoExtra,
+      titulo,
+      link,
+      tipo,
+      capacitador,
+      miniatura,
+      modalidad,
+      precio,
+      detalles,
+      infoExtra,
     };
     const docRef = await db.collection(`contenido`).add(newContent);
 
     dispatch(startGetContent(docRef));
-
-    
   };
 };
 
@@ -47,3 +45,11 @@ export const setContent = (content) => ({
   type: types.getContent,
   payload: content,
 });
+
+//Elimina la
+export const deleteContent = (uid) => {
+  return async (dispatch) => {
+    const contentRef = await db.collection(`contenido`);
+    contentRef.doc(uid).delete();
+  };
+};

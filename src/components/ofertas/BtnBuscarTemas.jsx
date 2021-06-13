@@ -11,7 +11,7 @@ const TextPrincipal = styled.h3`
   }
 `;
 
-const SearchMore = styled.div`
+const SearchMore = styled.input`
   background-color: #f7a440;
   height: 45;
   border-radius: 1.5rem;
@@ -19,6 +19,9 @@ const SearchMore = styled.div`
   color: white;
   float: right;
   width:40%;
+  ::placeholder{
+    color:black;
+  }
   &:hover {
     color: black;
   }
@@ -28,13 +31,33 @@ const SearchMore = styled.div`
 `;
 
 export default function BtnBuscarMas(resultados) {
+
+  var intro
+
+  const validar= (e) => {
+    e.preventDefault()
+    if(e.which == 13){
+      
+    }
+  }
+
+  const changeStyle = (e) =>{
+    
+    const item = e.target.style
+    item.backgroundColor = "white"
+    item.border = "1px solid black"
+    item.color = "#f7a440"
+  }
+
   return (
     <div>
       <TextPrincipal style={{ float: "left" }}>
         Tema seleccionado
       </TextPrincipal>
-
-      <SearchMore className="btn fw-bolder">Buscar más temas</SearchMore>
+    <form onSubmit={validar}>
+      
+      <SearchMore className="btn fw-bolder" type="text" placeholder="Buscar Más Temas" name="buscar" onKeyUp={validar} onClick={changeStyle}/>
+    </form>
     </div>
   );
 }

@@ -6,7 +6,6 @@ import { Center } from "@chakra-ui/layout";
 import { useDispatch } from "react-redux";
 import { startPublicarContent, publicarContent } from "../actions/content";
 import { useForm } from "../hooks/useForm";
-import { Redirect } from "react-router";
 import { useHistory } from "react-router-dom";
 
 const Container = styled.div`
@@ -15,16 +14,22 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 100px 0px;
+  margin: 100px 10px 10px 0px;
 `;
 
 const Input = styled.input`
+  /* box-shadow: 0px 0px 1px 1px #3A2D31; */
+  /* border: solid 1px black; */
   width: 100%;
   margin-top: 20px;
   height: 30px;
   border-radius: 5px;
   padding: 5px;
   color: rgb(0, 0, 0);
+  background-color: #e5e5e5;
+  ::placeholder{    
+    /* color:rgba(249, 141, 18, 0.507); */
+  }
 `;
 
 export default function PublicarContenido() {
@@ -58,19 +63,30 @@ export default function PublicarContenido() {
 
   const handlePublicarContenido = (e) => {
     e.preventDefault();
+    for(let i = 0;i<5;i++){
     dispatch(
       startPublicarContent(
-        titulo,
-        link,
-        tipo,
-        capacitador,
-        miniatura,
-        modalidad,
-        precio,
-        detalles,
-        infoExtra
+        `Iterativo ${i}`,
+        `Iterativo ${i}`,
+        `Iterativo ${i}`,
+        `Iterativo ${i}`,
+        `Iterativo ${i}`,
+        `Iterativo ${i}`,
+        `Iterativo ${i}`,
+        `Iterativo ${i}`,
+        `Iterativo ${i}`
+        // titulo,
+        // link,
+        // tipo,
+        // capacitador,
+        // miniatura,
+        // modalidad,
+        // precio,
+        // detalles,
+        // infoExtra
       )
     );
+      }
     history.push("/publicado");
   };
 
@@ -84,9 +100,10 @@ export default function PublicarContenido() {
             display: "inline-block",
             padding: "10px 30px",
             borderRadius: "8px",
-            background: "#afafaf",
+            background: "#ffffff",
             width: "35%",
             minWidth: "330px",
+            boxShadow: "0px 0px 1px 0px #3A2D31",
           }}
         >
           <Center>
@@ -101,6 +118,7 @@ export default function PublicarContenido() {
                 color: "rgb(0, 0, 0)",
                 fontSize: "1.2rem",
                 marginTop: "20px",
+                
               }}
             >
               Publicar nuevo contenido
@@ -211,6 +229,7 @@ export default function PublicarContenido() {
               name="añadirMasCampos"
               value="Añadir nuevo campo..."
               placeholder="Añadir nuevo campo..."
+              style={{color:"black"}}
               onChange={handleInputChange}
             />
             {/* Botón de submit */}
@@ -222,7 +241,6 @@ export default function PublicarContenido() {
           </form>
         </Card>
       </Container>
-      {/* <Footer /> */}
     </div>
   );
 }
