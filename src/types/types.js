@@ -9,7 +9,8 @@ export const types = {
      uiStartLoading: 'UI start loading',
      uiFinishLoading: 'UI finish loading',
 
-     getContent: "[CONTENT] Ver contenido",
+     getContent: "[CONTENT] Pasar al state todo el contenido",
+     getContentFiltered: "[CONTENT] Pasar al state contenido filtrado",
      uploadContent: "[CONTENT] Subir contenido",
      deleteContent: "[CONTENT] Borrrar contenido"
 }

@@ -2,7 +2,11 @@ import React, { useEffect } from "react";
 import { Card } from "@material-ui/core";
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteContent, startGetContent } from "../../actions/content";
+import {
+  deleteContent,
+  searchContentWithFilter,
+  startGetContent,
+} from "../../actions/content";
 
 const ResultadosContainer = styled.div`
   padding-top: 30px;
@@ -41,14 +45,17 @@ export default function ListaResultados() {
   // );
   const dispatch = useDispatch();
 
-  const { content } = useSelector((state) => state.content);
+  const { content, filtro, chageRealized } = useSelector(
+    (state) => state.content
+  );
 
   useEffect(() => {
-    //Trae el contenido del state
-    dispatch(startGetContent())
-  },[content]);
-
-
+    if (filtro == "") {
+      dispatch(startGetContent());
+    } else {
+      dispatch(searchContentWithFilter(filtro));
+    }
+  }, [chageRealized, filtro]);
 
   const handleDeleteCard = (item) => {
     dispatch(deleteContent(item.id));
@@ -59,7 +66,6 @@ export default function ListaResultados() {
   };
 
   const typeOfUser = "admin";
-
 
   return (
     <>
@@ -84,7 +90,8 @@ export default function ListaResultados() {
                 <Foto src="https://i.ibb.co/9NZbMcm/logo-educapp-recortado.png" />
                 <Tit_1>{item.titulo}</Tit_1>
                 <br />
-                <Tit>Tipo: </Tit>{item.capacitador}
+                <Tit>Tipo: </Tit>
+                {item.capacitador}
                 <br />
                 <Tit>Tipo: </Tit>
                 {item.tipo}
@@ -139,7 +146,10 @@ export default function ListaResultados() {
               background: "#afafaf",
             }}
           >
-            <>No se encontraron resultados que coincidan con la búsqueda...</>
+            <>
+              No se encontraron resultados que coincidan con la búsqueda...{" "}
+              <strong style={{ color: "#3700ff" }}>{filtro}</strong>
+            </>
           </div>
         )}
       </ResultadosContainer>

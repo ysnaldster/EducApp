@@ -63,30 +63,30 @@ export default function PublicarContenido() {
 
   const handlePublicarContenido = (e) => {
     e.preventDefault();
-    for(let i = 0;i<5;i++){
+    // for(let i = 0;i<5;i++){
     dispatch(
       startPublicarContent(
-        `Iterativo ${i}`,
-        `Iterativo ${i}`,
-        `Iterativo ${i}`,
-        `Iterativo ${i}`,
-        `Iterativo ${i}`,
-        `Iterativo ${i}`,
-        `Iterativo ${i}`,
-        `Iterativo ${i}`,
-        `Iterativo ${i}`
-        // titulo,
-        // link,
-        // tipo,
-        // capacitador,
-        // miniatura,
-        // modalidad,
-        // precio,
-        // detalles,
-        // infoExtra
+        // `Iterativo ${i}`,
+        // `Iterativo ${i}`,
+        // `Iterativo ${i}`,
+        // `Iterativo ${i}`,
+        // `Iterativo ${i}`,
+        // `Iterativo ${i}`,
+        // `Iterativo ${i}`,
+        // `Iterativo ${i}`,
+        // `Iterativo ${i}`
+        titulo,
+        link,
+        tipo,
+        capacitador,
+        miniatura,
+        modalidad,
+        precio,
+        detalles,
+        infoExtra
       )
     );
-      }
+      // }
     history.push("/publicado");
   };
 

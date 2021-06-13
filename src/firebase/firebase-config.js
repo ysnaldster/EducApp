@@ -2,27 +2,16 @@ import firebase from "firebase/app";
 import "firebase/firestore";
 import "firebase/auth";
 
-// const firebaseConfig = {
-//     apiKey: "AIzaSyC_JldSdOOsHYlp33F7D7H5MhNsmVaCXlM",
-//     authDomain: "educapp-392c9.firebaseapp.com",
-//     projectId: "educapp-392c9",
-//     storageBucket: "educapp-392c9.appspot.com",
-//     messagingSenderId: "932667572091",
-//     appId: "1:932667572091:web:b07cbad927e69cd55fc7de"
-// };
-
-// Esta configuración de firebase es tempora y solo para pruebas
-
- const firebaseConfig = {
-   apiKey: "AIzaSyAoM1JK3WQUDQ3Hch3FV4x-WJEVw2hqAEQ",
-   authDomain: "educapp-1.firebaseapp.com",
-   projectId: "educapp-1",
-   storageBucket: "educapp-1.appspot.com",
-   messagingSenderId: "1037407072622",
-   appId: "1:1037407072622:web:3258979ab080308279d17f",
-   measurementId: "G-TKQENWTQJ1",
- };
-
+const firebaseConfig = {
+  apiKey: "AIzaSyBhAq3Ru8Z_mjtdZ8JOHuFU5vveGAOuYxA",
+  authDomain: "educcap-de-prueba-1.firebaseapp.com",
+  databaseURL: "https://educcap-de-prueba-1-default-rtdb.firebaseio.com",
+  projectId: "educcap-de-prueba-1",
+  storageBucket: "educcap-de-prueba-1.appspot.com",
+  messagingSenderId: "32360618649",
+  appId: "1:32360618649:web:c50f43b317a72f137d3608",
+  measurementId: "G-QFGPXYS08T"
+};
 
  // Initialize Firebase
  firebase.initializeApp(firebaseConfig);

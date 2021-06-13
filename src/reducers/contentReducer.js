@@ -5,6 +5,17 @@ export const contentReducer = (state = {}, action) => {
     case types.getContent:
       return {
         ...state,
+        content: [...action.payload],
+      }
+    case types.getContentFiltered:
+      return {
+        ...state,
+        content: [...action.payload],
+        filtro: action.keyword
+      }
+
+    case types.searchContentFiltered:
+      return {
         content: [...action.payload]
       }
 
@@ -22,8 +33,10 @@ export const contentReducer = (state = {}, action) => {
       };
 
     case types.deleteContent:
-      return {}
-
+      return {
+        ...state,
+        chageRealized: "Se borró una card " + Math.random()
+}
     default:
       return state;
   }

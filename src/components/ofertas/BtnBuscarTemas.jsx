@@ -1,5 +1,7 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 import styled from "styled-components";
+import { searchContentWithFilter } from "../../actions/content";
 
 
 const TextPrincipal = styled.h3`
@@ -31,18 +33,16 @@ const SearchMore = styled.input`
 `;
 
 export default function BtnBuscarMas(resultados) {
-
-  var intro
+  const dispatch = useDispatch()
 
   const validar= (e) => {
     e.preventDefault()
     if(e.which == 13){
-      
+      dispatch(searchContentWithFilter(e.target.value));
     }
   }
 
-  const changeStyle = (e) =>{
-    
+  const changeStyle = (e) =>{    
     const item = e.target.style
     item.backgroundColor = "white"
     item.border = "1px solid black"
