@@ -156,136 +156,118 @@ export default function PersistentDrawerRight() {
 
     const {auth} = useSelector(state => state.auth)
     return (
-        <div className={classes.root} >
-            <CssBaseline />
-            <AppBar
-                position="fixed"
-                className={clsx(classes.appBar, {
-                    [classes.appBarShift]: open,
-                })}
-                style={{ background: '#393E46' }}
-            >
-                <Toolbar>
-                    <Typography variant="h6" noWrap className={classes.title}>
-                        <StyledImgLogo src="https://i.ibb.co/26ZyFJV/logot.png" />
-                    </Typography>
-                    <IconButton
-                        color="inherit"
-                        aria-label="open drawer"
-                        onClick={handleDrawerOpen}
-                        className={clsx(open && classes.hide)}
-                    >
-                        <MenuIcon />
-                    </IconButton>
-                </Toolbar>
-            </AppBar>
-            <Drawer
-                className={classes.drawer}
-                variant="persistent"
-                anchor="right"
-                open={open}
-                classes={{
-                    paper: classes.drawerPaper,
-                }}>
-                <div className={classes.drawerHeader} >
-                    <IconButton onClick={handleDrawerClose}>
-                        {theme.direction === 'rtl' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
-                        <p>EducApp</p>
-                    </IconButton>
-                </div>
-                <Divider />
-                <List >
-                    <div style={{ padding: '8px 16px' }}>
-                        <Link to='/' style={{ display: 'flex' }}>
-                            < StyledIconNav style={{ marginRight: '30px' }}>
-                                <ImHome style={{ color: '#7a8184' }} />
-                            </ StyledIconNav>
-                            <StyledTextNav >
-                                Inicio
-                            </StyledTextNav>
-                        </Link>
+        <div >
+            <div className={classes.root} >
+                <CssBaseline />
+                <AppBar
+                    position="fixed"
+                    className={clsx(classes.appBar, {
+                        [classes.appBarShift]: open,
+                    })}
+                    style={{ background: '#393E46' }}
+                >
+                    <Toolbar>
+                        <Typography variant="h6" noWrap className={classes.title}>
+                            <StyledImgLogo src="https://i.ibb.co/26ZyFJV/logot.png" />
+                        </Typography>
+                        <IconButton
+                            color="inherit"
+                            aria-label="open drawer"
+                            onClick={handleDrawerOpen}
+                            className={clsx(open && classes.hide)}
+                        >
+                            <MenuIcon />
+                        </IconButton>
+                    </Toolbar>
+                </AppBar>
+                <Drawer
+                    className={classes.drawer}
+                    variant="persistent"
+                    anchor="right"
+                    open={open}
+                    classes={{
+                        paper: classes.drawerPaper,
+                    }}>
+                    <div className={classes.drawerHeader} >
+                        <IconButton onClick={handleDrawerClose}>
+                            {theme.direction === 'rtl' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
+                            <p>EducApp</p>
+                        </IconButton>
                     </div>
-                    {
-                        !isLoogedIn ?   <div style={{ padding: '8px 16px' }}>
-                        <Link to='/auth/login' style={{ display: 'flex' }}>
-                            < StyledIconNav style={{ marginRight: '30px' }}>
-                                <FaUser style={{ color: '#7a8184' }} />
-                            </ StyledIconNav>
-                            <StyledTextNav >
-                               Iniciar Sesión
-                            </StyledTextNav>
-                        </Link>
-                    </div>: <p></p>
-                    }
-                    {
-                         isLoogedIn ? <div style={{ padding: '8px 16px' }}>
-                         <Link to='/ofertas' style={{ display: 'flex' }}>
-                             < StyledIconNav style={{ marginRight: '30px' }}>
-                                 <AiFillShopping style={{ color: '#7a8184' }} />
-                             </ StyledIconNav>
-                             <StyledTextNav >
-                                 Ofetas
-                             </StyledTextNav>
-                         </Link>
-                     </div> : <p></p>
-                    }
-                     {
-                        isLoogedIn ?   <div style={{ padding: '8px 16px' }}>
-                        <Link to='/perfil' style={{ display: 'flex' }}>
-                            < StyledIconNav style={{ marginRight: '30px' }}>
-                                <CgProfile style={{ color: '#7a8184' }} />
-                            </ StyledIconNav>
-                            <StyledTextNav >
-                              Perfil
-                            </StyledTextNav>
-                        </Link>
-                    </div>: <p></p>
-                    }
-                    
-                    <div style={{ padding: '8px 16px' }}>
-                        <Link to='/novedades' style={{ display: 'flex' }}>
-                            < StyledIconNav style={{ marginRight: '30px' }}>
-                                <TiDocumentText style={{ color: '#7a8184' }} />
-                            </ StyledIconNav>
-                            <StyledTextNav >
-                                Novedades
-                            </StyledTextNav>
-                        </Link>
-                    </div>
-                    <div style={{ padding: '8px 16px' }}>
-                        <Link to='/favoritos' style={{ display: 'flex' }}>
-                            < StyledIconNav style={{ marginRight: '30px' }}>
-                                <TiDocumentText style={{ color: '#7a8184' }} />
-                            </ StyledIconNav>
-                            <StyledTextNav >
-                                Favoritos
-                            </StyledTextNav>
-                        </Link>
-                    </div>
-                </List>
-                <Divider />
-                <List >
-                    <div style={{ padding: '8px 16px' }}>
-                        <Link to='/ofertas' style={{ display: 'flex' }}>
-                            < StyledIconNav style={{ marginRight: '30px' }}>
-                                <IoPeopleCircleOutline style={{ color: '#7a8184' }} />
-                            </ StyledIconNav>
-                            <StyledTextNav >
-                                Nosotros
-                            </StyledTextNav>
-                        </Link>
-                    </div>
-                    <div style={{ padding: '8px 16px' }}>
-                        <Link to='/ofertas' style={{ display: 'flex' }}>
-                            < StyledIconNav style={{ marginRight: '30px' }}>
-                                <VscReferences style={{ color: '#7a8184' }} />
-                            </ StyledIconNav>
-                            <StyledTextNav >
-                                Referencias
-                            </StyledTextNav>
-                        </Link>
-                    </div>
-                    {/* {
+                    <Divider />
+                    <List >
+                        <div style={{ padding: '8px 16px' }}>
+                            <Link to='/' style={{ display: 'flex' }}>
+                                < StyledIconNav style={{ marginRight: '30px' }}>
+                                    <ImHome style={{ color: '#7a8184' }} />
+                                </ StyledIconNav>
+                                <StyledTextNav >
+                                    Inicio
+                                </StyledTextNav>
+                            </Link>
+                        </div>
+                        {
+                            !isLoogedIn ? <div style={{ padding: '8px 16px' }}>
+                                <Link to='/auth/login' style={{ display: 'flex' }}>
+                                    < StyledIconNav style={{ marginRight: '30px' }}>
+                                        <FaUser style={{ color: '#7a8184' }} />
+                                    </ StyledIconNav>
+                                    <StyledTextNav >
+                                        Iniciar Sesión
+                                    </StyledTextNav>
+                                </Link>
+                            </div> : <p></p>
+                        }
+                        {
+                            isLoogedIn ? <div style={{ padding: '8px 16px' }}>
+                                <Link to='/ofertas' style={{ display: 'flex' }}>
+                                    < StyledIconNav style={{ marginRight: '30px' }}>
+                                        <AiFillShopping style={{ color: '#7a8184' }} />
+                                    </ StyledIconNav>
+                                    <StyledTextNav >
+                                        Ofetas
+                                    </StyledTextNav>
+                                </Link>
+                            </div> : <p></p>
+                        }
+                        {
+                            isLoogedIn ? <div style={{ padding: '8px 16px' }}>
+                                <Link to='/perfil' style={{ display: 'flex' }}>
+                                    < StyledIconNav style={{ marginRight: '30px' }}>
+                                        <CgProfile style={{ color: '#7a8184' }} />
+                                    </ StyledIconNav>
+                                    <StyledTextNav >
+                                        Perfil
+                                    </StyledTextNav>
+                                </Link>
+                            </div> : <p></p>
+                        }
+
+                        <div style={{ padding: '8px 16px' }}>
+                            <Link to='/novedades' style={{ display: 'flex' }}>
+                                < StyledIconNav style={{ marginRight: '30px' }}>
+                                    <TiDocumentText style={{ color: '#7a8184' }} />
+                                </ StyledIconNav>
+                                <StyledTextNav >
+                                    Novedades
+                                </StyledTextNav>
+                            </Link>
+                        </div>
+                    </List>
+                    <Divider />
+                    <List >
+                        <div style={{ padding: '8px 16px' }}>
+                            <Link to='/ofertas' style={{ display: 'flex' }}>
+                                < StyledIconNav style={{ marginRight: '30px' }}>
+                                    <IoPeopleCircleOutline style={{ color: '#7a8184' }} />
+                                </ StyledIconNav>
+                                <StyledTextNav >
+                                    Nosotros
+                                </StyledTextNav>
+                            </Link>
+                        </div>
+
+                        {/* {
                         (!isLoogedIn) ? 
                     <div style={{ padding: '8px 16px' }}>
                         <Link to='/auth/login' style={{ display: 'flex' }}>
@@ -309,20 +291,21 @@ export default function PersistentDrawerRight() {
                         </div>
                     </div>
                     } */}
-                    {
-                        isLoogedIn ?   <div style={{ padding: '8px 16px' }} onClick = {handleLogout}>
-                        <div style={{ display: 'flex' }}>
-                            < StyledIconNav style={{ marginRight: '30px' }}>
-                                <BiArrowBack style={{ color: '#7a8184' }} />
-                            </ StyledIconNav>
-                            <StyledTextNav >
-                                Salir
-                            </StyledTextNav>
-                        </div>
-                    </div> : <p></p>
-                    }
-                </List>
-            </Drawer>
+                        {
+                            isLoogedIn ? <div style={{ padding: '8px 16px' }} onClick={handleLogout}>
+                                <div style={{ display: 'flex' }}>
+                                    < StyledIconNav style={{ marginRight: '30px' }}>
+                                        <BiArrowBack style={{ color: '#7a8184' }} />
+                                    </ StyledIconNav>
+                                    <StyledTextNav >
+                                        Salir
+                                    </StyledTextNav>
+                                </div>
+                            </div> : <p></p>
+                        }
+                    </List>
+                </Drawer>
+            </div>
         </div>
     );
 }

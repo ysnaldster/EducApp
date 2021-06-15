@@ -37,6 +37,7 @@ const Home = () => {
     let anio =new Date().getFullYear()
     return (
         <div>
+            {/* <Header/> */}
             <StyledMainHome className='mainContainer' >
                 <PersistentDrawerRight />
                 <StyleMainTitleWelcome>Bienvenidos a EducApp</StyleMainTitleWelcome>

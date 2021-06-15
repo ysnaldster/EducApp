@@ -84,13 +84,13 @@ const Header = () => {
   }
 
   return (
-    <React.Fragment>
+    <div className='d-none d-sm-block'>
       <Container fluid style={{ background: "#393E46" }}>
         <Row>
-          <Col xs={8}>
+          <Col xs={2}>
             <StyledImgLogo src="https://i.ibb.co/26ZyFJV/logot.png" />
           </Col>
-          <StyledNavContainer xs={4}>
+          <StyledNavContainer xs={8}>
             <Navbar>
               <Container fluid>
                 <Navbar.Collapse className="justify-content-end">
@@ -98,16 +98,21 @@ const Header = () => {
                     <PlacementExample />
                   </Nav.Link>
                 </Navbar.Collapse>
-                <Navbar.Collapse className="justify-content-end">
-                    <span>Salir</span>
-                    <Button onClick = {handleLogout}>Logout</Button>
-                </Navbar.Collapse>
               </Container>
             </Navbar>
           </StyledNavContainer>
         </Row>
+        <div >
+                <Container fluid>
+                    <Row>
+                        <Col xs={12}>
+                            <p>Aca el otro navbar</p>
+                        </Col>
+                    </Row>
+                </Container>
+            </div>
       </Container>
-    </React.Fragment>
+    </div>
   );
 };
 

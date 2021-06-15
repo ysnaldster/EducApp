@@ -63,9 +63,10 @@ const StyledLabel = styled.label`
 //     },
 // }));
 
-const StyledImgContainer = styled.img`
+const StyledImgContainer = styled.div`
     width: 100%;
     height: 150px;
+    background: #F98F12;
 `
 
 const StyledButtonBackContainer = styled.div`
