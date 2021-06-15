@@ -13,8 +13,8 @@ const AuthRouter = () => {
     return (
         <Router>
             <Switch>
-                <Route  exact  path = '/auth/login' component = {Login}/>
-                <Route  exact  path = '/auth/registro' component = {Registro}/>
+                <Route exact path = '/auth/login' component = {Login}/>
+                <Route exact path = '/auth/registro' component = {Registro}/>
                 <Redirect to = '/auth/login'/>
             </Switch>
         </Router>

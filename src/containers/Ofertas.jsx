@@ -1,40 +1,40 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import BtnBuscarMas from "../components/BtnBuscarTemas";
-import ListaResultados from "../components/ListaResultados";
-import PersistentDrawerRight from '../components/Header2.jsx'
+import BtnBuscarMas from "../components/ofertas/BtnBuscarTemas";
+import ListaResultados from "../components/ofertas/ListaResultados";
+import PersistentDrawerRight from "../components/Header2";
+import { useSelector } from "react-redux";
 
-const OfetasContainer = styled.div`
+const OfertasContainer = styled.div`
+  overflow: visible;
+  margin-top: 100px;
   width: 100%;
   box-sizing: border-box;
-  padding-bottom:10px;
+  padding-bottom: 10px;
+  text-align: center;
 `;
-const TextPrincipal = styled.h3`
-  color: #f7a440;
-`;
-const Tema = styled.h1`
-  color: #f7a440;
+const Seccion = styled.h1`
+  width: 73%;
+  display: inline-block;
+
+  @media (max-width: 600px) {
+    width: 100%;
+  }
 `;
 
-function Ofertas() {
-  const [resultados, setresultados] = useState(false);
-
+function Ofertas() {  
   return (
-    <OfetasContainer className="container-fluid h-100">
-      <PersistentDrawerRight/>
-        <div>
-        {/* Muestra un botón de acuerdo a si ya se buscaron temas o no */}
-        {resultados ? (
-          <TextPrincipal>Selecciona un tema:</TextPrincipal>
-        ) : (
-          <TextPrincipal>Tema seleccionado:</TextPrincipal>
-        )}
-        <BtnBuscarMas />
-        </div>
-        <div>
+    <>
+      <PersistentDrawerRight />
+      <OfertasContainer className="container-fluid h-100">
+        <Seccion>
+          <BtnBuscarMas />
+        </Seccion>
+        <Seccion>
           <ListaResultados />
-        </div>
-    </OfetasContainer>
+        </Seccion>
+      </OfertasContainer>
+    </>
   );
 }
 

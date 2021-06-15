@@ -31,7 +31,7 @@ import {starLogout, logout} from '../actions/auth'
 import {Button} from 'react-bootstrap'
 import {BiArrowBack} from 'react-icons/bi'
 import {CgProfile} from 'react-icons/cg'
-
+import {MdAddBox} from 'react-icons/md'
 
 // Estilos Adicionales 
 const StyledTextNav = styled(ListItemText)`
@@ -218,8 +218,8 @@ export default function PersistentDrawerRight() {
                                 </Link>
                             </div> : <p></p>
                         }
-                        {
-                            isLoogedIn ? <div style={{ padding: '8px 16px' }}>
+                        
+                         <div style={{ padding: '8px 16px' }}>
                                 <Link to='/ofertas' style={{ display: 'flex' }}>
                                     < StyledIconNav style={{ marginRight: '30px' }}>
                                         <AiFillShopping style={{ color: '#7a8184' }} />
@@ -228,8 +228,8 @@ export default function PersistentDrawerRight() {
                                         Ofetas
                                     </StyledTextNav>
                                 </Link>
-                            </div> : <p></p>
-                        }
+                            </div> 
+                        
                         {
                             isLoogedIn ? <div style={{ padding: '8px 16px' }}>
                                 <Link to='/perfil' style={{ display: 'flex' }}>
@@ -242,6 +242,19 @@ export default function PersistentDrawerRight() {
                                 </Link>
                             </div> : <p></p>
                         }
+                           {
+                            isLoogedIn ? <div style={{ padding: '8px 16px' }}>
+                                <Link to='/publicar' style={{ display: 'flex' }}>
+                                    < StyledIconNav style={{ marginRight: '30px' }}>
+                                        <MdAddBox style={{ color: '#7a8184' }} />
+                                    </ StyledIconNav>
+                                    <StyledTextNav >
+                                        Publicar
+                                    </StyledTextNav>
+                                </Link>
+                            </div> : <p></p>
+                        }
+
 
                         <div style={{ padding: '8px 16px' }}>
                             <Link to='/novedades' style={{ display: 'flex' }}>

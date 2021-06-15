@@ -1,9 +1,9 @@
-import firebase from 'firebase/app'
-import 'firebase/firestore'
-import 'firebase/auth'
+import firebase from "firebase/app";
+import "firebase/firestore";
+import "firebase/auth";
 
 const firebaseConfig = {
-    apiKey: "AIzaSyC_JldSdOOsHYlp33F7D7H5MhNsmVaCXlM",
+  apiKey: "AIzaSyC_JldSdOOsHYlp33F7D7H5MhNsmVaCXlM",
     authDomain: "educapp-392c9.firebaseapp.com",
     projectId: "educapp-392c9",
     storageBucket: "educapp-392c9.appspot.com",
@@ -11,9 +11,10 @@ const firebaseConfig = {
     appId: "1:932667572091:web:b07cbad927e69cd55fc7de"
 };
 
-firebase.initializeApp(firebaseConfig);
+ // Initialize Firebase
+ firebase.initializeApp(firebaseConfig);
 
-const db = firebase.firestore()
+const db = firebase.firestore();
 
 const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
 const facebookAuthProvider = new firebase.auth.FacebookAuthProvider();

@@ -9,6 +9,8 @@ import {
 import Home from "../containers/Home.jsx";
 import Ofertas from "../containers/Ofertas";
 import Login from "../components/Login.jsx";
+import PersistentDrawerRight from "../components/Header2";
+import Header2 from "../components/Header2";
 import Registro from "../components/Registro.jsx";
 import Novedades from '../containers/Novedades.jsx'
 import { login } from '../actions/auth'
@@ -18,6 +20,11 @@ import { PublicRoute } from './PublicRoute'
 import AuthRouter from './AuthRouter'
 import Perfil from '../components/Perfil.jsx'
 import Favoritos from "../containers/Favoritos.jsx";
+import PublicarContenido from "../containers/PublicarContenido.jsx";
+import { loadContent } from "../helpers/loadContent";
+import { setContent, startGetContent } from "../actions/content.jsx";
+import PublicadoScreen from "../components/PublicadoScreen.jsx";
+import DetallesScreen from "../components/DetallesScreen.jsx";
 
 
 export default function Routes() {
@@ -33,6 +40,9 @@ export default function Routes() {
       if (user?.uid) {
         dispatch(login(user.uid, user.displayName, user.email, user.photoURL))
         setsIsLoogedIn(true)
+
+        dispatch(startGetContent())
+
       } else {
         setsIsLoogedIn(false)
       }
@@ -55,7 +65,6 @@ export default function Routes() {
   return (
     <div>
       <Router>
-        {/* <Header /> */}
         <Switch>
           <Route exact path='/' component={Home} />
           <PublicRoute path="/auth" component={AuthRouter} isAuthenticated={isLoogedIn} />
@@ -66,6 +75,9 @@ export default function Routes() {
           <Route  path="/ofertas" component={Ofertas} />
           <Route  path = '/novedades' component = {Novedades}/>
           <Route path = '/favoritos' component = {Favoritos}/>
+          <Route  path="/publicar" component={PublicarContenido} />
+          <Route  path="/publicado" component={PublicadoScreen} />
+          <Route  path="/detalles/:articulo" component={DetallesScreen} />
           {/* <Redirect to="/auth/login" /> */}
           {/* <Redirect to="/auth/login" /> */}
           <Redirect to='/' />
