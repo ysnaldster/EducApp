@@ -1,8 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useEffect,useState } from "react";
+import {firebase} from "../../firebase/firebase-config"
 import { Card } from "@material-ui/core";
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import {Link} from "react-router-dom"
+import { useFetch } from '../../hooks/useFetch'
 import {
   deleteContent,
   searchContentWithFilter,
@@ -40,10 +42,10 @@ const Tit_1 = styled.p`
   display: inline;
 `;
 
-export default function ListaResultados() {
-  // const { titulo, tipo, profesor, precio,id } = useSelector(
-  //   (state) => state.content
-  // );
+export default function ListaResultados(isAuthenticated) {
+
+  const {data} = useFetch("https://guappjolotas.herokuapp.com")
+  console.log(data)
   const dispatch = useDispatch();
 
   const { content, filtro, chageRealized } = useSelector(
@@ -61,6 +63,23 @@ export default function ListaResultados() {
     }
     // console.log("Inicial:" ,previousFilter, " Filtro: " ,filtro)
   }, [filtro, chageRealized]);
+
+  const [isLoogedIn, setsIsLoogedIn] = useState(false)
+
+  const [checking, setChecking] = useState(true)
+  useEffect(() => {
+    firebase.auth().onAuthStateChanged(async (user) => {
+      if (user?.uid) {
+        // dispatch(login(user.uid, user.displayName))
+        setsIsLoogedIn(true)
+      } else {
+        setsIsLoogedIn(false)
+      }
+
+      setChecking(false)
+    })
+
+  }, [dispatch, setChecking])
 
   const handleDeleteCard = (item) => {
     dispatch(deleteContent(item.id));
@@ -115,7 +134,7 @@ export default function ListaResultados() {
                 </Link>
                 {/* Opciones para administrador */}
 
-                {typeOfUser === "admin" ? (
+                {isLoogedIn? (
                   <>
                     <hr />
                     <p style={{ textAlign: "right" }}>

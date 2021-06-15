@@ -12,13 +12,14 @@ import Login from "../components/Login.jsx";
 import PersistentDrawerRight from "../components/Header2";
 import Header2 from "../components/Header2";
 import Registro from "../components/Registro.jsx";
-
+import Novedades from '../containers/Novedades.jsx'
 import { login } from '../actions/auth'
 import { useDispatch } from 'react-redux'
 import { PrivateRoute } from './PrivateRoute'
 import { PublicRoute } from './PublicRoute'
 import AuthRouter from './AuthRouter'
 import Perfil from '../components/Perfil.jsx'
+import Favoritos from "../containers/Favoritos.jsx";
 import PublicarContenido from "../containers/PublicarContenido.jsx";
 import { loadContent } from "../helpers/loadContent";
 import { setContent, startGetContent } from "../actions/content.jsx";
@@ -37,7 +38,7 @@ export default function Routes() {
     firebase.auth().onAuthStateChanged(async (user) => {
       console.log(user);
       if (user?.uid) {
-        dispatch(login(user.uid, user.displayName))
+        dispatch(login(user.uid, user.displayName, user.email, user.photoURL))
         setsIsLoogedIn(true)
 
         dispatch(startGetContent())
@@ -64,17 +65,18 @@ export default function Routes() {
   return (
     <div>
       <Router>
-        {/* <Header2/> */}
         <Switch>
           <Route exact path='/' component={Home} />
           <PublicRoute path="/auth" component={AuthRouter} isAuthenticated={isLoogedIn} />
           <PrivateRoute exact path="/perfil" component={Perfil} isAuthenticated={isLoogedIn} />
+          <Route exact path="/publicar" component={PublicarContenido} />
+          <PrivateRoute exact path="/publicado" component={PublicadoScreen} />
           {/* <Route  exact path = '/login' component = {Login}/>
         <Route exact path = '/home' component = {Home}/> */}
           {/* <Route exact path="/registro" component={Registro} /> */}
-          <Route  path="/ofertas" component={Ofertas} />
-          <Route  path="/publicar" component={PublicarContenido} />
-          <Route  path="/publicado" component={PublicadoScreen} />
+          <Route  path="/ofertas" component={Ofertas} isAuthenticated={isLoogedIn}/>
+          <Route  path = '/novedades' component = {Novedades}/>
+          <Route  path = '/favoritos' component = {Favoritos}/>
           <Route  path="/detalles/:recurso" component={DetallesScreen} />
           {/* <Redirect to="/auth/login" /> */}
           {/* <Redirect to="/auth/login" /> */}
