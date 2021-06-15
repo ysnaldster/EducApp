@@ -64,7 +64,7 @@ export default function Routes() {
   return (
     <div>
       <Router>
-        <Header2/>
+        {/* <Header2/> */}
         <Switch>
           <Route exact path='/' component={Home} />
           <PublicRoute path="/auth" component={AuthRouter} isAuthenticated={isLoogedIn} />
@@ -75,7 +75,7 @@ export default function Routes() {
           <Route  path="/ofertas" component={Ofertas} />
           <Route  path="/publicar" component={PublicarContenido} />
           <Route  path="/publicado" component={PublicadoScreen} />
-          <Route  path="/detalles/:articulo" component={DetallesScreen} />
+          <Route  path="/detalles/:recurso" component={DetallesScreen} />
           {/* <Redirect to="/auth/login" /> */}
           {/* <Redirect to="/auth/login" /> */}
           <Redirect to='/' />

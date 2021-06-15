@@ -63,18 +63,8 @@ export default function PublicarContenido() {
 
   const handlePublicarContenido = (e) => {
     e.preventDefault();
-    // for(let i = 0;i<5;i++){
     dispatch(
       startPublicarContent(
-        // `Iterativo ${i}`,
-        // `Iterativo ${i}`,
-        // `Iterativo ${i}`,
-        // `Iterativo ${i}`,
-        // `Iterativo ${i}`,
-        // `Iterativo ${i}`,
-        // `Iterativo ${i}`,
-        // `Iterativo ${i}`,
-        // `Iterativo ${i}`
         titulo,
         link,
         tipo,
@@ -130,6 +120,7 @@ export default function PublicarContenido() {
               value={titulo}
               placeholder="Titulo del recurso"
               onChange={handleInputChange}
+              required
             />
             {/* Link hacia el recurso */}
             <Input
@@ -138,6 +129,7 @@ export default function PublicarContenido() {
               value={link}
               placeholder="Link del recurso"
               onChange={handleInputChange}
+              required
             />
             {/* Tipo de recurso */}
             <Input
@@ -146,6 +138,7 @@ export default function PublicarContenido() {
               value={tipo}
               placeholder="Tipo de recurso"
               onChange={handleInputChange}
+              required
             />
             {/* Capacitador: (Profesor o institución), no es obligatorio */}
             <Input
@@ -169,6 +162,7 @@ export default function PublicarContenido() {
                 name="miniatura"
                 value={miniatura}
                 onChange={handleInputChange}
+                placeholder="Link de la imagen"
                 style={{
                   width: "130px",
                   height: "100px",
@@ -196,6 +190,7 @@ export default function PublicarContenido() {
                     display: "inline",
                     width: "100%",
                   }}
+                  required
                 />
                 {/* Costo del recurso*/}
                 <Input
@@ -222,16 +217,17 @@ export default function PublicarContenido() {
               style={{
                 height: "100px",
               }}
+              required
             />
             {/* Un botón que activa la opción de agregar un nuevo campo solo si es necesario */}
-            <Input
+            {/* <Input
               type="button"
               name="añadirMasCampos"
               value="Añadir nuevo campo..."
               placeholder="Añadir nuevo campo..."
               style={{color:"black"}}
               onChange={handleInputChange}
-            />
+            /> */}
             {/* Botón de submit */}
             <Input
               type="submit"

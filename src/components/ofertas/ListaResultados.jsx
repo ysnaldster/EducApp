@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { Card } from "@material-ui/core";
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
+import {Link} from "react-router-dom"
 import {
   deleteContent,
   searchContentWithFilter,
@@ -34,7 +35,7 @@ const Tit = styled.span`
 const Tit_1 = styled.p`
   font-weight: bolder;
   font-size: 1.5rem;
-  color: rgb(249, 143, 18);
+  color: #393e46;
   width: 100%;
   display: inline;
 `;
@@ -50,12 +51,16 @@ export default function ListaResultados() {
   );
 
   useEffect(() => {
-    if (filtro == "") {
-      dispatch(startGetContent());
-    } else {
+    let previousFilter = "initial";
+    // console.log("Inicial:" ,previousFilter, " Filtro: " ,filtro)
+    if (filtro?.length >= 1 && filtro != previousFilter) {
       dispatch(searchContentWithFilter(filtro));
+      previousFilter = filtro;
+    } else {
+      dispatch(startGetContent());
     }
-  }, [chageRealized, filtro]);
+    // console.log("Inicial:" ,previousFilter, " Filtro: " ,filtro)
+  }, [filtro, chageRealized]);
 
   const handleDeleteCard = (item) => {
     dispatch(deleteContent(item.id));
@@ -82,32 +87,32 @@ export default function ListaResultados() {
                 padding: "25px",
                 borderRadius: "8px",
                 background: "#ffffff",
-                boxShadow: "0px 0px 1px 0px #3A2D31",
-                cursor: "pointer",
+                boxShadow: "0px 0px 1px 0px #3A2D31"
               }}
             >
               <Resultado>
-                <Foto src="https://i.ibb.co/9NZbMcm/logo-educapp-recortado.png" />
-                <Tit_1>{item.titulo}</Tit_1>
-                <br />
-                <Tit>Tipo: </Tit>
-                {item.capacitador}
-                <br />
-                <Tit>Tipo: </Tit>
-                {item.tipo}
-                <br />
-                <Tit>Precio: </Tit>
-                {item.precio}
-                <br />
-                <Tit>Prestador: </Tit>
-                {item.profesor}
-                <br />
-                <Tit>Tipo: </Tit>
-                {item.tipo}
-                <br />
-                <Tit>Precio: </Tit>
-                {item.precio}
-
+                <Link to={`/detalles/${item.id}`}>
+                  <Foto src="https://i.ibb.co/9NZbMcm/logo-educapp-recortado.png" />
+                  <Tit_1>{item.titulo}</Tit_1>
+                  <br />
+                  <Tit>Tipo: </Tit>
+                  {item.capacitador}
+                  <br />
+                  <Tit>Tipo: </Tit>
+                  {item.tipo}
+                  <br />
+                  <Tit>Precio: </Tit>
+                  {item.precio}
+                  <br />
+                  <Tit>Prestador: </Tit>
+                  {item.profesor}
+                  <br />
+                  <Tit>Tipo: </Tit>
+                  {item.tipo}
+                  <br />
+                  <Tit>Precio: </Tit>
+                  {item.precio}
+                </Link>
                 {/* Opciones para administrador */}
 
                 {typeOfUser === "admin" ? (
@@ -118,16 +123,14 @@ export default function ListaResultados() {
                         className="link link-danger"
                         onClick={() => handleDeleteCard(item)}
                       >
-                        {" "}
-                        Borrar{" "}
-                      </a>{" "}
+                        Borrar
+                      </a>
                       |
                       <a
                         className="link link-success"
                         onClick={handleUpdateCard}
                       >
-                        {" "}
-                        Editar{" "}
+                        Editar
                       </a>
                     </p>
                   </>
