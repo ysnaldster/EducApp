@@ -1,13 +1,14 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import PersistentDrawerRight from '../components/Header2.jsx'
 import { Avatar, AvatarBadge, AvatarGroup, useDisclosure, Button } from "@chakra-ui/react"
 import { IoCamera } from 'react-icons/io5'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { Input, Stack, InputGroup, InputLeftElement, Tooltip } from "@chakra-ui/react"
 import { Row, Col } from 'react-bootstrap'
 import styled from 'styled-components'
 import { FaUserCircle } from 'react-icons/fa'
 import { IoArrowBack } from 'react-icons/io5'
+
 // Acordion
 // import { makeStyles } from '@material-ui/core/styles';
 import Accordion from '@material-ui/core/Accordion';
@@ -27,6 +28,8 @@ import {
     ModalBody,
     ModalCloseButton,
 } from "@chakra-ui/react"
+import { startSaveUser, startUploading } from '../actions/auth'
+
 
 // Estilos
 const StyledPerfilContainer = styled.div`
@@ -101,9 +104,17 @@ const StyledButtonEnvioEdit = styled(Button)`
 
 const Perfil = () => {
 
+    const nombre = useRef('')
+    const email = useRef('')
+    const direccion = useRef('')
+    const area1 = useRef('')
+    const area2 = useRef('')
+
     const info = useSelector(state => state.auth)
 
-
+    const dispatch = useDispatch();
+    const user = useSelector(state => state.user);
+    // console.log(user[0].area1);
     const [edit, setEdit] = useState(false)
     const { isOpen, onOpen, onClose } = useDisclosure()
 
@@ -112,6 +123,53 @@ const Perfil = () => {
         onOpen();
     }
     // const classes = useStyles();
+
+    const handlePictureClick = () => {
+        document.querySelector('#fileSelector').click();
+    }
+
+    const handleFileChange = (e) => {
+        const file = e.target.files[0];
+
+        console.log(file);
+
+        if (file) {
+            dispatch(startUploading(file))
+        }
+    }
+
+    if (user[0] === undefined) {
+        return (
+            <h1>Wait...</h1>
+        )
+    }
+
+    const handleCambiarData = () => {
+        const nuevoNCantidad = nombre.current.value
+        const nuevoECantidad = email.current.value
+        const nuevoDCantidad = direccion.current.value
+        const nuevoA1Cantidad = area1.current.value
+        const nuevoA2Cantidad = area2.current.value
+
+        if (nuevoNCantidad === '' || nuevoECantidad === '' || nuevoDCantidad === '') {
+            console.log('Llena todos los campos ***********');
+        } else {
+            const upUser = {
+                id: user[0].id,
+                name: nuevoNCantidad,
+                email: nuevoECantidad,
+                direccion: nuevoDCantidad,
+                area1: nuevoA1Cantidad,
+                area2: nuevoA2Cantidad
+            }
+            console.log(upUser);
+            dispatch(startSaveUser(upUser))
+        }
+    }
+
+
+
+
     return (
         <StyledPerfilContainer>
             <Link to='/'>
@@ -132,18 +190,20 @@ const Perfil = () => {
                 {/* Modal */}
                 <Modal isOpen={isOpen} onClose={onClose} >
                     <ModalOverlay />
-                    <ModalContent style={{ margin: '15px'}}>
+                    <ModalContent style={{ margin: '15px' }}>
                         <ModalHeader>
                             <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
                                 {/* <StyledImgLogo src="https://i.ibb.co/26ZyFJV/logot.png" /> */}
-                                <Avatar name="Dan Abrahmov" src={info.image} style={{ position: 'relative', zIndex: '1',  width: '100px', height: '100px'}} >
-                                        <AvatarBadge style={{ border: 'none', background: '#F98F12', padding: '7px', marginRight: '10px', color: 'white' }}
-                                        // onClick={handlePictureClick}
-                                        >
+                                <Avatar name="Dan Abrahmov" src={info.image} style={{ position: 'relative', zIndex: '1', width: '100px', height: '100px' }} >
+                                    <AvatarBadge style={{ border: 'none', background: '#F98F12', padding: '7px', marginRight: '10px', color: 'white' }}
+                                    // onClick={handlePictureClick}
+                                    >
+                                        <div onClick={handlePictureClick}>
                                             <IoCamera />
-                                        </AvatarBadge>
+                                        </div>
+                                    </AvatarBadge>
                                 </Avatar>
-                                <p style = {{margin: '10px'}}>Editar Perfil</p>
+                                <p style={{ margin: '10px' }}>Editar Perfil</p>
                             </div>
                         </ModalHeader>
                         <ModalCloseButton />
@@ -154,33 +214,40 @@ const Perfil = () => {
                                     pointerEvents="none"
                                     children={<FaUserCircle color="gray.300" />}
                                 />
-                                <Input type="text" placeholder={info.name} name="name" style={{ background: '#FAF8F7' }} id='user_name' />
+                                <Input type="text" placeholder={user[0].name} name="name" style={{ background: '#FAF8F7' }} id='user_name' ref={nombre} />
                             </InputGroup>
                             <StyledLabel for='email'>Correo Electrónico</StyledLabel>
                             <InputGroup>
                                 <InputLeftElement
                                     children={<MdEmail color="gray.300" />}
                                 />
-                                <Input type="text" placeholder={info.email} name="email" style={{ background: '#FAF8F7' }} id='email' />
+                                <Input type="text" placeholder= {user[0].email} name="email" style={{ background: '#FAF8F7' }} id='email' ref={email} />
                             </InputGroup>
                             <StyledLabel for='direction'>Dirección</StyledLabel>
                             <InputGroup>
                                 <InputLeftElement
                                     children={<SiGooglemaps color="gray.300" />}
                                 />
-                                <Input type="text" placeholder="Ingrese Dirección" name="email" style={{ background: '#FAF8F7' }} id='direction' />
+                                <Input type="text" placeholder= {user[0].direccion} name="email" style={{ background: '#FAF8F7' }} id='direction' ref={direccion} />
                             </InputGroup>
                             <p style={{ fontSize: '15px', fontWeight: 'bold', margin: '10px 10px 0px 10px' }}>Áreas de Interes</p>
                             <InputGroup>
-                                <Input type="text" placeholder="area_1" name="area_1" style={{ background: '#FAF8F7', margin: '10px 0px' }} id='area_1' />
+                                <Input type="text" placeholder= {user[0].area1} name="area_1" style={{ background: '#FAF8F7', margin: '10px 0px' }} id='area_1' ref={area1} />
                             </InputGroup>
                             <InputGroup>
-                                <Input type="text" placeholder="area_2" name="area_2" style={{ background: '#FAF8F7' }} id='area_2' />
+                                <Input type="text" placeholder= {user[0].area2} name="area_2" style={{ background: '#FAF8F7' }} id='area_2' ref={area2} />
                             </InputGroup>
                         </ModalBody>
                         <ModalFooter style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                            <StyledButtonEnvioEdit variant="ghost">Guardar</StyledButtonEnvioEdit>
+                            <StyledButtonEnvioEdit variant="ghost" onClick = {handleCambiarData}>Guardar</StyledButtonEnvioEdit>
                         </ModalFooter>
+                        <input
+                            id="fileSelector"
+                            type="file"
+                            name="file"
+                            style={{ display: 'none' }}
+                            onChange={handleFileChange}
+                        />
                     </ModalContent>
                 </Modal>
 
@@ -192,7 +259,7 @@ const Perfil = () => {
                                 pointerEvents="none"
                                 children={<FaUserCircle color="gray.300" />}
                             />
-                            <Input type="text" placeholder={info.name} name="name" style={{ background: '#FAF8F7' }} id='user_name' pointerEvents="none" />
+                            <Input type="text" placeholder={user[0].name} name="name" style={{ background: '#FAF8F7' }} id='user_name' pointerEvents="none" />
                         </InputGroup>
                         <StyledLabel for='email'>Correo Electrónico</StyledLabel>
                         <InputGroup>
@@ -200,7 +267,7 @@ const Perfil = () => {
                                 pointerEvents="none"
                                 children={<MdEmail color="gray.300" />}
                             />
-                            <Input type="text" placeholder={info.email} name="email" style={{ background: '#FAF8F7' }} id='email' pointerEvents="none" />
+                            <Input type="text" placeholder={user[0].email} name="email" style={{ background: '#FAF8F7' }} id='email' pointerEvents="none" />
                         </InputGroup>
                         <StyledLabel for='direction'>Dirección</StyledLabel>
                         <InputGroup>
@@ -208,7 +275,7 @@ const Perfil = () => {
                                 pointerEvents="none"
                                 children={<SiGooglemaps color="gray.300" />}
                             />
-                            <Input type="text" placeholder="Ingrese Dirección" name="direction" style={{ background: '#FAF8F7' }} id='direction' pointerEvents="none" />
+                            <Input type="text" placeholder= {user[0].direccion} name="direction" style={{ background: '#FAF8F7' }} id='direction' pointerEvents="none" />
                         </InputGroup>
                     </div>
                     <div style={{ marginBottom: '20px' }}>
@@ -223,11 +290,11 @@ const Perfil = () => {
                             <AccordionDetails>
                                 <Typography>
                                     <div>
-                                        <InputGroup style = {{margin: '10px 0px'}}>
-                                            <Input type="text" placeholder="Desarrollo Front-End" name="area_1" style={{ background: '#FAF8F7' }} id='area_1' pointerEvents="none" />
+                                        <InputGroup style={{ margin: '10px 0px' }}>
+                                            <Input type="text" placeholder = {user[0].area1}  name="area_1" style={{ background: '#FAF8F7' }} id='area_1' pointerEvents="none" />
                                         </InputGroup>
                                         <InputGroup>
-                                            <Input type="text" placeholder="Inteligencia Artificial" name="area_2" style={{ background: '#FAF8F7' }} id='area_2' pointerEvents="none" />
+                                            <Input type="text" placeholder = {user[0].area2} name="area_2" style={{ background: '#FAF8F7' }} id='area_2' pointerEvents="none" />
                                         </InputGroup>
                                     </div>
                                 </Typography>

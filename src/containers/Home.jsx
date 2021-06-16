@@ -33,12 +33,10 @@ const StyledMainHome = styled.div`
 `;
 
 const StyledContainerSearchMain = styled(Row)`
-  display: flex;
-  justify-content: center;
   background: #F98F12;
-  padding: 10px;
   border-radius: 40px;
-  margin: 0 15px;
+  padding: 10px; 
+  width: 80%;
 `
 const StyledSearchIcon = styled(Col)`
   display: flex;
@@ -64,12 +62,12 @@ const Home = () => {
         <PersistentDrawerRight />
         <StyleMainTitleWelcome>Bienvenidos a EducApp</StyleMainTitleWelcome>
         <StyledMainDescription>Descubre distintos portales educativos en donde puedes formarte para el futuro</StyledMainDescription>
-        <Container >
+        <Container fluid style = {{display: 'flex', justifyContent: 'center'}}>
           <StyledContainerSearchMain>
             <StyledSearchIcon xs={2}>
                 <BiSearch />
             </StyledSearchIcon>
-            <Col xs = {8} >
+            <Col xs = {10} >
                 <StyledInputSearch type='search' placeholder='Realizar una Búsqueda' />
             </Col>
           </StyledContainerSearchMain>

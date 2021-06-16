@@ -4,12 +4,14 @@ import {registro} from '../reducers/uiReducer'
 import {cargaNovedades} from '../reducers/cargaNovedades'
 import thunk from 'redux-thunk'
 import { contentReducer } from '../reducers/contentReducer'
+import {userReducer} from '../reducers/userReducer'
 
 const reducers = combineReducers({
     auth: authReducer,
     error: registro,
     noticiasNovedades: cargaNovedades,
-    content: contentReducer
+    content: contentReducer,
+    user: userReducer
     // ui: registro
 })
 
