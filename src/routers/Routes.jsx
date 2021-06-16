@@ -70,15 +70,15 @@ export default function Routes() {
           <Route exact path='/' component={Home} />
           <PublicRoute path="/auth" component={AuthRouter} isAuthenticated={isLoogedIn} />
           <PrivateRoute exact path="/perfil" component={Perfil} isAuthenticated={isLoogedIn} />
+          <Route exact path="/publicar" component={PublicarContenido} />
+          <PrivateRoute exact path="/publicado" component={PublicadoScreen} />
           {/* <Route  exact path = '/login' component = {Login}/>
         <Route exact path = '/home' component = {Home}/> */}
           {/* <Route exact path="/registro" component={Registro} /> */}
-          <Route  path="/ofertas" component={Ofertas} />
+          <Route  path="/ofertas" component={Ofertas} isAuthenticated={isLoogedIn}/>
           <Route  path = '/novedades' component = {Novedades}/>
-          <Route path = '/favoritos' component = {Favoritos}/>
-          <Route  path="/publicar" component={PublicarContenido} />
-          <Route  path="/publicado" component={PublicadoScreen} />
-          <Route  path="/detalles/:articulo" component={DetallesScreen} />
+          <Route  path = '/favoritos' component = {Favoritos}/>
+          <Route  path="/detalles/:recurso" component={DetallesScreen} />
           {/* <Redirect to="/auth/login" /> */}
           {/* <Redirect to="/auth/login" /> */}
           <Redirect to='/' />

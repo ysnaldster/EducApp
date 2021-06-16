@@ -3,7 +3,6 @@ import { useDispatch } from "react-redux";
 import styled from "styled-components";
 import { searchContentWithFilter } from "../../actions/content";
 
-
 const TextPrincipal = styled.h3`
   color: #f7a440;
   font-size: 30px;
@@ -54,8 +53,7 @@ export default function BtnBuscarMas(resultados) {
       <TextPrincipal style={{ float: "left" }}>
         Tema seleccionado
       </TextPrincipal>
-    <form onSubmit={validar}>
-      
+    <form onSubmit={validar}>      
       <SearchMore className="btn fw-bolder" type="text" placeholder="Buscar Más Temas" name="buscar" onKeyUp={validar} onClick={changeStyle}/>
     </form>
     </div>
