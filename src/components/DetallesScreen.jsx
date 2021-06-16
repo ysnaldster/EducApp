@@ -74,9 +74,7 @@ export default function DetallesScreen() {
         </GridItem>
         <GridItem rowSpan={1} >
           <Box
-            boxSize="130px"
             border="1px solid black"
-            borderRadius="100%"
             overflow="hidden"
             float="right"
           >
