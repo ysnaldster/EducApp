@@ -44,8 +44,8 @@ const Tit_1 = styled.p`
 
 export default function ListaResultados(isAuthenticated) {
 
-  const {data} = useFetch("https://guappjolotas.herokuapp.com")
-  console.log(data)
+  const {data} = useFetch("https://educapp-api-1.herokuapp.com/db.json")
+  console.log("DATA: ",data)
   const dispatch = useDispatch();
 
   const { content, filtro, chageRealized } = useSelector(
