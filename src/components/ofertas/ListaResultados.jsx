@@ -111,23 +111,17 @@ export default function ListaResultados(isAuthenticated) {
             >
               <Resultado>
                 <Link to={`/detalles/${item.id}`}>
-                  <Foto src="https://i.ibb.co/9NZbMcm/logo-educapp-recortado.png" />
+                  <Foto src={item.miniatura ||"https://i.ibb.co/9NZbMcm/logo-educapp-recortado.png"} />
                   <Tit_1>{item.titulo}</Tit_1>
                   <br />
-                  <Tit>Tipo: </Tit>
+                  <Tit></Tit>
+                  {item.tipo}
+                  <br />
+                  <Tit>Profesor: </Tit>
                   {item.capacitador}
                   <br />
-                  <Tit>Tipo: </Tit>
-                  {item.tipo}
-                  <br />
-                  <Tit>Precio: </Tit>
-                  {item.precio}
-                  <br />
-                  <Tit>Prestador: </Tit>
-                  {item.profesor}
-                  <br />
-                  <Tit>Tipo: </Tit>
-                  {item.tipo}
+                  <Tit>Modalidad: </Tit>
+                  {item.modalidad}
                   <br />
                   <Tit>Precio: </Tit>
                   {item.precio}
