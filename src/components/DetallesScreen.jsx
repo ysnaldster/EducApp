@@ -84,7 +84,7 @@ export default function DetallesScreen() {
       </Grid>
       <br />
 
-      <Text fontSize="2xl">Detalles: <a href={item.link} target="blank">Ir al curso</a></Text>
+      <Text fontSize="2xl">Detalle: <a href={item.link} target="blank">Ir al curso</a></Text>
       <Box
         width="100%"
         borderWidth="1px"
