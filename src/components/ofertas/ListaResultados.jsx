@@ -75,7 +75,7 @@ export default function ListaResultados() {
       console.log(contenidoFiltrado);
       previousFilter = filtro;
     } else {
-      dispatch(startGetContent(ladata))
+      dispatch(startGetContent(content))
     }
     // console.log("Inicial:" ,previousFilter, " Filtro: " ,filtro)
   }, [filtro, chageRealized]);
@@ -105,9 +105,6 @@ export default function ListaResultados() {
     alert("Accion de editar card");
   };
 
-  //Bucador
-  const [localFilteredContent, setlocalFilteredContent] = useState('')
-
   const typeOfUser = "admin";
   return (
     <>
@@ -134,24 +131,24 @@ export default function ListaResultados() {
                 minHeight:"200px"}}>
                   <Foto
                     src={
-                      item.imagen || "https://i.ibb.co/9NZbMcm/logo-educapp-recortado.png"
+                      item.miniatura || "https://i.ibb.co/9NZbMcm/logo-educapp-recortado.png"
                     }
                     style={{border:"1px solid #3333333e"}}
                   />
-                  <Tit_1>{item.name}</Tit_1>
+                  <Tit_1>{item.titulo}</Tit_1>
                   <br />
                   <Tit></Tit>
+                  {item.tipo}
                   <span></span>
                   <br />
-                  <Tit>A través de </Tit>
+                  {/* <Tit>A través de </Tit>
                   {item.plataforma}
-                  <br />
+                  <br /> */}
                   <Tit>Profesor: </Tit>
-                  {item.autor}
+                  {item.profesor}
                   <br />
                   <Tit>Modalidad: </Tit>
                   {item.modalidad}
-                  Virtual
                   <br />
                   <Tit>Cuesta
                  <Text display="inline" color="green"> {item.precio||"Gratis"}</Text>
