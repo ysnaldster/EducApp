@@ -11,16 +11,16 @@ export default function Footer() {
     let anio =new Date().getFullYear()
 
     return (
-        <div>
+        <div style = {{position: 'absolute', bottom: '0', width: '100%'}}>
              <Container
           fluid
           style={{
-            height: "7vh",
             background: "#393E46",
             color: "white",
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
+            padding: '20px'
           }}
         >
           <AiOutlineCopyrightCircle />

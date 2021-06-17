@@ -14,5 +14,9 @@ export const types = {
      getContent: "[CONTENT] Pasar al state todo el contenido",
      getContentFiltered: "[CONTENT] Pasar al state contenido filtrado",
      uploadContent: "[CONTENT] Subir contenido",
-     deleteContent: "[CONTENT] Borrrar contenido"
+     deleteContent: "[CONTENT] Borrrar contenido",
+
+     addUser: 'Agregar Usuario',
+     updateUser: 'Actualizar Usuario',
+     loadUser: 'Load user'
 }

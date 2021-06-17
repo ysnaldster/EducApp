@@ -13,7 +13,7 @@ import PersistentDrawerRight from "../components/Header2";
 import Header2 from "../components/Header2";
 import Registro from "../components/Registro.jsx";
 import Novedades from '../containers/Novedades.jsx'
-import { login } from '../actions/auth'
+import { login, startLoadingUser } from '../actions/auth'
 import { useDispatch } from 'react-redux'
 import { PrivateRoute } from './PrivateRoute'
 import { PublicRoute } from './PublicRoute'
@@ -25,6 +25,8 @@ import { loadContent } from "../helpers/loadContent";
 import { setContent, startGetContent } from "../actions/content.jsx";
 import PublicadoScreen from "../components/PublicadoScreen.jsx";
 import DetallesScreen from "../components/DetallesScreen.jsx";
+import Nosotros from "../containers/Nosotros.jsx";
+
 
 
 export default function Routes() {
@@ -40,6 +42,7 @@ export default function Routes() {
       if (user?.uid) {
         dispatch(login(user.uid, user.displayName, user.email, user.photoURL))
         setsIsLoogedIn(true)
+        dispatch(startLoadingUser(user.uid))
 
         dispatch(startGetContent())
 
@@ -77,6 +80,7 @@ export default function Routes() {
           <Route  path="/ofertas" component={Ofertas} isAuthenticated={isLoogedIn}/>
           <Route  path = '/novedades' component = {Novedades}/>
           <Route  path = '/favoritos' component = {Favoritos}/>
+          <Route  path = '/nosotros' component = {Nosotros} />
           <Route  path="/detalles/:recurso" component={DetallesScreen} />
           {/* <Redirect to="/auth/login" /> */}
           {/* <Redirect to="/auth/login" /> */}

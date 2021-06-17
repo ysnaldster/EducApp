@@ -13,3 +13,18 @@ export const loadNovedades = async (id) => {
 
     return novedades;
 }
+
+export const loadUserData = async (id) => {
+
+    const userSnap = await db.collection(`/profile/${id}/personalData`).get();
+    const user = [];
+
+    userSnap.forEach(snapHijo => {
+        user.push({
+            id: snapHijo.id,
+            ...snapHijo.data()
+        })
+    });
+
+    return user;
+}
