@@ -34,7 +34,7 @@ export default function DetallesScreen() {
         bg="#ff920c" 
         color="#e5e5e5"
       >
-        {item.name}
+        {item.titulo}
       </Box>
     <Container mt="120px">
      
@@ -49,7 +49,7 @@ export default function DetallesScreen() {
             overflow="hidden"
           >
             <Text fontSize="2xl" color="black">
-              <Heading size="2x1">{item.autor}</Heading>
+              <Heading size="2x1">{item.profesor}</Heading>
             </Text>
           </Box>
           <Box
@@ -87,7 +87,7 @@ export default function DetallesScreen() {
             overflow="hidden"
             float="right"
           >
-            <Image src={item.imagen} alt="imagen"/>
+            <Image src={item.miniatura} alt="imagen"/>
           </Box>
         </GridItem>
       </Grid>
@@ -101,7 +101,7 @@ export default function DetallesScreen() {
         overflow="hidden"
         textAlign="justify"
       >
-        {item.descripcion}
+        {item.detalles}
       </Box>
     </Container>
     </>
