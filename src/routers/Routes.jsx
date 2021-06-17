@@ -25,6 +25,8 @@ import { loadContent } from "../helpers/loadContent";
 import { setContent, startGetContent } from "../actions/content.jsx";
 import PublicadoScreen from "../components/PublicadoScreen.jsx";
 import DetallesScreen from "../components/DetallesScreen.jsx";
+import Nosotros from "../containers/Nosotros.jsx";
+
 
 
 export default function Routes() {
@@ -78,6 +80,7 @@ export default function Routes() {
           <Route  path="/ofertas" component={Ofertas} isAuthenticated={isLoogedIn}/>
           <Route  path = '/novedades' component = {Novedades}/>
           <Route  path = '/favoritos' component = {Favoritos}/>
+          <Route  path = '/nosotros' component = {Nosotros} />
           <Route  path="/detalles/:recurso" component={DetallesScreen} />
           {/* <Redirect to="/auth/login" /> */}
           {/* <Redirect to="/auth/login" /> */}

@@ -106,7 +106,7 @@ export const startFacebookLogin = () => {
         firebase.auth().signInWithPopup(facebookAuthProvider)
             .then(async ({ user }) => {
                 dispatch(
-                    login(user.uid, user.displayName, user.email, user.photoURL, user.phoneNumber)
+                    login(user.uid, user.displayName, user.email, user.photoURL)
                 )
 
                 const data = await loadUserData(user.uid);

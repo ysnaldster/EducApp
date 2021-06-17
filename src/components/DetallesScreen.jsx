@@ -11,6 +11,8 @@ import {
   GridItem,
 } from "@chakra-ui/react";
 
+
+
 export default function DetallesScreen() {
   let { recurso } = useParams();
   

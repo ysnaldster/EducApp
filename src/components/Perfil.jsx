@@ -33,7 +33,7 @@ import { startSaveUser, startUploading } from '../actions/auth'
 
 // Estilos
 const StyledPerfilContainer = styled.div`
-    /* height: 100vh; */
+    height: 100vh;
     font-family: 'Inter', sans-serif;
 `
 const StyledTitleh1 = styled.h1`
@@ -214,7 +214,7 @@ const Perfil = () => {
                                     pointerEvents="none"
                                     children={<FaUserCircle color="gray.300" />}
                                 />
-                                <Input type="text" placeholder={user[0].name} name="name" style={{ background: '#FAF8F7' }} id='user_name' ref={nombre} />
+                                <Input type="text" placeholder={user[0].nombre} name="name" style={{ background: '#FAF8F7' }} id='user_name' ref={nombre} />
                             </InputGroup>
                             <StyledLabel for='email'>Correo Electrónico</StyledLabel>
                             <InputGroup>
@@ -259,7 +259,7 @@ const Perfil = () => {
                                 pointerEvents="none"
                                 children={<FaUserCircle color="gray.300" />}
                             />
-                            <Input type="text" placeholder={user[0].name} name="name" style={{ background: '#FAF8F7' }} id='user_name' pointerEvents="none" />
+                            <Input type="text" placeholder={user[0].nombre} name="name" style={{ background: '#FAF8F7' }} id='user_name' pointerEvents="none" />
                         </InputGroup>
                         <StyledLabel for='email'>Correo Electrónico</StyledLabel>
                         <InputGroup>
