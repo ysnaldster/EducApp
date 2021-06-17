@@ -59,6 +59,7 @@ export default function ListaResultados() {
   const dispatch = useDispatch();
   
   const { data } = useFetch("https://stormy-basin-46514.herokuapp.com/cursos") || [];
+  console.log(data);
 
   const ladata = data?data:[]
 
@@ -69,13 +70,15 @@ export default function ListaResultados() {
   useEffect(() => {
     let previousFilter = "initial";
     // console.log("Inicial:" ,previousFilter, " Filtro: " ,filtro)
+    dispatch(startGetContent(data))
     if (filtro?.length >= 1 && filtro != previousFilter) {
       // dispatch(searchContentWithFilter(filtro));
       content.forEach(console.log("item => {item.id.indexOf('D')?contenidoFiltrado+= item:null}"))
       console.log(contenidoFiltrado);
       previousFilter = filtro;
     } else {
-      dispatch(startGetContent(ladata))
+      console.log(data);
+      
     }
     // console.log("Inicial:" ,previousFilter, " Filtro: " ,filtro)
   }, [filtro, chageRealized]);
