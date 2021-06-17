@@ -34,18 +34,21 @@ export const startPublicarContent = (
 };
 
 //Obtener contenido
-export const startGetContent = () => {
+export const startGetContent = (x) => {
   return async (dispatch) => {
-    const content = await loadContent();
-    dispatch(setContent(content));
+    const content = await x
+    dispatch({type: types.getContent,
+      payload: content});
+    // const content = await loadContent();
+    // dispatch(setContent(content));
   };
 };
 
 //Llama a reducer que agrega nuevo contenido al state
-export const setContent = (content) => ({
-  type: types.getContent,
-  payload: content,
-});
+// export const setContent = (content) => ({
+//   type: types.getContent,
+//   payload: content,
+// });
 
 //Llama a reducer que agrega nuevo contenido al state - además pasa un state filtered a "true"
 export const setContentFiltered = (content,keyword) => ({

@@ -51,7 +51,7 @@ export default function BtnBuscarMas(resultados) {
   return (
     <div>
       <TextPrincipal style={{ float: "left" }}>
-        Tema seleccionado
+        Cursos principales
       </TextPrincipal>
     <form onSubmit={validar}>      
       <SearchMore className="btn fw-bolder" type="text" placeholder="Buscar Más Temas" name="buscar" onKeyUp={validar} onClick={changeStyle}/>

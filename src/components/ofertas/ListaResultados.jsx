@@ -1,21 +1,30 @@
-import React, { useEffect,useState } from "react";
-import {firebase} from "../../firebase/firebase-config"
+import React, { useEffect, useState,async } from "react";
+import { firebase } from "../../firebase/firebase-config";
 import { Card } from "@material-ui/core";
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
-import {Link} from "react-router-dom"
-import { useFetch } from '../../hooks/useFetch'
+import { Link } from "react-router-dom";
+import { useFetch } from "../../hooks/useFetch";
 import {
   deleteContent,
   searchContentWithFilter,
   startGetContent,
 } from "../../actions/content";
+import {
+  Container,
+  Box,
+  Text,
+  Image,
+  Heading,
+  Grid,
+  GridItem,
+} from "@chakra-ui/react";
 
 const ResultadosContainer = styled.div`
   padding-top: 30px;
   box-sizing: border-box;
   display: inline-block;
-  font-size: 1rem;
+  font-size: 1.3rem;
   text-align: center;
   width: 100%;
 `;
@@ -25,9 +34,12 @@ const Resultado = styled.p`
 `;
 
 const Foto = styled.img`
-  width: 100px;
+  width: 200px;
   border-radius: 3px;
   float: right;
+  display:"block";  @media(max-width:800px){
+    width: 100%;
+  }
 `;
 const Tit = styled.span`
   font-weight: bolder;
@@ -42,44 +54,48 @@ const Tit_1 = styled.p`
   display: inline;
 `;
 
-export default function ListaResultados(isAuthenticated) {
-
-  const {data} = useFetch("https://educapp-api-1.herokuapp.com/db.json")
-  console.log("DATA: ",data)
+export default function ListaResultados() {
+  let contenidoFiltrado = []
   const dispatch = useDispatch();
+  
+  const { data } = useFetch("https://stormy-basin-46514.herokuapp.com/cursos") || [];
+
+  const ladata = data?data:[]
 
   const { content, filtro, chageRealized } = useSelector(
     (state) => state.content
-  );
+    );
 
   useEffect(() => {
     let previousFilter = "initial";
     // console.log("Inicial:" ,previousFilter, " Filtro: " ,filtro)
     if (filtro?.length >= 1 && filtro != previousFilter) {
-      dispatch(searchContentWithFilter(filtro));
+      // dispatch(searchContentWithFilter(filtro));
+      content.forEach(console.log("item => {item.id.indexOf('D')?contenidoFiltrado+= item:null}"))
+      console.log(contenidoFiltrado);
       previousFilter = filtro;
     } else {
-      dispatch(startGetContent());
+      dispatch(startGetContent(ladata))
     }
     // console.log("Inicial:" ,previousFilter, " Filtro: " ,filtro)
   }, [filtro, chageRealized]);
 
-  const [isLoogedIn, setsIsLoogedIn] = useState(false)
+  const [isLoogedIn, setsIsLoogedIn] = useState(false);
 
-  const [checking, setChecking] = useState(true)
-  useEffect(() => {
-    firebase.auth().onAuthStateChanged(async (user) => {
-      if (user?.uid) {
-        // dispatch(login(user.uid, user.displayName))
-        setsIsLoogedIn(true)
-      } else {
-        setsIsLoogedIn(false)
-      }
+  //Logica para saber si está logueado
+  // const [checking, setChecking] = useState(true);
+  // useEffect(() => {
+  //   firebase.auth().onAuthStateChanged(async (user) => {
+  //     if (user?.uid) {
+  //       // dispatch(login(user.uid, user.displayName))
+  //       setsIsLoogedIn(true);
+  //     } else {
+  //       setsIsLoogedIn(false);
+  //     }
 
-      setChecking(false)
-    })
-
-  }, [dispatch, setChecking])
+  //     setChecking(false);
+  //   });
+  // }, [dispatch, setChecking]);
 
   const handleDeleteCard = (item) => {
     dispatch(deleteContent(item.id));
@@ -89,13 +105,17 @@ export default function ListaResultados(isAuthenticated) {
     alert("Accion de editar card");
   };
 
-  const typeOfUser = "admin";
+  //Bucador
+  const [localFilteredContent, setlocalFilteredContent] = useState('')
 
+  const typeOfUser = "admin";
   return (
     <>
+
       {/* Muestra unas tarjetas mostrando las ofertas que hay si es que hay, de lo contrario muestra un aviso de que no se encontró */}
       <ResultadosContainer className="container-fluid mt-1">
-        {content?.length >= 1 ? (
+        
+        {content?.length >= 1? (
           content?.map((item, i) => (
             <Card
               key={item.id}
@@ -110,28 +130,41 @@ export default function ListaResultados(isAuthenticated) {
               }}
             >
               <Resultado>
-                <Link to={`/detalles/${item.id}`}>
-                  <Foto src={item.miniatura ||"https://i.ibb.co/9NZbMcm/logo-educapp-recortado.png"} />
-                  <Tit_1>{item.titulo}</Tit_1>
+                <Link to={`/detalles/${item.id}`} style={{display:"block",
+                minHeight:"200px"}}>
+                  <Foto
+                    src={
+                      item.imagen || "https://i.ibb.co/9NZbMcm/logo-educapp-recortado.png"
+                    }
+                    style={{border:"1px solid #3333333e"}}
+                  />
+                  <Tit_1>{item.name}</Tit_1>
                   <br />
                   <Tit></Tit>
-                  {item.tipo}
+                  <span></span>
+                  <br />
+                  <Tit>A través de </Tit>
+                  {item.plataforma}
                   <br />
                   <Tit>Profesor: </Tit>
-                  {item.capacitador}
+                  {item.autor}
                   <br />
                   <Tit>Modalidad: </Tit>
                   {item.modalidad}
+                  Virtual
                   <br />
-                  <Tit>Precio: </Tit>
-                  {item.precio}
+                  <Tit>Cuesta
+                 <Text display="inline" color="green"> {item.precio||"Gratis"}</Text>
+                 </Tit>
                 </Link>
+
+
                 {/* Opciones para administrador */}
 
-                {isLoogedIn? (
+                {isLoogedIn || typeOfUser == "admin" ? (
                   <>
                     <hr />
-                    <p style={{ textAlign: "right" }}>
+                    <p style={{ textAlign: "right"}}>
                       <a
                         className="link link-danger"
                         onClick={() => handleDeleteCard(item)}
@@ -163,8 +196,8 @@ export default function ListaResultados(isAuthenticated) {
             }}
           >
             <>
-              No se encontraron resultados que coincidan con la búsqueda...{" "}
-              <strong style={{ color: "#3700ff" }}>{filtro}</strong>
+              No se encontraron resultados
+              {filtro?  (<span> que coincidan con la búsqueda <strong style={{ color: "#3700ff" }}>{filtro}</strong> </span>):null}.
             </>
           </div>
         )}

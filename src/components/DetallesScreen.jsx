@@ -1,14 +1,16 @@
 import React, { useEffect, useReducer } from "react";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import {
-  Container,
+import PersistentDrawerRight from './Header2';
+  
+import {Container,
   Box,
   Text,
   Image,
   Heading,
   Grid,
   GridItem,
+  Link
 } from "@chakra-ui/react";
 
 export default function DetallesScreen() {
@@ -18,17 +20,22 @@ export default function DetallesScreen() {
 
   let item = content?.filter((indice) => indice.id === recurso)[0] ||  []
   return (
-    <Container>
-      <Box
-        width="100%"
-        borderWidth="1px"
-        borderRadius="lg"
+    <>
+    <PersistentDrawerRight/>
+     <Box
+        width="100"
         overflow="hidden"
         align="center"
         fontSize="3xl"
+        m="0px"
+        border="0px"
+        bg="#ff920c" 
+        color="#e5e5e5"
       >
-        {item.titulo}
+        {item.name}
       </Box>
+    <Container mt="120px">
+     
       <br/>
       <br/>
       <Grid templateColumns="repeat(2, 1fr)">
@@ -40,7 +47,7 @@ export default function DetallesScreen() {
             overflow="hidden"
           >
             <Text fontSize="2xl" color="black">
-              <Heading size="2x1">{item.capacitador}</Heading>
+              <Heading size="2x1">{item.autor}</Heading>
             </Text>
           </Box>
           <Box
@@ -78,13 +85,13 @@ export default function DetallesScreen() {
             overflow="hidden"
             float="right"
           >
-            <Image src={item.miniatura} alt="imagen"/>
+            <Image src={item.imagen} alt="imagen"/>
           </Box>
         </GridItem>
       </Grid>
       <br />
 
-      <Text fontSize="2xl">Detalle: <a href={item.link} target="blank">Ir al curso</a></Text>
+      <Text fontSize="2xl">Detalle: <Link float="right" textDecoration="none" href={item.url} target="blank" color="#ff7d7d">Ir al curso</Link></Text>
       <Box
         width="100%"
         borderWidth="1px"
@@ -92,8 +99,9 @@ export default function DetallesScreen() {
         overflow="hidden"
         textAlign="justify"
       >
-        {item.detalles}
+        {item.descripcion}
       </Box>
     </Container>
+    </>
   );
 }
