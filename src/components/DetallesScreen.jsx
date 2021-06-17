@@ -30,6 +30,7 @@ export default function DetallesScreen() {
         align="center"
         fontSize="3xl"
         m="0px"
+        mt = "80px"
         border="0px"
         bg="#ff920c" 
         color="#e5e5e5"

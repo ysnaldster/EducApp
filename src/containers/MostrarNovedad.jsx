@@ -96,7 +96,7 @@ const MostrarNovedad = ({ novedad }) => {
                         <div className="row" key={n.id} style = {{padding: '10px 0px'}}>
                             <div className="col s12 m6">
                                 <StyledCardContainerMain class="card" style={{ borderRadius: '10px' }}>
-                                    <div class="card-image">
+                                    <div class="card-image" style = {{display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column'}}>
                                         <StyledImg src={n.imagen} />
                                         <div>
                                             <StyledCardTitle>{n.titulo}</StyledCardTitle>

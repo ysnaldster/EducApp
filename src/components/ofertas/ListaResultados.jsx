@@ -77,12 +77,7 @@ export default function ListaResultados() {
       console.log(contenidoFiltrado);
       previousFilter = filtro;
     } else {
-<<<<<<< HEAD
-      console.log(data);
-      
-=======
       dispatch(startGetContent(content))
->>>>>>> 32444075c892c46149c7f4a18deaf163bfa98e9b
     }
     // console.log("Inicial:" ,previousFilter, " Filtro: " ,filtro)
   }, [filtro, chageRealized]);
