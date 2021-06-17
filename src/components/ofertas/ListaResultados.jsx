@@ -198,6 +198,92 @@ export default function ListaResultados() {
             </>
           </div>
         )}
+        {data?.length >= 1? (
+          data?.map((item, i) => (
+            <Card
+              key={item.id}
+              variant="outlined"
+              style={{
+                marginTop: "10px",
+                textAlign: "left",
+                padding: "25px",
+                borderRadius: "8px",
+                background: "#ffffff",
+                boxShadow: "0px 0px 1px 0px #3A2D31"
+              }}
+            >
+              <Resultado>
+                <Link to={`/detalles/${item.id}`} style={{display:"block",
+                minHeight:"200px"}}>
+                  <Foto
+                    src={
+                      item.imagen|| "https://i.ibb.co/9NZbMcm/logo-educapp-recortado.png"
+                    }
+                    style={{border:"1px solid #3333333e"}}
+                  />
+                  <Tit_1>{item.name}</Tit_1>
+                  <br />
+                  <Tit></Tit>
+                  {item.tipo}
+                  <span></span>
+                  <br />
+                  {/* <Tit>A través de </Tit>
+                  {item.plataforma}
+                  <br /> */}
+                  <Tit>Profesor: </Tit>
+                  {item.autor}
+                  <br />
+                  <Tit>Modalidad: </Tit>
+                  {item.modalidad}
+                  <br />
+                  <Tit>Cuesta
+                 <Text display="inline" color="green"> {item.precio||"Gratis"}</Text>
+                 </Tit>
+                </Link>
+
+
+                {/* Opciones para administrador */}
+
+                {isLoogedIn || typeOfUser == "admin" ? (
+                  <>
+                    <hr />
+                    <p style={{ textAlign: "right"}}>
+                      <a
+                        className="link link-danger"
+                        onClick={() => handleDeleteCard(item)}
+                      >
+                        Borrar
+                      </a>
+                      |
+                      <a
+                        className="link link-success"
+                        onClick={handleUpdateCard}
+                      >
+                        Editar
+                      </a>
+                    </p>
+                  </>
+                ) : null}
+              </Resultado>
+            </Card>
+          ))
+        ) : (
+          <div
+            variant="outlined"
+            style={{
+              marginTop: "5px",
+              textAlign: "left",
+              padding: "25px",
+              borderRadius: "8px",
+              background: "#afafaf",
+            }}
+          >
+            <>
+              No se encontraron resultados
+              {filtro?  (<span> que coincidan con la búsqueda <strong style={{ color: "#3700ff" }}>{filtro}</strong> </span>):null}.
+            </>
+          </div>
+        )}
       </ResultadosContainer>
     </>
   );
