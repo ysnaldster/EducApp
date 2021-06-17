@@ -226,7 +226,7 @@ export default function PersistentDrawerRight() {
                                         <AiFillShopping style={{ color: '#7a8184' }} />
                                     </ StyledIconNav>
                                     <StyledTextNav >
-                                        Ofetas
+                                        Ofertas
                                     </StyledTextNav>
                                 </Link>
                             </div>
@@ -312,7 +312,7 @@ export default function PersistentDrawerRight() {
                                             <BiArrowBack style={{ color: '#7a8184' }} />
                                         </ StyledIconNav>
                                         <StyledTextNav >
-                                            Salir
+                                            Cerrar Sesión
                                         </StyledTextNav>
                                     </div>
                                 </div> : <p></p>
@@ -352,7 +352,7 @@ export default function PersistentDrawerRight() {
                                             <AiFillShopping style={{ color: '#E5E5E5' }} />
                                         </ StyledIconNav>
                                         <StyledTextNav >
-                                            Ofetas
+                                            Ofertas
                                         </StyledTextNav>
                                     </Link>
                                 </div>
@@ -450,7 +450,7 @@ export default function PersistentDrawerRight() {
                                             <BiArrowBack style={{ color: '#7a8184' }} />
                                         </ StyledIconNav>
                                         <StyledTextNav >
-                                            Salir
+                                            Cerrar Sesión
                                         </StyledTextNav>
                                     </div>
                                 </div> : <p></p>
