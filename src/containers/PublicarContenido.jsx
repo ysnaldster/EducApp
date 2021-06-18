@@ -42,7 +42,7 @@ export default function PublicarContenido() {
 
   //Validar las entradas del formulario
   const [formValues, handleInputChange, reset] = useForm({
-    titulo: "",
+    titulo: "d",
     link: "",
     tipo: "",
     capacitador: "",

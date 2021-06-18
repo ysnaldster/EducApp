@@ -62,13 +62,13 @@ export default function BtnBuscarMas(resultados) {
       <TextPrincipal style={{ float: "left" }}>
         Mis cursos
       </TextPrincipal>
-    <form onSubmit={handleDataSearch}> 
+    {/* <form onSubmit={handleDataSearch}> 
       <Link to = '/search'>
           <SearchMore className="btn fw-bolder" type="search" placeholder="Filtrar cursos" name="buscar" onKeyUp={validar} onChange={(e) => {
             setFilter(e.target.value);
           }} />
       </Link>     
-    </form>
+    </form> */}
     </div>
   );
 }
