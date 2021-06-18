@@ -32,7 +32,7 @@ const Novedades = () => {
 
     // dispatch(novedadesLoad('TI'));
     const {novedades} = useSelector(state => state.noticiasNovedades)
-    console.log(novedades);
+    console.log("NOV",novedades);
 
     return (
         <div>

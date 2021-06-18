@@ -98,7 +98,7 @@ export default function ListaResultados() {
     alert("Accion de editar card");
   };
 
-  const typeOfUser = "admin";
+  const typeOfUser = "client";
   console.log("Lista - contentFiltered",contentFiltered);
   return (
     <>
