@@ -10,6 +10,8 @@ import { MdBuild, MdCall } from "react-icons/md";
 import Perfil from "../components/Perfil.jsx";
 import Footer from "../components/Footer.jsx";
 import { BiSearch } from 'react-icons/bi'
+import { BsCursorFill } from 'react-icons/bs'
+import { Link } from 'react-router-dom'
 
 // Estilos
 const StyleMainTitleWelcome = styled.h1`
@@ -34,10 +36,11 @@ const StyledMainHome = styled.div`
 `;
 
 const StyledContainerSearchMain = styled(Row)`
-  background: #F98F12;
+  background: #F9B208;
   border-radius: 40px;
   padding: 10px; 
   width: 80%;
+  display: flex;
 `
 const StyledSearchIcon = styled(Col)`
   display: flex;
@@ -129,16 +132,21 @@ const Home = () => {
         <div className='d-lg-none'>
           <StyleMainTitleWelcome>Bienvenidos a EducApp</StyleMainTitleWelcome>
           <StyledMainDescription>Descubre distintos portales educativos en donde puedes formarte para el futuro</StyledMainDescription>
-          <Container fluid style={{ display: 'flex', justifyContent: 'center' }}>
-            <StyledContainerSearchMain>
-              <StyledSearchIcon xs={2}>
-                <BiSearch />
-              </StyledSearchIcon>
-              <Col xs={10} >
-                <StyledInputSearch type='search' placeholder='Realizar una Búsqueda' />
-              </Col>
-            </StyledContainerSearchMain>
-          </Container>
+          <Link to='/ofertas'>
+            <Container fluid style={{ display: 'flex', justifyContent: 'center' }}>
+              <StyledContainerSearchMain>
+                <Col xs={10} style={{ display: 'flex' }}>
+                  {/* <StyledInputSearch type='search' placeholder='Realizar una Búsqueda' /> */}
+                  <StyledDivSearch >
+                    <div type='button' placeholder=' ¡Sorpréndeme!' style={{ padding: '10px 20px', borderRadius: '40px', fontWeight: 'bold', color: 'white', fontSize: '16px' }} pointerEvents="none" value='¡Sorpréndeme!'>¡Sorpréndeme!</div>
+                  </StyledDivSearch>
+                </Col>
+                <StyledSearchIcon xs={2}>
+                  <BsCursorFill style={{ fontSize: '40px', color: 'white' }} />
+                </StyledSearchIcon>
+              </StyledContainerSearchMain>
+            </Container>
+          </Link>
         </div>
         <Footer />
         {/* Slider */}
@@ -151,8 +159,8 @@ const Home = () => {
       <div className='d-none d-lg-block'>
         <div style={{ height: '100vh' }}>
           <PersistentDrawerRight />
-          <Container fluid className='d-none d-lg-block' style={{ padding: '0'}}>
-            <Carousel style = {{height: '0'}}>
+          <Container fluid className='d-none d-lg-block' style={{ padding: '0' }}>
+            <Carousel style={{ height: '0' }}>
               <Carousel.Item interval={5000}>
                 <img
                   className="d-block w-100"
@@ -182,15 +190,18 @@ const Home = () => {
                 />
               </Carousel.Item>
             </Carousel>
+          
             <Container fluid style={{ position: 'absolute', bottom: '220px', display: 'flex' }}>
               <div style={{ flex: '2 1 auto' }}>
                 <StyledTitleMainWelcome>Bienvenidos a EducApp</StyledTitleMainWelcome>
                 {/* <p style = {{fontSize: '20px'}}>Descubre distintos portales educativos en donde puedes formarte para el futuro</p> */}
               </div>
-              <StyledDivSearch >
-                <BiSearch style={{ fontSize: '40px', color: 'white' }} />
-                <StyledInputSearch type='search' placeholder='Realizar una Búsqueda' style={{ marginLeft: '30px' }} />
-              </StyledDivSearch>
+              <Link to = '/ofertas'>
+                <StyledDivSearch >
+                  <div type='button' placeholder=' ¡Sorpréndeme!' style={{ marginLeft: '30px', padding: '10px 60px', borderRadius: '40px', fontWeight: 'bold', color: 'white', fontSize: '20px' }} pointerEvents="none" value='¡Sorpréndeme!'>¡Sorpréndeme!</div>
+                  <BsCursorFill style={{ fontSize: '40px', color: 'white' }} />
+                </StyledDivSearch>
+              </Link>
             </Container>
           </Container>
           <StyledSecondDescription>Descubre distintos portales educativos en donde puedes formarte para el futuro</StyledSecondDescription>

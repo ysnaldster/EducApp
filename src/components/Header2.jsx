@@ -255,6 +255,18 @@ export default function PersistentDrawerRight() {
                                     </Link>
                                 </div> : <p></p>
                             }
+                            {
+                                isLoogedIn ? <div style={{ padding: '8px 16px' }}>
+                                    <Link to='/publicar' style={{ display: 'flex' }}>
+                                        < StyledIconNav style={{ marginRight: '30px' }}>
+                                            <MdAddBox style={{ color: '#7a8184' }} />
+                                        </ StyledIconNav>
+                                        <StyledTextNav >
+                                            Mis cursos
+                                        </StyledTextNav>
+                                    </Link>
+                                </div> : <p></p>
+                            }
 
 
                             <div style={{ padding: '8px 16px' }}>

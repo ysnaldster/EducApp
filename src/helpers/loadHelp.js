@@ -28,3 +28,18 @@ export const loadUserData = async (id) => {
 
     return user;
 }
+
+export const loadSearch = async (search) => {
+    const busquedaG = await db.collection(`/contenido`).get();
+    const resultado = [];
+
+    busquedaG.forEach(snapHijo => {
+        resultado.push({
+            id: snapHijo.id,
+            ...snapHijo.data()
+        })
+    })
+
+    const encontrado = resultado.filter(curso => curso.titulo.toLowerCase().includes(search))
+    return encontrado;
+}

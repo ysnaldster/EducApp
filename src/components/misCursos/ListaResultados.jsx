@@ -4,13 +4,9 @@ import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import {
-  deleteContent,
-  searchContentWithFilter,
-  startGetContent,
-  setContent,
-  setContentFiltered
+  deleteContent
 } from "../../actions/content";
-import { startPublicarContent } from "./../../actions/content";
+import { startGetMisCursos } from './../../actions/content';
 import {
   Container,
   Box,
@@ -20,6 +16,7 @@ import {
   Grid,
   GridItem,
 } from "@chakra-ui/react";
+
 
 const ResultadosContainer = styled.div`
   padding-top: 30px;
@@ -57,38 +54,14 @@ const Tit_1 = styled.p`
 `;
 
 export default function ListaResultados() {
-  let contenidoFiltrado = [];
-  let tarjetas = [];
-
+  
   const dispatch = useDispatch();
 
-  const { content, filtro, contentFiltered,chageRealized } = useSelector(
+  dispatch(startGetMisCursos())
+
+  const { misCursos, filtro} = useSelector(
     (state) => state.content
   );
-
-  tarjetas = content
-
-  // useEffect(() => {
-  //   let previousFilter = "initial";
-    
-  //   if (filtro?.length >= 1 && filtro != previousFilter) {
-  //     contenidoFiltrado = [];
-  //     content.forEach((item) => {
-  //       for (const x in item) {
-  //         if (x.includes(filtro)) {
-  //           contenidoFiltrado += item;
-  //           console.log("item",item);
-  //         }          
-  //         tarjetas = contenidoFiltrado;
-  //       }
-  //     });
-  //     console.log("tarjeta en bucle", tarjetas);
-  //     dispatch(setContentFiltered(tarjetas,filtro));
-  //   } else {
-  //     dispatch(startGetContent(content));
-  //   }
-
-  // }, [filtro, chageRealized]);
 
   const handleDeleteCard = (item) => {
     dispatch(deleteContent(item.id));
@@ -99,13 +72,13 @@ export default function ListaResultados() {
   };
 
   const typeOfUser = "admin";
-  console.log("Lista - contentFiltered",contentFiltered);
+  
   return (
     <>
       {/* Muestra unas tarjetas mostrando las ofertas que hay si es que hay, de lo contrario muestra un aviso de que no se encontró */}
       <ResultadosContainer className="container-fluid mt-1">
-        {content?.length >= 1 ? (
-          content?.map((item, i) => (
+        {misCursos?.length >= 1 ? (
+          misCursos?.map((item, i) => (
             <Card
               key={item.id}
               variant="outlined"
