@@ -9,7 +9,7 @@ import PersistentDrawerRight from '../components/Header2.jsx'
 
 // Estilos
 const StyledMainTitle = styled.p`
-    font-size: 20px;
+    font-size: 30px;
     text-align: center;
     font-weight: bold;
     padding-top: 120px;
@@ -32,7 +32,7 @@ const Novedades = () => {
 
     // dispatch(novedadesLoad('TI'));
     const {novedades} = useSelector(state => state.noticiasNovedades)
-    console.log(novedades);
+    console.log("NOV",novedades);
 
     return (
         <div>

@@ -87,7 +87,7 @@ const MostrarNovedad = ({ novedad }) => {
             </div>
         )
     }
-
+    console.log(novedad);
     return (
         <div>
             {
@@ -105,8 +105,8 @@ const MostrarNovedad = ({ novedad }) => {
                                             <StyledContentCard>{n.contenido.substring(0, 100)}</StyledContentCard>
                                         </div>
                                         <StyledCardButtonContainer class="card-action">
-                                            <a href="#">
-                                                <StyledButtonMoreRead>Leer mas...</StyledButtonMoreRead>
+                                            <a href={`${n.url}`} target="_blank">
+                                                <StyledButtonMoreRead>Ir al portal...</StyledButtonMoreRead>
                                             </a>
                                         </StyledCardButtonContainer>
                                     </div>

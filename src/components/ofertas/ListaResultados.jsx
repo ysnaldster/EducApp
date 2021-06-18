@@ -139,14 +139,17 @@ export default function ListaResultados() {
                   {/* <Tit>A través de </Tit>
                   {item.plataforma}
                   <br /> */}
-                  <Tit>Profesor: </Tit>
+                  <Tit>Facilitador: </Tit>
                   {item.capacitador}
                   <br />
                   <Tit>Modalidad: </Tit>
                   {item.modalidad}
                   <br />
+                  <Tit>Plataforma: </Tit>
+                  {item.plataforma}
+                  <br />
                   <Tit>
-                    Cuesta
+                    Precio
                     <Text display="inline" color="green">
                       {" "}
                       {item.precio || "Gratis"}
