@@ -1,7 +1,9 @@
+import React,{useState} from 'react'
 import { db } from "../firebase/firebase-config";
 import { types } from "../types/types";
 import { loadContent } from "../helpers/loadContent";
 import { searchFilteredContent } from "../helpers/searchFilteredContent";
+import {loadSearch} from '../helpers/loadHelp'
 
 //Publicar contenido
 export const startPublicarContent = (
@@ -76,3 +78,17 @@ export const searchContentWithFilter = (keyword) =>{
     dispatch(setContentFiltered(content,keyword));
   };
 }
+
+
+export const startSearch = (search) => {
+  return async (dispatch) => {
+      const curso = await loadSearch(search)
+      dispatch(setSearch(curso))
+  }
+}
+
+export const setSearch = (curso) => ({
+    type: types.searchCursos,
+    payload: curso
+})
+

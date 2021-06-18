@@ -1,7 +1,9 @@
-import React from "react";
+import React,{useState} from "react";
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
-import { searchContentWithFilter } from "../../actions/content";
+import { searchContentWithFilter, startSearch } from "../../actions/content";
+import {Link} from 'react-router-dom'
+
 
 const TextPrincipal = styled.h3`
   color: #f7a440;
@@ -34,6 +36,13 @@ const SearchMore = styled.input`
 export default function BtnBuscarMas(resultados) {
   const dispatch = useDispatch()
 
+  const [filter, setFilter] = useState('')
+
+  const handleDataSearch = (e) => {
+    e.preventDefault()
+    dispatch(startSearch(filter.toLowerCase()))
+  }
+
   const validar= (e) => {
     e.preventDefault()
     if(e.which == 13){
@@ -53,8 +62,12 @@ export default function BtnBuscarMas(resultados) {
       <TextPrincipal style={{ float: "left" }}>
         Cursos principales
       </TextPrincipal>
-    <form onSubmit={validar}>      
-      <SearchMore className="btn fw-bolder" type="text" placeholder="Buscar Más Temas" name="buscar" onKeyUp={validar} onClick={changeStyle}/>
+    <form onSubmit={handleDataSearch}> 
+      <Link to = '/search'>
+          <SearchMore className="btn fw-bolder" type="search" placeholder="Buscar Más Temas" name="buscar" onKeyUp={validar} onChange={(e) => {
+            setFilter(e.target.value);
+          }} />
+      </Link>     
     </form>
     </div>
   );

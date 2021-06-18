@@ -11,6 +11,8 @@ export const types = {
 
      uiNovedadesLoad: 'UI novedades load',
 
+     searchCursos: "[Search] Curso",
+
      getContent: "[CONTENT] Pasar al state todo el contenido",
      getContentFiltered: "[CONTENT] Pasar al state contenido filtrado",
      uploadContent: "[CONTENT] Subir contenido",

@@ -68,27 +68,27 @@ export default function ListaResultados() {
 
   tarjetas = content
 
-  useEffect(() => {
-    let previousFilter = "initial";
+  // useEffect(() => {
+  //   let previousFilter = "initial";
     
-    if (filtro?.length >= 1 && filtro != previousFilter) {
-      contenidoFiltrado = [];
-      content.forEach((item) => {
-        for (const x in item) {
-          if (x.includes(filtro)) {
-            contenidoFiltrado += item;
-            console.log("item",item);
-          }          
-          tarjetas = contenidoFiltrado;
-        }
-      });
-      console.log("tarjeta en bucle", tarjetas);
-      dispatch(setContentFiltered(tarjetas,filtro));
-    } else {
-      dispatch(startGetContent(content));
-    }
-    // console.log("Inicial:" ,previousFilter, " Filtro: " ,filtro)
-  }, [filtro, chageRealized]);
+  //   if (filtro?.length >= 1 && filtro != previousFilter) {
+  //     contenidoFiltrado = [];
+  //     content.forEach((item) => {
+  //       for (const x in item) {
+  //         if (x.includes(filtro)) {
+  //           contenidoFiltrado += item;
+  //           console.log("item",item);
+  //         }          
+  //         tarjetas = contenidoFiltrado;
+  //       }
+  //     });
+  //     console.log("tarjeta en bucle", tarjetas);
+  //     dispatch(setContentFiltered(tarjetas,filtro));
+  //   } else {
+  //     dispatch(startGetContent(content));
+  //   }
+
+  // }, [filtro, chageRealized]);
 
   const handleDeleteCard = (item) => {
     dispatch(deleteContent(item.id));
@@ -126,7 +126,7 @@ export default function ListaResultados() {
                   <Foto
                     src={
                       item.miniatura ||
-                      "https://i.ibb.co/9NZbMcm/logo-educapp-recortado.png"
+                      "https://us.123rf.com/450wm/pixelery/pixelery1610/pixelery161000095/65006000-404-de-error-p%C3%A1gina-no-encontrada-.jpg?ver=6"
                     }
                     style={{ border: "1px solid #3333333e" }}
                   />

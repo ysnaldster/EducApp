@@ -26,7 +26,7 @@ import { setContent, startGetContent } from "../actions/content.jsx";
 import PublicadoScreen from "../components/PublicadoScreen.jsx";
 import DetallesScreen from "../components/DetallesScreen.jsx";
 import Nosotros from "../containers/Nosotros.jsx";
-
+import Search from '../components/Search.jsx'
 
 
 export default function Routes() {
@@ -82,6 +82,7 @@ export default function Routes() {
           <Route  path = '/favoritos' component = {Favoritos}/>
           <Route  path = '/nosotros' component = {Nosotros} />
           <Route  path="/detalles/:recurso" component={DetallesScreen} />
+          <Route path = "/search" component = {Search}/>
           {/* <Redirect to="/auth/login" /> */}
           {/* <Redirect to="/auth/login" /> */}
           <Redirect to='/' />
