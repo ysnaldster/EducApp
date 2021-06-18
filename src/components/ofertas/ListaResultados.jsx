@@ -126,7 +126,7 @@ export default function ListaResultados() {
                   <Foto
                     src={
                       item.miniatura ||
-                      "https://i.ibb.co/9NZbMcm/logo-educapp-recortado.png"
+                      "https://us.123rf.com/450wm/pixelery/pixelery1610/pixelery161000095/65006000-404-de-error-p%C3%A1gina-no-encontrada-.jpg?ver=6"
                     }
                     style={{ border: "1px solid #3333333e" }}
                   />
@@ -140,7 +140,7 @@ export default function ListaResultados() {
                   {item.plataforma}
                   <br /> */}
                   <Tit>Profesor: </Tit>
-                  {item.profesor}
+                  {item.capacitador}
                   <br />
                   <Tit>Modalidad: </Tit>
                   {item.modalidad}
@@ -156,7 +156,7 @@ export default function ListaResultados() {
 
                 {/* Opciones para administrador */}
 
-                {typeOfUser == "client" ? (
+                {typeOfUser == "admin" ? (
                   <>
                     <hr />
                     <p style={{ textAlign: "right" }}>

@@ -15,10 +15,10 @@ export const contentReducer = (state = {}, action) => {
         filtro: action.keyword
       }
 
-    case types.searchContentFiltered:
-      return {
-        content: [...action.payload]
-      }
+    // case types.searchContentFiltered:
+    //   return {
+    //     content: [...action.payload]
+    //   }
 
     case types.uploadContent:
       return {

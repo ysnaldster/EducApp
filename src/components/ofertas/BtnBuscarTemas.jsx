@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
-import { searchContentWithFilter } from "../../actions/content";
+import { searchContentWithFilter, startGetContent } from "../../actions/content";
 
 const TextPrincipal = styled.h3`
   color: #f7a440;
