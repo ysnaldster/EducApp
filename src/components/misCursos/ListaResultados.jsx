@@ -25,6 +25,7 @@ const ResultadosContainer = styled.div`
   font-size: 1.3rem;
   text-align: center;
   width: 100%;
+  height: 100vh;
 `;
 
 const Resultado = styled.p`
