@@ -7,6 +7,11 @@ import { useDispatch } from "react-redux";
 import { startPublicarContent, publicarContent } from "../actions/content";
 import { useForm } from "../hooks/useForm";
 import { useHistory } from "react-router-dom";
+import { useFetch } from "../hooks/useFetch";
+
+
+const dat = require("./db.json").cursos
+
 
 const Container = styled.div`
   width: 100%;
@@ -27,7 +32,7 @@ const Input = styled.input`
   padding: 5px;
   color: rgb(0, 0, 0);
   background-color: #e5e5e5;
-  ::placeholder{    
+  ::placeholder {
     /* color:rgba(249, 141, 18, 0.507); */
   }
 `;
@@ -35,6 +40,7 @@ const Input = styled.input`
 export default function PublicarContenido() {
   let history = useHistory();
   const dispatch = useDispatch();
+  console.log(dat);
 
   //Validar las entradas del formulario
   const [formValues, handleInputChange, reset] = useForm({
@@ -76,9 +82,31 @@ export default function PublicarContenido() {
         infoExtra
       )
     );
-      // }
+    // }
     history.push("/publicado");
   };
+
+  // const { data } = useFetch("https://stormy-basin-46514.herokuapp.com/cursos") || [];
+function publicarJson(){
+      dat.forEach(item =>{
+        dispatch(
+          startPublicarContent(
+            item.name || "",
+            item.url || "",
+            "Curso en linea",
+            item.autor || "",
+            item.imagen || "",
+            "Virtual",
+            item.precio || "",
+            item.descripcion || "",
+            item.plataforma || "",
+            item.plataforma || "",
+            item.area || ""
+          )
+          )
+          console.log(item.name);}
+      );
+  }
 
   return (
     <div>
@@ -108,7 +136,6 @@ export default function PublicarContenido() {
                 color: "rgb(0, 0, 0)",
                 fontSize: "1.2rem",
                 marginTop: "20px",
-                
               }}
             >
               Publicar nuevo contenido
@@ -234,6 +261,10 @@ export default function PublicarContenido() {
               value="Publicar"
               style={{ background: "rgb(249, 143, 18)", color: "white" }}
             />
+            <button
+              type="button"
+              onClick={publicarJson}
+            >Cargar cursos desde json</button>
           </form>
         </Card>
       </Container>

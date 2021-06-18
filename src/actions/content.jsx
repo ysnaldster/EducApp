@@ -13,7 +13,8 @@ export const startPublicarContent = (
   modalidad,
   precio,
   detalles,
-  infoExtra
+  plataforma,
+  tematica
 ) => {
   return async (dispatch) => {
     const newContent = {
@@ -25,7 +26,8 @@ export const startPublicarContent = (
       modalidad,
       precio,
       detalles,
-      infoExtra,
+      plataforma,
+      tematica
     };
     const docRef = await db.collection(`contenido`).add(newContent);
 

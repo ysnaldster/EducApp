@@ -8,9 +8,10 @@ export const contentReducer = (state = {}, action) => {
         content: [...action.payload],
       }
     case types.getContentFiltered:
+      console.log("getContentFiltered",action.payload);
       return {
         ...state,
-        content: [...action.payload],
+        contentFiltered: [...action.payload],
         filtro: action.keyword
       }
 

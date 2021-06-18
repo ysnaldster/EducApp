@@ -73,7 +73,7 @@ export default function Routes() {
           <PublicRoute path="/auth" component={AuthRouter} isAuthenticated={isLoogedIn} />
           <PrivateRoute exact path="/perfil" component={Perfil} isAuthenticated={isLoogedIn} />
           <Route exact path="/publicar" component={PublicarContenido} />
-          <PrivateRoute exact path="/publicado" component={PublicadoScreen} />
+          <Route exact path="/publicado" component={PublicadoScreen} />
           {/* <Route  exact path = '/login' component = {Login}/>
         <Route exact path = '/home' component = {Home}/> */}
           {/* <Route exact path="/registro" component={Registro} /> */}
