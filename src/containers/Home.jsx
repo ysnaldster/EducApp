@@ -95,32 +95,32 @@ const Home = () => {
       <StyledMainHome className='mainContainer d-lg-none' >
         <PersistentDrawerRight />
         <Container fluid style={{ position: 'absolute', top: '0', marginTop: '150px', padding: '0' }} className='d-lg-none'>
-          <Carousel className='' style={{ bottom: '85px'}}>
+          <Carousel className='' style={{ bottom: '85px', height: '0' }}>
             <Carousel.Item interval={5000}>
               <img
                 className="d-block w-100"
-                src="https://i.ibb.co/k9ZgTJr/option5.png"
+                src="https://i.ibb.co/fqmD8MK/1.png"
                 alt="First slide"
               />
             </Carousel.Item>
             <Carousel.Item interval={5000}>
               <img
                 className="d-block w-100"
-                src="https://i.ibb.co/Kxjv6Ms/img4s-1.png"
+                src="https://i.ibb.co/8BPvw6Q/3.png"
                 alt="Third slide"
               />
             </Carousel.Item>
             <Carousel.Item interval={5000}>
               <img
                 className="d-block w-100"
-                src="https://i.ibb.co/rfWD2DN/img2s.png"
+                src="https://i.ibb.co/5XZ2SRV/2.png"
                 alt="Third slide"
               />
             </Carousel.Item>
             <Carousel.Item interval={5000}>
               <img
                 className="d-block w-100"
-                src="https://i.ibb.co/g7zGwTf/img4s.png"
+                src="https://i.ibb.co/k9ZgTJr/option5.png"
                 alt="Third slide"
               />
             </Carousel.Item>
@@ -151,33 +151,33 @@ const Home = () => {
       <div className='d-none d-lg-block'>
         <div style={{ height: '100vh' }}>
           <PersistentDrawerRight />
-          <Container fluid className='d-none d-lg-block' style={{ padding: '0' }}>
-            <Carousel className='' >
+          <Container fluid className='d-none d-lg-block' style={{ padding: '0'}}>
+            <Carousel style = {{height: '0'}}>
               <Carousel.Item interval={5000}>
                 <img
                   className="d-block w-100"
-                  src="https://i.ibb.co/k9ZgTJr/option5.png"
+                  src="https://i.ibb.co/fqmD8MK/1.png"
                   alt="First slide"
                 />
               </Carousel.Item>
               <Carousel.Item interval={5000}>
                 <img
                   className="d-block w-100"
-                  src="https://i.ibb.co/Kxjv6Ms/img4s-1.png"
+                  src="https://i.ibb.co/8BPvw6Q/3.png"
                   alt="Third slide"
                 />
               </Carousel.Item>
               <Carousel.Item interval={5000}>
                 <img
                   className="d-block w-100"
-                  src="https://i.ibb.co/rfWD2DN/img2s.png"
+                  src="https://i.ibb.co/5XZ2SRV/2.png"
                   alt="Third slide"
                 />
               </Carousel.Item>
               <Carousel.Item interval={5000}>
                 <img
                   className="d-block w-100"
-                  src="https://i.ibb.co/g7zGwTf/img4s.png"
+                  src="https://i.ibb.co/k9ZgTJr/option5.png"
                   alt="Third slide"
                 />
               </Carousel.Item>

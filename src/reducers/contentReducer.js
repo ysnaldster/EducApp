@@ -5,7 +5,7 @@ export const contentReducer = (state = {}, action) => {
     case types.getContent:
       return {
         ...state,
-        content: [...action.payload],
+        content: action.payload
       }
     case types.getContentFiltered:
       console.log("getContentFiltered",action.payload);

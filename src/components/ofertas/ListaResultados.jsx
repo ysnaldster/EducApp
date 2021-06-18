@@ -62,7 +62,7 @@ export default function ListaResultados() {
 
   const dispatch = useDispatch();
 
-  const { content, filtro, chageRealized } = useSelector(
+  const { content, filtro, contentFiltered,chageRealized } = useSelector(
     (state) => state.content
   );
 
@@ -73,12 +73,11 @@ export default function ListaResultados() {
     
     if (filtro?.length >= 1 && filtro != previousFilter) {
       contenidoFiltrado = [];
-      tarjetas = []
       content.forEach((item) => {
         for (const x in item) {
           if (x.includes(filtro)) {
             contenidoFiltrado += item;
-            return
+            console.log("item",item);
           }          
           tarjetas = contenidoFiltrado;
         }
@@ -100,13 +99,13 @@ export default function ListaResultados() {
   };
 
   const typeOfUser = "admin";
-
+  console.log("Lista - contentFiltered",contentFiltered);
   return (
     <>
       {/* Muestra unas tarjetas mostrando las ofertas que hay si es que hay, de lo contrario muestra un aviso de que no se encontró */}
       <ResultadosContainer className="container-fluid mt-1">
-        {tarjetas?.length >= 1 ? (
-          tarjetas?.map((item, i) => (
+        {content?.length >= 1 ? (
+          content?.map((item, i) => (
             <Card
               key={item.id}
               variant="outlined"
