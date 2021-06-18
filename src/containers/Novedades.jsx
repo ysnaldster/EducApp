@@ -9,7 +9,7 @@ import PersistentDrawerRight from '../components/Header2.jsx'
 
 // Estilos
 const StyledMainTitle = styled.p`
-    font-size: 20px;
+    font-size: 30px;
     text-align: center;
     font-weight: bold;
     padding-top: 120px;

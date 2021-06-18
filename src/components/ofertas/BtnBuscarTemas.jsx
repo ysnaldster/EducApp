@@ -59,12 +59,12 @@ export default function BtnBuscarMas(resultados) {
 
   return (
     <div>
-      <TextPrincipal style={{ float: "left" }}>
-        Cursos principales
+      <TextPrincipal style={{ float: "left", color: '#000000' }}>
+        ¿Qué deseas aprender?
       </TextPrincipal>
     <form onSubmit={handleDataSearch}> 
       <Link to = '/search'>
-          <SearchMore className="btn fw-bolder" type="search" placeholder="Buscar Más Temas" name="buscar" onKeyUp={validar} onChange={(e) => {
+          <SearchMore className="btn fw-bolder" type="search" placeholder="Realizar una Búsqueda" name="buscar" onKeyUp={validar} onChange={(e) => {
             setFilter(e.target.value);
           }} />
       </Link>     
