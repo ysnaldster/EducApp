@@ -2,6 +2,7 @@ import React,{useState} from 'react'
 import { db } from "../firebase/firebase-config";
 import { types } from "../types/types";
 import { loadContent } from "../helpers/loadContent";
+import { loadMisCursos } from "../helpers/loadMisCursos";
 import { searchFilteredContent } from "../helpers/searchFilteredContent";
 import {loadSearch} from '../helpers/loadHelp'
 
@@ -31,7 +32,7 @@ export const startPublicarContent = (
       plataforma,
       tematica
     };
-    const docRef = await db.collection(`contenido`).add(newContent);
+    const docRef = await db.collection(`miscursos`).add(newContent);
 
     dispatch(startGetContent(docRef));
   };
@@ -44,6 +45,13 @@ export const startGetContent = () => {
     dispatch({type: types.getContent,
       payload: content});
     // dispatch(setContent(content));
+  };
+};
+export const startGetMisCursos = () => {
+  return async (dispatch) => {
+    const content = await loadMisCursos();
+    dispatch({type: types.getMisCursos,
+      payload: content});
   };
 };
 

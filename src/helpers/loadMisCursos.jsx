@@ -1,9 +1,9 @@
 import { db } from "../firebase/firebase-config";
 
 //Carga todo el contendo de la tabla <contenido>
-export const loadContent = async () => {
+export const loadMisCursos = async () => {
   //Trae todo el contenido de la base de datos
-  const contentSnap = await db.collection("contenido").orderBy("titulo").get();
+  const contentSnap = await db.collection("miscursos").orderBy("titulo").get();
 
   //Arreglo donde se guargará todo el contenido de la base de datos
   const content = [];

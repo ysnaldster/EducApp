@@ -7,6 +7,12 @@ export const contentReducer = (state = {}, action) => {
         ...state,
         content: action.payload
       }
+    case types.getMisCursos:
+      console.log("GETMISCURSOS");
+      return {
+        ...state,
+        misCursos: action.payload
+      }
     case types.searchCursos:
       return {
         ...state,

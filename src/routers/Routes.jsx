@@ -8,10 +8,7 @@ import {
 } from "react-router-dom";
 import Home from "../containers/Home.jsx";
 import Ofertas from "../containers/Ofertas";
-import Login from "../components/Login.jsx";
-import PersistentDrawerRight from "../components/Header2";
-import Header2 from "../components/Header2";
-import Registro from "../components/Registro.jsx";
+import MisCursos from "../containers/MisCursos";
 import Novedades from '../containers/Novedades.jsx'
 import { login, startLoadingUser } from '../actions/auth'
 import { useDispatch } from 'react-redux'
@@ -21,7 +18,6 @@ import AuthRouter from './AuthRouter'
 import Perfil from '../components/Perfil.jsx'
 import Favoritos from "../containers/Favoritos.jsx";
 import PublicarContenido from "../containers/PublicarContenido.jsx";
-import { loadContent } from "../helpers/loadContent";
 import { setContent, startGetContent } from "../actions/content.jsx";
 import PublicadoScreen from "../components/PublicadoScreen.jsx";
 import DetallesScreen from "../components/DetallesScreen.jsx";
@@ -78,6 +74,7 @@ export default function Routes() {
         <Route exact path = '/home' component = {Home}/> */}
           {/* <Route exact path="/registro" component={Registro} /> */}
           <Route  path="/ofertas" component={Ofertas} isAuthenticated={isLoogedIn}/>
+          <Route  path="/miscursos" component={MisCursos} isAuthenticated={isLoogedIn}/>
           <Route  path = '/novedades' component = {Novedades}/>
           <Route  path = '/favoritos' component = {Favoritos}/>
           <Route  path = '/nosotros' component = {Nosotros} />

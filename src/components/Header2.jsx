@@ -32,6 +32,8 @@ import { Button } from 'react-bootstrap'
 import { BiArrowBack } from 'react-icons/bi'
 import { CgProfile } from 'react-icons/cg'
 import { MdAddBox } from 'react-icons/md'
+import {FaBookOpen} from 'react-icons/fa'
+
 
 // Estilos Adicionales 
 const StyledTextNav = styled(ListItemText)`
@@ -255,7 +257,18 @@ export default function PersistentDrawerRight() {
                                     </Link>
                                 </div> : <p></p>
                             }
-
+                                  {
+                                isLoogedIn ? <div style={{ padding: '8px 16px' }}>
+                                    <Link to='/miscursos' style={{ display: 'flex' }}>
+                                        < StyledIconNav style={{ marginRight: '30px' }}>
+                                            <FaBookOpen style={{ color: '#7a8184' }} />
+                                        </ StyledIconNav>
+                                        <StyledTextNav >
+                                            Mis cursos
+                                        </StyledTextNav>
+                                    </Link>
+                                </div> : <p></p>
+                            }
 
                             <div style={{ padding: '8px 16px' }}>
                                 <Link to='/novedades' style={{ display: 'flex' }}>
@@ -334,7 +347,7 @@ export default function PersistentDrawerRight() {
                         style={{ background: '#393E46' }}
                     >
                         <Toolbar>
-                                <StyledImgLogo src="https://i.ibb.co/26ZyFJV/logot.png" />
+                            <StyledImgLogo src="https://i.ibb.co/26ZyFJV/logot.png" />
                             <Typography variant="h6" noWrap className={classes.title} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                                 <div style={{ padding: '8px 16px' }}>
                                     <Link to='/' style={{ display: 'flex' }}>
@@ -440,6 +453,19 @@ export default function PersistentDrawerRight() {
                                     </Link>
                                 </div> : <p></p>
                             }
+                            {
+                                isLoogedIn ? <div style={{ padding: '8px 16px' }}>
+                                    <Link to='/miscursos' style={{ display: 'flex' }}>
+                                        < StyledIconNav style={{ marginRight: '30px' }}>
+                                            <FaBookOpen style={{ color: '#7a8184' }} />
+                                        </ StyledIconNav>
+                                        <StyledTextNav >
+                                            Mis cursos
+                                        </StyledTextNav>
+                                    </Link>
+                                </div> : <p></p>
+                            }
+
                         </List>
                         <Divider />
                         <List >

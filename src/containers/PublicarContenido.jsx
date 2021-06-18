@@ -9,9 +9,7 @@ import { useForm } from "../hooks/useForm";
 import { useHistory } from "react-router-dom";
 import { useFetch } from "../hooks/useFetch";
 
-
-const dat = require("./db.json").cursos
-
+const dat = require("./db.json").cursos;
 
 const Container = styled.div`
   width: 100%;
@@ -53,6 +51,8 @@ export default function PublicarContenido() {
     precio: "",
     detalles: "",
     infoExtra: "",
+    plataforma: "",
+    tematica: ""
   });
 
   const {
@@ -65,6 +65,8 @@ export default function PublicarContenido() {
     precio,
     detalles,
     infoExtra,
+    plataforma,
+    tematica
   } = formValues;
 
   const handlePublicarContenido = (e) => {
@@ -79,34 +81,35 @@ export default function PublicarContenido() {
         modalidad,
         precio,
         detalles,
-        infoExtra
+        infoExtra,
+        plataforma,
+        tematica
       )
     );
     // }
     history.push("/publicado");
   };
 
-  // const { data } = useFetch("https://stormy-basin-46514.herokuapp.com/cursos") || [];
-function publicarJson(){
-      dat.forEach(item =>{
-        dispatch(
-          startPublicarContent(
-            item.name || "",
-            item.url || "",
-            "Curso en linea",
-            item.autor || "",
-            item.imagen || "",
-            "Virtual",
-            item.precio || "",
-            item.descripcion || "",
-            item.plataforma || "",
-            item.plataforma || "",
-            item.area || ""
-          )
-          )
-          console.log(item.name);}
-      );
-  }
+  //  function publicarJson(){
+  //       dat.forEach(item =>{
+  //         dispatch(
+  //           startPublicarContent(
+  //             item.name || "",
+  //             item.url || "",
+  //             "Curso en linea",
+  //             item.autor || "",
+  //             item.imagen || "",
+  //             "Virtual",
+  //             item.precio || "",
+  //             item.descripcion || "",
+  //             item.plataforma || "",
+  //             item.plataforma || "",
+  //             item.area || ""
+  //           )
+  //           )
+  //           console.log(item.name);}
+  //       );
+  //   }
 
   return (
     <div>
@@ -173,6 +176,20 @@ function publicarJson(){
               name="capacitador"
               value={capacitador}
               placeholder="Capacitador"
+              onChange={handleInputChange}
+            />
+            <Input
+              type="text"
+              name="plataforma"
+              value={plataforma}
+              placeholder="Plataforma: ejem: Coursera"
+              onChange={handleInputChange}
+            />
+            <Input
+              type="text"
+              name="tematica"
+              value={tematica}
+              placeholder="Temática: ejem: Programación"
               onChange={handleInputChange}
             />
             <div
@@ -261,10 +278,10 @@ function publicarJson(){
               value="Publicar"
               style={{ background: "rgb(249, 143, 18)", color: "white" }}
             />
-            <button
+            {/* <button
               type="button"
               onClick={publicarJson}
-            >Cargar cursos desde json</button>
+            >Cargar cursos desde json</button> */}
           </form>
         </Card>
       </Container>

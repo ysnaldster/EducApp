@@ -13,7 +13,7 @@ import {
   Heading,
   Grid,
   GridItem,
-  Link
+  Link,
 } from "@chakra-ui/react";
 
 const Tit = styled.span`
