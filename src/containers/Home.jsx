@@ -99,28 +99,28 @@ const Home = () => {
         <PersistentDrawerRight />
         <Container fluid style={{ position: 'absolute', top: '0', marginTop: '150px', padding: '0' }} className='d-lg-none'>
           <Carousel className='' style={{ bottom: '85px', height: '0' }}>
-            <Carousel.Item interval={5000}>
+            <Carousel.Item interval={3000}>
               <img
                 className="d-block w-100"
                 src="https://i.ibb.co/fqmD8MK/1.png"
                 alt="First slide"
               />
             </Carousel.Item>
-            <Carousel.Item interval={5000}>
+            <Carousel.Item interval={3000}>
               <img
                 className="d-block w-100"
                 src="https://i.ibb.co/8BPvw6Q/3.png"
                 alt="Third slide"
               />
             </Carousel.Item>
-            <Carousel.Item interval={5000}>
+            <Carousel.Item interval={3000}>
               <img
                 className="d-block w-100"
                 src="https://i.ibb.co/5XZ2SRV/2.png"
                 alt="Third slide"
               />
             </Carousel.Item>
-            <Carousel.Item interval={5000}>
+            <Carousel.Item interval={3000}>
               <img
                 className="d-block w-100"
                 src="https://i.ibb.co/k9ZgTJr/option5.png"
@@ -161,28 +161,28 @@ const Home = () => {
           <PersistentDrawerRight />
           <Container fluid className='d-none d-lg-block' style={{ padding: '0' }}>
             <Carousel style={{ height: '0' }}>
-              <Carousel.Item interval={5000}>
+              <Carousel.Item interval={3000}>
                 <img
                   className="d-block w-100"
                   src="https://i.ibb.co/fqmD8MK/1.png"
                   alt="First slide"
                 />
               </Carousel.Item>
-              <Carousel.Item interval={5000}>
+              <Carousel.Item interval={3000}>
                 <img
                   className="d-block w-100"
                   src="https://i.ibb.co/8BPvw6Q/3.png"
                   alt="Third slide"
                 />
               </Carousel.Item>
-              <Carousel.Item interval={5000}>
+              <Carousel.Item interval={3000}>
                 <img
                   className="d-block w-100"
                   src="https://i.ibb.co/5XZ2SRV/2.png"
                   alt="Third slide"
                 />
               </Carousel.Item>
-              <Carousel.Item interval={5000}>
+              <Carousel.Item interval={3000}>
                 <img
                   className="d-block w-100"
                   src="https://i.ibb.co/k9ZgTJr/option5.png"
